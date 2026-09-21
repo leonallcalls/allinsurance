@@ -213,7 +213,7 @@ section[data-label=all-split\ --bleed]>div{padding-block:0}
 .all-contact-info a{color:var(--blue);font-weight:600}
 .all-contact-info span{font-size:.9rem;color:var(--muted);display:block}
 .all-contact--map{grid-template-columns:1fr 1.2fr}
-section[data-label=all-contact\ --map]{background-image: url(img/google-map-placeholder.png); background-size: cover}
+section[data-label=all-contact\ --map]{background-image: url(../img/google-map-placeholder.png); background-size: cover}
 section[data-label=all-contact\ --map]>div{max-width:none;padding:clamp(3rem,7vw,5rem) 0}
 section[data-label=all-contact\ --map]>div>div{display:grid;grid-template-columns:1fr 1fr;align-items:stretch;max-width:none;width:100%;padding:0}
 section[data-label=all-contact\ --map] .all-contact-info{width: fit-content;padding: 2rem 4rem;background: white;border-radius: 15px;margin: 4rem auto}
@@ -224,7 +224,7 @@ section[data-label=all-contact\ --map] .all-contact-info{width: fit-content;padd
 .all-contact-map figcaption b{display:block;color:var(--navy);margin-bottom:.2rem}
 
 /* .all-hero — top hero (headline + CTAs + image) */
-#all-hero{background-image:url(img/hero-6.jpeg);background-size:cover;background-position:25%;background-repeat:no-repeat;min-height:600px}
+#all-hero{background-image:url(../img/hero-6.jpeg);background-size:cover;background-position:25%;background-repeat:no-repeat;min-height:600px}
 .all-hero>div{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(1.5rem,4vw,3rem);align-items:center}
 .all-hero h1{font-size:clamp(2.3rem,6vw,4rem);line-height:1.04;letter-spacing:-.025em;font-weight:800;color:var(--navy);margin:1rem 0 1.3rem;max-width:10ch}
 .all-hero .all-hero-lead{max-width:40ch;color:#1b1b1b}
@@ -254,7 +254,7 @@ section[data-label=all-contact\ --map] .all-contact-info{width: fit-content;padd
 .all-cta h2::after{display:none}
 .all-cta>p{color:var(--muted);max-width:56ch;margin:0 auto 2rem}
 .all-cta>p:has(>[data-btn]){justify-content:center}
-[data-label="all-cta"]{background-image:url(img/bg-footer.jpeg);background-size: cover}
+[data-label="all-cta"]{background-image:url(../img/bg-footer.jpeg);background-size: cover}
 
 /* ---- footer ---- */
 footer{background:var(--navy);color:#bfd0e3}
