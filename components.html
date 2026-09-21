@@ -1,0 +1,1031 @@
+<html lang="en" data-theme="dark" style="color-scheme: dark;"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>All Insurance Advisors — Component Library</title>
+<meta name="description" content="Component library for All Insurance Advisors marketing pages.">
+<style>
+:root{
+--navy:#0a2540;--blue:#1668e3;--blue-d:#0f52b5;--ink:#22303f;--muted:#5d6f83;
+--line:#e4eaf2;--tint:#eff5fc;--w:1180px;--pad:clamp(1rem,5vw,2.5rem);--r:8px;
+--ph:linear-gradient(135deg,#dbe9fb 0%,#eef5fd 45%,#d6e8f9 100%);
+--ph-2:linear-gradient(135deg,#d2e3f7 0%,#e8f2fd 55%,#cfe0f5 100%);
+--ph-3:linear-gradient(135deg,#e2eefb 0%,#f4f9fe 50%,#dceafa 100%);
+--ph-4:linear-gradient(135deg,#cfe0f5 0%,#e4eefc 55%,#c6daf3 100%);
+--ph-5:linear-gradient(135deg,#dfeaf8 0%,#f0f7fe 45%,#cfe2f6 100%);
+}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:#fff;color:var(--ink);font:18px/1.45 "Segoe UI",system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+h1,h2,h3,p,figure{margin:0}
+ul{margin:0;padding:0;list-style:none}
+svg{display:block;flex:none}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+h2{font-size:clamp(2.2rem,4vw,3.6rem);line-height:.9;letter-spacing:-.025em;font-weight:800;color:var(--navy)}
+h3{font-size:1.05rem;color:var(--navy)}
+small{display:block;font-size:.73rem;font-weight:600;letter-spacing:.17em;text-transform:uppercase;color:var(--muted)}
+h2::after{content:"";display:block;width:46px;height:3px;margin:1rem auto;border-radius:2px;background:var(--blue);opacity:.45}
+p:has(>[data-btn]){display:flex;flex-wrap:wrap;gap:.9rem;margin:1.8rem 0 1rem}
+[data-btn]{display:inline-flex;align-items:center;gap:.6rem;padding:.85rem 1.5rem;border:1px solid var(--blue);border-radius:30px;background:var(--blue);color:#fff;font-size:.95rem;font-weight:600;transition:background .2s,border-color .2s,color .2s;}
+[data-btn]:hover{background:var(--blue-d);border-color:var(--blue-d)}
+[data-btn=ghost]{background:#fff;color:var(--blue)}
+[data-btn=ghost]:hover{background:var(--tint);border-color:var(--blue)}
+[data-btn] svg{width: 25px;height: 25px;margin: 5px 0 0 0;}
+section{position:relative;border-bottom:1px dashed var(--line);background: linear-gradient(190deg,var(--tint),transparent 90%)}
+section>div{max-width:var(--w);margin-inline:auto;padding:clamp(3rem,7vw,5rem) var(--pad)}
+section[data-label]::before{content:attr(data-label);position:absolute;top:0;left:50%;transform:translateX(-50%);padding:.4rem .5rem;font-size:.5rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);background:#fff;border:1px solid var(--line);border-top:0;border-radius:0 0 var(--r) var(--r);}
+[data-brand]{display:flex;align-items:center;gap:.65rem;color:var(--navy)}
+[data-brand] b{display:block;font-size:1.05rem;font-weight:800;letter-spacing:-.01em;line-height:1.1}
+[data-brand] i{font-size:.62rem;font-style:normal;letter-spacing:.3em;color:var(--muted)}
+[data-brand] img{width:auto}
+header [data-brand] img{height:46px}
+footer [data-brand] img{height:52px;filter:brightness(0) invert(1)}
+header{position:sticky;top:0;z-index:9;background:#fff;border-bottom:1px solid var(--line);background: rgba(255, 255, 255, 0.5);box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);backdrop-filter: blur(5px);-webkit-backdrop-filter: blur(5px);border: 1px solid rgba(255, 255, 255, 0.3);}
+header[data-stuck]{box-shadow:0 6px 22px rgb(10 37 64/.09)}
+header>div{max-width:var(--w);margin-inline:auto;padding:.75rem var(--pad);display:flex;align-items:center;gap:clamp(.8rem,2.5vw,2rem)}
+header nav{margin-inline:auto}
+header nav ul{display:flex;flex-wrap:nowrap;white-space:nowrap;gap:clamp(.7rem,1.7vw,1.5rem);font-size:.9rem}
+@media(min-width:1155px){header nav li:nth-child(7){display:none}}
+@media(min-width:1065px) and (max-width:1154.98px){header nav li:nth-child(7),header nav li:nth-child(6){display:none}}
+@media(min-width:900px) and (max-width:1064.98px){header nav li:nth-child(7),header nav li:nth-child(6),header nav li:nth-child(5){display:none}}
+header nav a:hover{color:var(--blue)}
+header [aria-current]{color:var(--blue);box-shadow:0 2px 0 var(--blue)}
+header [data-btn]{padding:.55rem 1.2rem;font-size:.88rem}
+header button{display:none;padding:.6rem;border:0;background:0;cursor:pointer}
+header button span{position:relative;display:block;width:30px;height:2px;background:var(--navy);transition:background .2s}
+header button span::before,header button span::after{content:"";position:absolute;left:0;width:30px;height:2px;background:var(--navy);transition:transform .25s}
+header button span::before{transform:translateY(-7px)}
+header button span::after{transform:translateY(7px)}
+header[data-open] button span{background:0}
+header[data-open] button span::before{transform:rotate(45deg)}
+header[data-open] button span::after{transform:rotate(-45deg)}
+
+/* =========================================================
+   Components — .all-*
+   Naming: .all-<part> + modifier --<option>.
+   Image slots: --img custom property over generated placeholders.
+   ========================================================= */
+
+/* .all-head — section header (eyebrow + h2 + lead) */
+.all-head{text-align:center;max-width:620px;margin:0 auto}
+.all-head>small{margin-bottom:.4rem}
+.all-head>h2::after{margin-inline:auto}
+.all-head .all-head-sub{margin:1rem 0 0;color:var(--muted)}
+/* .all-cards — icon feature grid */
+.all-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:2.5rem;margin-top:3.5rem}
+.all-cards li{text-align:center}
+.all-cards li>svg{width:74px;height:74px;padding:1.1rem;margin:0 auto 1.4rem;border:1px solid var(--line);border-radius:50%;background:#fff;color:var(--blue);box-shadow:0 4px 14px rgb(10 37 64/.06)}
+.all-cards p{max-width:32ch;margin:0 auto .9rem;color:var(--muted);font-size:.95rem}
+.all-cards a{display:inline-flex;align-items:center;gap:.45rem;color:var(--blue);font-weight:600;font-size:.95rem}
+.all-cards a::after{content:"→"}
+.all-cards a:hover{text-decoration:underline}
+.all-cards--4{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+
+/* .all-steps — ordered process */
+.all-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3.5rem;text-align:center}
+.all-steps li{position:relative;display:flex;flex-direction:column;align-items:center}
+.all-step-n{width:64px;height:64px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;font-weight:800;margin-bottom:1.2rem;z-index: 2}
+.all-step-n--soft{border-radius:50%;background:var(--tint);color:var(--blue)}
+.all-step-n--line{border-radius:50%;border:1.5px solid var(--blue);color:var(--blue);font-weight:700}
+.all-step-n--icon{width:84px;height:84px;padding:1.1rem;border:1px solid var(--line);border-radius:50%;background:#fff;color:var(--blue);box-shadow:0 4px 14px rgb(10 37 64/.06)}
+.all-step-n--icon svg{width:44px;height:44px}
+.all-steps p{max-width:28ch;margin:0 auto;color:var(--muted);font-size:.95rem}
+.all-steps--lines li::before{content:"";position:absolute;top:31px;left:calc(50% + 44px);right:calc(-50% + 44px);border-top:2px dashed #cdd9e6}
+.all-steps--lines li:first-child::before,.all-steps--lines li:last-child::before{display:none}
+.all-steps--lines li:first-child+li::before{left:calc(-50% + 44px)}
+.all-steps--arrows li::after{content:"";position:absolute;top:var(--arrow-y,32px);right:-2rem;width:3rem;border-top:1px solid var(--blue)}
+.all-steps--arrows li:last-child::after{display:none}
+.all-steps--arrows li:not(:last-child)::before{content:"";position:absolute;top:var(--arrow-y,32px);transform:translateY(-50%);right:-2.6rem;border:6px solid transparent;border-left:6px solid var(--blue)}
+.all-steps:has(.all-step-n--icon).all-steps--arrows{--arrow-y:42px}
+
+/* .all-split — image + text, feature row */
+.all-split{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(2rem,5vw,4rem);align-items:center}
+.all-split--flip .all-split-fig{order:2}
+.all-split-fig{position:relative;display:flex;align-items:flex-end;min-height:clamp(280px,38vw,420px);padding:1.4rem;border-radius:12px;background:var(--img,var(--ph)) center/cover no-repeat}
+.all-split-fig::before{content:"";position:absolute;inset:0}
+.all-split-fig figcaption{position:relative;z-index:1}
+.all-split-fig figcaption{position:absolute;bottom:1.4rem;left:1.4rem;color:#fff;font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-size:.78rem;line-height:1rem;text-shadow:0 1px 8px rgb(10 37 64/.35);max-width:14rem;background: white;color: black;opacity: .5;padding: 1rem;}
+.all-split-fig figcaption::after{content:"";display:block;width:28px;height:2px;background:#fff}
+.all-split-body h2{margin:1rem 0}
+.all-split-body>p{color:var(--muted);max-width:48ch}
+.all-split-body>a{display:inline-flex;align-items:center;gap:.5rem;margin-top:1.2rem;color:var(--blue);font-weight:600}
+.all-split-body>a::after{content:"→"}
+.all-link{display:inline-flex;align-items:center;gap:.5rem;color:var(--blue);font-weight:600;margin-top:.4rem}
+.all-link:hover{text-decoration:underline}
+.all-split-body>a:hover{text-decoration:underline}
+/* .all-split --bleed — image runs edge-to-edge, full left of viewport */
+.all-split--bleed{width:100vw;position:relative;left:50%;transform:translateX(-50%);grid-template-columns:1fr 1fr;gap:0;align-items:stretch}
+section[data-label=all-split\ --bleed]>div{padding-block:0}
+.all-split--bleed .all-split-fig{min-height:0;padding:0;border-radius:0}
+.all-split--bleed .all-split-body{align-self:center;padding:clamp(2.5rem,5vw,4rem) clamp(1.5rem,4vw,4rem);width:50vw;max-width:50vw}
+.all-split--bleed .all-split-body>small{margin-bottom:.8rem}
+.all-split--bleed .all-split-body h2{font-size:clamp(1.9rem,3vw,2.8rem)}
+.all-split--bleed .all-split-body>p{margin-bottom:1.6rem}
+.all-split--bleed .all-split-fig figcaption{opacity:.65}
+.all-split-fig--empty{display:grid;place-items:center;color:var(--blue)}
+.all-split-fig--empty span{font-size:.72rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;opacity:.55}
+.all-features{display:flex;gap:2rem;margin-top:1.8rem;flex-wrap:wrap;list-style:none}
+.all-features li{display:flex;gap:.75rem;align-items:flex-start;max-width:11rem}
+.all-features svg{width:30px;height:30px;color:var(--blue);margin-top:.15rem}
+.all-features b{display:block;font-size:.95rem;color:var(--navy)}
+.all-features span{font-size:.9rem;color:var(--muted)}
+
+/* .all-team — advisor cards */
+.all-team{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:2rem;margin-top:3.5rem}
+.all-team li{text-align:center}
+.all-team li{background:var(--img,var(--ph-2)) top center/100% 230px no-repeat}
+.all-team-fig{position:relative;display:block;height:230px;margin:0 auto;border-radius:10px;background:var(--img,var(--ph-2)) center/cover no-repeat}
+.all-team figcaption{text-align:center;padding-top:.35rem}
+.all-team figcaption b{display:block;font-size:1.08rem;color:var(--navy)}
+.all-team figcaption i{font-style:normal;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.all-team figcaption::after{content:"";display:block;width:40px;height:2px;margin:.7rem auto 0;background:var(--blue);opacity:.45}
+
+/* .all-media — photo card grid */
+.all-media{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:2rem;margin-top:3.5rem}
+.all-media-fig{display:block;min-height:210px;border-radius:10px;background:var(--img,var(--ph-3)) center/cover no-repeat;margin-bottom:1.1rem}
+.all-media small{margin-bottom:.5rem}
+.all-media h3{font-size: 1.85rem;line-height: 1.6rem;margin-bottom: .6rem;width: 67%}
+.all-media p{color:var(--muted);font-size:.95rem;margin-bottom:.9rem}
+.all-media a:not(.all-media-fig){display:inline-flex;align-items:center;gap:.45rem;color:var(--blue);font-weight:600;font-size:.95rem}
+.all-media a:not(.all-media-fig)::after{content:"→"}
+.all-media a:hover{text-decoration:underline}
+
+/* .all-quote — testimonial */
+.all-quote{display:flex;gap:2rem;align-items:center;max-width:820px;margin:3rem auto 0}
+.all-quote-fig{flex:none;width:110px;height:110px;border-radius:50%;background:var(--img,var(--ph-5)) center/cover no-repeat;box-shadow:0 6px 18px rgb(10 37 64/.1)}
+.all-quote blockquote{margin:0;font-size:1.1rem;line-height:1.6;color:var(--ink)}
+.all-quote-cite{display:block;margin-top:1rem;font-weight:700;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--navy)}
+.all-quote-cite::before{content:"— "}
+.all-quote-cite i{display:block;font-style:normal;font-weight:600;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+
+/* .all-lead — inline lead form */
+.all-lead{display:grid;grid-template-columns:minmax(160px,.9fr) 2.2fr;gap:clamp(1.5rem,4vw,3rem);align-items:center;background:var(--tint);border-radius:12px;padding:clamp(1.5rem,4vw,2.5rem)}
+.all-lead h2{font-size:clamp(1.8rem,4vw,1.8rem);line-height:.9;}
+.all-lead h2::after{display:none}
+.all-lead>p{color:var(--muted);font-size:.95rem}
+.all-lead form{display:flex;gap:.8rem;flex-wrap:wrap;align-items:flex-end}
+.all-lead form label{display:flex;flex-direction:column;gap:.35rem;font-size:.8rem;font-weight:600;color:var(--muted)}
+.all-lead input{border:1px solid var(--line);border-radius:var(--r);padding:.7rem .9rem;font:inherit;font-size:.92rem;color:var(--ink);background:#fff;max-width: 160px;}
+.all-lead [data-btn]{white-space:nowrap}
+.all-lead-note{display:flex;align-items:center;gap:.5rem;width:100%;font-size:.85rem;color:var(--muted)}
+.all-lead-note svg{width:15px;height:15px;color:var(--blue)}
+
+/* .all-list — row list (opportunities, channels) */
+.all-list{margin-top:3rem;border-top:1px solid var(--line)}
+.all-list>li{display:flex;gap:1.5rem;align-items:flex-start;padding:1.4rem 1.2rem;border-bottom:1px solid var(--line)}
+.all-list>li:nth-child(odd){background:linear-gradient(90deg,var(--tint),transparent 70%)}
+.all-list-body{flex:1}
+.all-list-body h3{font-size:1.08rem;margin-bottom:.35rem}
+.all-list-body p{color:var(--muted);font-size:.93rem;max-width:64ch}
+.all-list-meta{display:flex;gap:1.6rem;flex-wrap:wrap;margin-top:.55rem;font-size:.85rem;color:var(--muted)}
+.all-list-meta span{display:inline-flex;align-items:center;gap:.45rem}
+.all-list-meta svg{width:15px;height:15px;color:var(--blue)}
+.all-list>li>a{display:inline-flex;align-items:center;gap:.5rem;color:var(--blue);font-weight:600;white-space:nowrap;padding-top:.3rem}
+.all-list>li>a::after{content:"→"}
+.all-list--side{display:grid;grid-template-columns:1fr 1.6fr;gap:clamp(2rem,5vw,4rem);margin-top:0;border:0}
+.all-list--side .all-head{margin:0;text-align:left}
+.all-list--side .all-head h2::after{margin-inline:0}
+
+/* .all-faq — accordion */
+.all-faq{margin-top:3rem}
+.all-faq>li{border:1px solid var(--line);border-radius:var(--r);margin-bottom:.8rem;background:#fff}
+.all-faq summary{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.05rem 1.25rem;cursor:pointer;font-weight:600;color:var(--navy);list-style:none}
+.all-faq summary::-webkit-details-marker{display:none}
+.all-faq summary svg{width:18px;height:18px;color:var(--blue);transition:transform .25s}
+.all-faq details[open] summary svg{transform:rotate(180deg)}
+.all-faq li p{padding:0 1.25rem 1.15rem;color:var(--muted);font-size:.95rem;max-width:70ch}
+.all-faq--side{display:grid;grid-template-columns:1fr 1.6fr;gap:clamp(2rem,5vw,4rem);align-items:start;margin-top:0}
+.all-faq--side .all-head{margin:0;text-align:left}
+.all-faq--side .all-head h2::after{margin-inline:0}
+.all-faq--side ul{margin-top:0}
+
+/* .all-contact — contact grid */
+.all-contact{display:grid;grid-template-columns:1.3fr 1fr;gap:clamp(2rem,5vw,4rem)}
+.all-contact h2{font-size:clamp(2.2rem,4vw,3.2rem);line-height:.9;margin-bottom:1rem}
+.all-contact h2::after{display:none}
+.all-contact h3{font-size:1.2rem}
+.all-contact form{display:grid;gap:1rem;margin-top:1.8rem}
+.all-form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.all-contact input,.all-contact textarea{width:100%;border:1px solid var(--line);border-radius:var(--r);padding:.85rem 1rem;font:inherit;font-size:.95rem;color:var(--ink);background:#fff}
+.all-contact textarea{min-height:130px;resize:vertical}
+.all-contact [data-btn]{justify-content:center; width: fit-content;}
+.all-contact-hint{font-size:.75rem;color:var(--muted);text-align:left}
+.all-contact-info>p{color:var(--muted);margin-bottom:1.2rem}
+.all-contact-info li{display:flex;gap:1rem;align-items:flex-start;padding:1.1rem 0}
+.all-contact-info li+li{border-top:1px solid var(--line)}
+.all-contact-ic{flex:none;width:50px;height:50px;border-radius:50%;background:var(--tint);display:flex;align-items:center;justify-content:center;color:var(--blue)}
+.all-contact-ic svg{width:36px;height: 36px;margin: 8px; color:var(--blue-d)}
+.all-contact-info ul{text-align: left}
+.all-contact-info b{display:block;color:var(--navy);font-size:1rem}
+.all-contact-info a{color:var(--blue);font-weight:600}
+.all-contact-info span{font-size:.9rem;color:var(--muted);display:block}
+.all-contact--map{grid-template-columns:1fr 1.2fr}
+section[data-label=all-contact\ --map]{background-image: url(img/google-map-placeholder.png); background-size: cover}
+section[data-label=all-contact\ --map]>div{max-width:none;padding:clamp(3rem,7vw,5rem) 0}
+section[data-label=all-contact\ --map]>div>div{display:grid;grid-template-columns:1fr 1fr;align-items:stretch;max-width:none;width:100%;padding:0}
+section[data-label=all-contact\ --map] .all-contact-info{width: fit-content;padding: 2rem 4rem;background: white;border-radius: 15px;margin: 4rem auto}
+.all-contact--map{gap:0}
+.all-contact-map{position:relative;min-height:340px;align-self:stretch;border-radius:0;}
+.all-contact-map figcaption{position:absolute;top:50%;right:0%;transform:translate(-50%,-50%);background:rgb(255 255 255/.88);backdrop-filter:blur(3px);border-radius:var(--r);padding:.95rem 1.2rem;box-shadow:0 8px 24px rgb(10 37 64/.15);font-size:.9rem;color:var(--muted);max-width:min(260px,60vw);text-align:left; }
+.all-contact-map figcaption::before{content:"";position:absolute;left:-11px;top:50%;transform:translateY(-50%);border:12px solid transparent;border-left:0;border-right:11px solid rgb(255 255 255/.88)}
+.all-contact-map figcaption b{display:block;color:var(--navy);margin-bottom:.2rem}
+
+/* .all-hero — top hero (headline + CTAs + image) */
+#all-hero{background-image:url(img/hero-6.jpeg);background-size:cover;background-position:25%;background-repeat:no-repeat;min-height:600px}
+.all-hero>div{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(1.5rem,4vw,3rem);align-items:center}
+.all-hero h1{font-size:clamp(2.3rem,6vw,4rem);line-height:1.04;letter-spacing:-.025em;font-weight:800;color:var(--navy);margin:1rem 0 1.3rem;max-width:10ch}
+.all-hero .all-hero-lead{max-width:40ch;color:#1b1b1b}
+.all-hero .all-hero-actions{display:flex;flex-wrap:wrap;gap:.9rem;margin:1.8rem 0 1rem}
+.all-hero .all-hero-call{color:#fff;font-size:.95rem}
+.all-hero .all-hero-call a{color:#fff;font-weight:700}
+.all-hero-fig{position:relative;display:flex;align-items:flex-end;min-height:clamp(270px,30vw,380px);padding:1.25rem;border:1px solid var(--line);border-radius:12px;background:var(--img,linear-gradient(160deg,#e8f1fb,#f7fbff 60%)) center/cover no-repeat}
+.all-hero-fig figcaption{position:relative;z-index:1;color:#fff;font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-size:.78rem;line-height:1.9;text-shadow:0 1px 8px rgb(10 37 64/.4)}
+
+/* .all-carriers — carrier logo carousel */
+.all-carriers{text-align:center;padding-block:clamp(2.2rem,5vw,3.2rem)}
+.all-carriers>small{margin-bottom:0}
+.all-carriers-view{overflow:hidden;width:100vw;position:relative;left:50%;transform:translateX(-50%);margin:1.8rem 0 1.2rem;padding-block:.4rem}
+.all-carriers-track{--gap:clamp(3.5rem,7vw,6rem);display:flex;gap:var(--gap);width:max-content;animation:all-carriers-slide 85s linear infinite}
+.all-carriers-view:hover .all-carriers-track{animation-play-state:paused}
+.all-carriers-track[data-paused]{animation-play-state:paused}
+.all-carriers-track a{display:flex;align-items:center;justify-content:center;flex:none;opacity:.72;transition:opacity .2s,filter .2s}
+.all-carriers-track a:hover{opacity:1}
+.all-carriers-track img{height:31px;width:auto}
+@media(min-width:1000px){.all-carriers-track img{height:calc(31px + 13px * min((100vw - 1000px)/600,1))}}
+[data-label=all-carriers]{background: linear-gradient(190deg, #ffffff, transparent 90%);}
+@keyframes all-carriers-slide{0%{transform:translateX(0)}100%{transform:translateX(calc(-50% - var(--gap)/2))}}
+
+/* .all-cta — closing call-to-action band */
+.all-cta{text-align:center}
+.all-cta h2{margin-bottom:1rem}
+.all-cta h2::after{display:none}
+.all-cta>p{color:var(--muted);max-width:56ch;margin:0 auto 2rem}
+.all-cta>p:has(>[data-btn]){justify-content:center}
+[data-label="all-cta"]{background-image:url(img/bg-footer.jpeg);background-size: cover}
+
+/* ---- footer ---- */
+footer{background:var(--navy);color:#bfd0e3}
+footer>div{max-width:var(--w);margin-inline:auto;padding:clamp(3rem,7vw,5rem) var(--pad);display:grid;grid-template-columns:1.5fr 1fr 1.2fr 1.2fr;gap:2.5rem}
+footer [data-brand]{color:#fff;margin-bottom:1.2rem}
+footer [data-brand] i{color:#8ba6c4}
+footer h3{color:#fff;margin-bottom:1rem}
+footer li{margin-bottom:.5rem;font-size:.92rem}
+footer a:hover{color:#fff}
+footer p{font-size:.92rem}
+#social{display:flex;gap:.9rem;margin-top:1.5rem}
+#social svg{width:26px;height:26px;color:#fff}
+#contact li{display:flex;gap:.6rem;align-items:flex-start}
+#contact svg{width: 25px;height: 25px;margin-top: 0.2rem;color: #b2c4d7}
+footer form{position:relative;display:flex;max-width:19rem;margin-top:1.1rem;border-radius:var(--r);overflow:hidden}
+footer input{flex:1;min-width:0;padding:.75rem .9rem;border:0;font:inherit;font-size:.92rem;color:#fff}
+footer form button{border:0;background:var(--blue);color:#fff;padding:0 1.1rem;cursor:pointer}
+footer form button:hover{background:var(--blue-d)}
+footer form svg{width:24px;height:24px;color:#fff;transform:rotate(270deg)}
+footer form[data-msg]::after{content:attr(data-msg);position:absolute;top:100%;left:0;padding-top:.5rem;font-size:.85rem;color:#9fd0ff}
+footer>p{max-width:var(--w);margin-inline:auto;padding:1.3rem var(--pad);display:flex;flex-wrap:wrap;justify-content:space-between;gap:.7rem;border-top:1px solid rgb(255 255 255/.13);font-size:.85rem}
+footer>p a:not(:last-child)::after{content:" | ";color:#5f7897}
+
+/* ---- responsive ---- */
+@media(max-width:900px){
+header nav{position:absolute;top:100%;left:0;right:0;display:none;padding:1.2rem var(--pad);background:#fff;border-bottom:1px solid var(--line)}
+header[data-open] nav{display:block}
+header nav ul{flex-direction:column;gap:1rem;font-size:1rem}
+header [data-brand]{margin-right:auto}
+header button{display:block}
+.all-split{grid-template-columns:1fr}
+.all-split .all-split-fig{order:0}
+.all-split--bleed{width:auto;left:0;transform:none;grid-template-columns:1fr}
+.all-split--bleed .all-split-fig{order:0;min-height:clamp(260px,70vw,380px)}
+.all-split--bleed .all-split-body{width:auto;max-width:none;text-align:center;padding:clamp(2rem,8vw,3rem) var(--pad);align-items:center}
+.all-split .all-split-body{text-align:center;display:flex;flex-direction:column;align-items:center}
+.all-split .all-split-body>p{margin-inline:auto}
+.all-split .all-split-fig figcaption{left:1.4rem;right:1.4rem;bottom:1.4rem;text-align: left;margin-inline: inherit;width: fit-content;}
+.all-steps{grid-template-columns:1fr;gap:2.8rem}
+.all-steps--lines li::before,.all-steps--arrows li::after,.all-steps--arrows li::before{display:none}
+.all-lead{grid-template-columns:1fr}
+.all-lead form label{flex:1 1 100%}
+.all-lead input{width:100%;max-width:100%}
+.all-contact,.all-contact--map{grid-template-columns:1fr}
+section[data-label=all-contact\ --map]>div{padding:0}
+section[data-label=all-contact\ --map]>div>div{grid-template-columns:1fr;gap:0;max-width:none;width:100%}
+section[data-label=all-contact\ --map] .all-contact-info{width:auto;padding:clamp(2rem,8vw,3.5rem) var(--pad);text-align:center}
+.all-contact-map{min-height:clamp(260px,62vw,420px);border-radius:0}
+.all-contact-map figcaption{top:50%;bottom:auto;left:50%;transform:translate(-50%,-50%);max-width:min(240px,70vw)}
+.all-faq--side,.all-list--side{grid-template-columns:1fr}
+.all-faq--side .all-head,.all-list--side .all-head{text-align:center;margin-inline:auto}
+.all-faq--side .all-head h2::after,.all-list--side .all-head h2::after{margin-inline:auto}
+.all-contact{text-align:center}
+.all-contact>p,.all-contact-hint{margin-inline:auto}
+.all-quote{flex-direction:column;text-align:center;align-items:center}
+.all-hero>div{grid-template-columns:1fr}
+.all-hero .all-hero-fig{order:2}
+.all-hero h1,.all-hero .all-hero-lead{max-width:70%}
+.all-hero-copy{padding:clamp(1.5rem,5vw,3rem) 0 2.5rem;border-radius: 15px;padding: 1rem}
+footer>div{grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
+}
+@media(max-width:560px){
+header [data-btn=ghost]{display:none}
+p:has(>[data-btn]){flex-direction:column;max-width:fit-content;margin-inline:auto}
+[data-btn]{justify-content:center;white-space:nowrap}
+.all-hero .all-hero-actions{flex-direction:row;align-items:center}
+.all-hero .all-hero-actions [data-btn]{width:min(100%,16rem)}
+.all-form-row{grid-template-columns:1fr}
+.all-list>li{flex-direction:column;gap:.8rem}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+
+</style>
+</head>
+<body>
+<svg style="display:none" aria-hidden="true">
+<symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3.4 19c.5-3 2.8-4.6 5.6-4.6s5.1 1.6 5.6 4.6"/><circle cx="17" cy="9.5" r="2.4"/><path d="M15.6 13.4c2.8.2 4.7 1.6 5 4.1"/></symbol>
+<symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 5 5.8v5.4c0 4.5 3 7.6 7 9.3 4-1.7 7-4.8 7-9.3V5.8Z"/><path d="M12 8.6v5M9.5 11.1h5"/></symbol>
+<symbol id="i-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19.6C7 15.9 4.2 13 4.2 9.9c0-2.4 1.9-4.2 4.1-4.2 1.6 0 3 .9 3.7 2.1.7-1.2 2.1-2.1 3.7-2.1 2.2 0 4.1 1.8 4.1 4.2 0 3.1-2.8 6-7.8 9.7Z"/></symbol>
+<symbol id="i-cap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9.5 9-4.5 9 4.5-9 4.5Z"/><path d="M7 12.5V17c0 1.2 2.2 2.5 5 2.5s5-1.3 5-2.5v-4.5M21 10v5"/></symbol>
+<symbol id="i-laptop" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="5" width="14" height="10" rx="1.5"/><path d="M2.8 18.5h18.4"/></symbol>
+<symbol id="i-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16M7 20v-6M12 20V8M17 20v-9"/></symbol>
+<symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 3.5h3l1.5 4-2 1.5c.8 2 2.3 3.5 4.3 4.3l1.5-2 4 1.5v3c0 .9-.7 1.6-1.6 1.6C10 17.3 4.3 11.6 4.3 5.5c0-.9.7-2 2.2-2Z"/></symbol>
+<symbol id="i-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4c4.7 0 8.5 3.1 8.5 7s-3.8 7-8.5 7c-1 0-2-.1-2.9-.4L5 19l1-3.1c-1.6-1.3-2.5-3-2.5-4.9 0-3.9 3.8-7 8.5-7Z"/></symbol>
+<symbol id="i-cal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5.5" width="16" height="14.5" rx="2"/><path d="M4 10h16M8.5 3.5v3M15.5 3.5v3M8.5 14h2M13.5 14h2M8.5 17h2"/></symbol>
+<symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6.5-5.4-6.5-10.2C5.5 7.4 8.4 4.5 12 4.5s6.5 2.9 6.5 6.3C18.5 15.6 12 21 12 21Z"/><circle cx="12" cy="10.5" r="2.3"/></symbol>
+<symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5.5" width="17" height="13" rx="2"/><path d="m4.5 7.5 7.5 5.5 7.5-5.5"/></symbol>
+<symbol id="i-umbrella" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5c4.8 0 8.5 3.6 8.5 8H3.5c0-4.4 3.7-8 8.5-8Z"/><path d="M12 11.5V19c0 1.4-1.1 2.5-2.5 2.5S7 20.4 7 19M12 8v3.5"/></symbol>
+<symbol id="i-shield-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 5 5.8v5.4c0 4.5 3 7.6 7 9.3 4-1.7 7-4.8 7-9.3V5.8Z"/><path d="m8.8 11.8 2.2 2.2 4.2-4.4"/></symbol>
+<symbol id="i-pill" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="9.5" width="17" height="5.5" rx="2.75" transform="rotate(-45 12 12)"/><path d="m8.7 8.7 6.6 6.6"/></symbol>
+<symbol id="i-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m4 11 8-7 8 7"/><path d="M6.5 9.5V20h11V9.5"/><path d="M10 20v-5h4v5"/></symbol>
+<symbol id="i-leaf" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19c0-8 4-13 14-14-.5 10-5 14-11 14-1 0-2-.2-3 0Z"/><path d="M5 19c2-4 5-7 9-9"/></symbol>
+<symbol id="i-doc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3.5h7L18.5 8v11a1.5 1.5 0 0 1-1.5 1.5H7A1.5 1.5 0 0 1 5.5 19V5A1.5 1.5 0 0 1 7 3.5Z"/><path d="M13.5 3.5V8H18M9 12h6M9 15.5h6"/></symbol>
+<symbol id="i-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c.7-3.5 3.5-5.2 7-5.2s6.3 1.7 7 5.2"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="m8.5 12.2 2.3 2.3 4.7-5"/></symbol>
+<symbol id="i-award" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="5"/><path d="m8.8 13.2-1.6 6.3 4.8-2.6 4.8 2.6-1.6-6.3"/></symbol>
+<symbol id="i-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9.5 6 6 6-6"/></symbol>
+<symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5.5" y="10.5" width="13" height="9.5" rx="2"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></symbol>
+<symbol id="i-brief" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="7.5" width="17" height="12" rx="2"/><path d="M9 7.5V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v1.5M3.5 12h17"/></symbol>
+</svg>
+
+<header>
+<div>
+<a data-brand="" href="#"><img src="img/logo.png" height="46" alt="All Insurance Advisors" /></a>
+<nav>
+<ul>
+<li><a href="#" aria-current="page">Home</a></li>
+<li><a href="#all-cards">Medicare</a></li>
+<li><a href="#all-cards">Health Insurance</a></li>
+<li><a href="#all-cards">Life Insurance</a></li>
+<li><a href="#all-team">About Us</a></li>
+<li><a href="#all-media">Resources</a></li>
+<li><a href="#all-contact">Contact</a></li>
+</ul>
+</nav>
+<a data-btn="" href="#all-contact">Login</a>
+<a data-btn="ghost" href="#all-list">Careers</a>
+<button type="button" aria-label="Menu" aria-expanded="false"><span></span></button>
+</div>
+</header>
+
+<main>
+
+<!-- .all-hero -->
+<section data-label="all-hero" id="all-hero">
+<div class="all-hero">
+<div>
+<div class="all-hero-copy">
+<small>Insurance for a brighter tomorrow</small>
+<h1>Coverage that&nbsp;fits your next&nbsp;chapter.</h1>
+<p class="all-hero-lead">We help you find the right Medicare, health and life insurance solutions — with guidance you can trust.</p>
+<p class="all-hero-actions">
+<a data-btn="" href="#cta"><svg aria-hidden="true"><use href="#i-phone"/></svg>Talk to an Advisor</a>
+<a data-btn="ghost" href="#cta"><svg aria-hidden="true"><use href="#i-chat"/></svg>Start a Chat</a>
+</p>
+<p class="all-hero-call">Or call us at <a href="tel:18001234567">1 (800) 123-4567</a></p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- .all-carriers -->
+<section data-label="all-carriers">
+<div class="all-carriers">
+<small>Trusted carriers. More choices for you.</small>
+<div class="all-carriers-view">
+<div class="all-carriers-track">
+<a href="https://www.aetna.com/" target="_blank" rel="noopener" title="Aetna"><img src="img/logo_aetna.png" alt="Aetna" /></a>
+<a href="https://www.anthem.com/" target="_blank" rel="noopener" title="Anthem"><img src="img/logo_anthem.png" alt="Anthem" /></a>
+<a href="https://www.wellcare.com/" target="_blank" rel="noopener" title="WellCare"><img src="img/logo_wellcare.png" alt="WellCare" /></a>
+<a href="https://www.uhc.com/" target="_blank" rel="noopener" title="UnitedHealthcare"><img src="img/logo_unitedhealthcare.png" alt="UnitedHealthcare" /></a>
+<a href="https://www.humana.com/" target="_blank" rel="noopener" title="Humana"><img src="img/logo_humana.png" alt="Humana" /></a>
+<a href="https://www.molinahealthcare.com/" target="_blank" rel="noopener" title="Molina Healthcare"><img src="img/logo_molina-healthcare.png" alt="Molina Healthcare" /></a>
+<a href="https://www.myzinghealth.com/" target="_blank" rel="noopener" title="Zing Health"><img src="img/logo_zing_health.png" alt="Zing Health" /></a>
+<a href="https://www.healthspring.com/" target="_blank" rel="noopener" title="HealthSpring"><img src="img/logo_healthspring.svg" alt="HealthSpring" /></a>
+<a href="https://www.devoted.com/" target="_blank" rel="noopener" title="Devoted Health"><img src="img/logo_devoted-health.png" alt="Devoted Health" /></a>
+<a href="https://www.aetna.com/" target="_blank" rel="noopener" title="Aetna"><img src="img/logo_aetna.png" alt="Aetna" /></a>
+<a href="https://www.anthem.com/" target="_blank" rel="noopener" title="Anthem"><img src="img/logo_anthem.png" alt="Anthem" /></a>
+<a href="https://www.wellcare.com/" target="_blank" rel="noopener" title="WellCare"><img src="img/logo_wellcare.png" alt="WellCare" /></a>
+<a href="https://www.uhc.com/" target="_blank" rel="noopener" title="UnitedHealthcare"><img src="img/logo_unitedhealthcare.png" alt="UnitedHealthcare" /></a>
+<a href="https://www.humana.com/" target="_blank" rel="noopener" title="Humana"><img src="img/logo_humana.png" alt="Humana" /></a>
+<a href="https://www.molinahealthcare.com/" target="_blank" rel="noopener" title="Molina Healthcare"><img src="img/logo_molina-healthcare.png" alt="Molina Healthcare" /></a>
+<a href="https://www.myzinghealth.com/" target="_blank" rel="noopener" title="Zing Health"><img src="img/logo_zing_health.png" alt="Zing Health" /></a>
+<a href="https://www.healthspring.com/" target="_blank" rel="noopener" title="HealthSpring"><img src="img/logo_healthspring.svg" alt="HealthSpring" /></a>
+<a href="https://www.devoted.com/" target="_blank" rel="noopener" title="Devoted Health"><img src="img/logo_devoted-health.png" alt="Devoted Health" /></a>
+</div>
+</div>
+<p>And more top-rated carriers nationwide.</p>
+</div>
+</section>
+
+<!-- .all-head — centered (default) -->
+<section id="all-head" data-label="all-head">
+<div class="all-head">
+<small>OUR MISSION</small>
+<h2>A Brighter Tomorrow for&nbsp;Everyone.</h2>
+<p class="all-head-sub">We believe insurance is about people — not policies. Our mission is to make Medicare, health, and life insurance simple, understandable, and accessible, so you can feel confident about your future and focus on what matters most.</p>
+</div>
+</section>  
+
+<!-- .all-cards -->
+<section id="all-cards" data-label="all-cards">
+<div>
+<div class="all-head">
+<small>OUR VALUES</small>
+<h2>Built on What Matters</h2>
+</div>
+<ul class="all-cards">
+<li>
+<svg aria-hidden="true"><use href="#i-users"/></svg>
+<h3>People First</h3>
+<p>We listen, we care, and we put your needs at the center of every recommendation.</p>
+</li>
+<li>
+<svg aria-hidden="true"><use href="#i-shield"/></svg>
+<h3>Clear Guidance</h3>
+<p>We explain your options in plain language, so you can make confident decisions without the confusion.</p>
+</li>
+<li>
+<svg aria-hidden="true"><use href="#i-heart"/></svg>
+<h3>Ongoing Support</h3>
+<p>We're here for you — today, tomorrow, and whenever you have questions.</p>
+</li>
+</ul>
+</div>
+</section>
+
+<!-- .all-cards --4 -->
+<section data-label="all-cards --4">
+<div>
+<div class="all-head">
+<small>MORE THAN A JOB. A HIGHER PURPOSE.</small>
+<h2>Why People Join&nbsp;Our&nbsp;Team</h2>
+</div>
+<ul class="all-cards all-cards--4">
+<li>
+<svg aria-hidden="true"><use href="#i-heart"/></svg>
+<h3>Meaningful Work</h3>
+<p>Help individuals and families find coverage and security for a brighter tomorrow.</p>
+</li>
+<li>
+<svg aria-hidden="true"><use href="#i-cap"/></svg>
+<h3>Ongoing Training</h3>
+<p>Get the tools, support, and education you need to succeed.</p>
+</li>
+<li>
+<svg aria-hidden="true"><use href="#i-laptop"/></svg>
+<h3>Flexible Opportunities</h3>
+<p>Enjoy a work-life balance with flexible options.</p>
+</li>
+<li>
+<svg aria-hidden="true"><use href="#i-chart"/></svg>
+<h3>Grow Your Career</h3>
+<p>Build a rewarding, long-term career with real opportunity for advancement.</p>
+</li>
+</ul>
+</div>
+</section>
+
+<!-- .all-cards --link -->
+<section data-label="all-cards --link">
+<div>
+<div class="all-head">
+<small>THREE WAYS TO GET THE RIGHT MEDICARE COVERAGE</small>
+<h2>Medicare Plans, Explained&nbsp;Simply.</h2>
+<p class="all-head-sub">We'll help you understand your options and find the coverage that fits your health needs and your budget.</p>
+</div>
+<ul class="all-cards">
+<li>
+<svg aria-hidden="true"><use href="#i-users"/></svg>
+<h3>Medicare Advantage</h3>
+<p>All-in-one plans that often include medical, prescription drug, and extra benefits like dental, vision, and hearing.</p>
+<a href="#">Learn More</a>
+</li>
+<li>
+<svg aria-hidden="true"><use href="#i-shield"/></svg>
+<h3>Medicare Supplement (Medigap)</h3>
+<p>Helps cover out-of-pocket costs like copayments, coinsurance, and deductibles.</p>
+<a href="#">Learn More</a>
+</li>
+<li>
+<svg aria-hidden="true"><use href="#i-pill"/></svg>
+<h3>Prescription Drug Plans (Part D)</h3>
+<p>Standalone plans that help cover the cost of your prescription medications.</p>
+<a href="#">Learn More</a>
+</li>
+</ul>
+</div>
+</section>
+
+<!-- .all-steps --lines -->
+<section id="all-steps" data-label="all-steps --lines">
+<div>
+<div class="all-head">
+<small>A SIMPLE PROCESS. REAL SUPPORT.</small>
+<h2>Getting the right coverage is easy.</h2>
+</div>
+<ul class="all-steps all-steps--lines">
+<li>
+<span class="all-step-n all-step-n--soft">1</span>
+<h3>Tell Us About You</h3>
+<p>Share a few details about your needs and goals.</p>
+</li>
+<li>
+<span class="all-step-n all-step-n--soft">2</span>
+<h3>Explore Your Options</h3>
+<p>We'll compare plans and explain your choices clearly.</p>
+</li>
+<li>
+<span class="all-step-n all-step-n--soft">3</span>
+<h3>Get Ongoing Support</h3>
+<p>We're here whenever you have questions — now and in the future.</p>
+</li>
+</ul>
+</div>
+</section>
+
+<!-- .all-steps --arrows -->
+<section data-label="all-steps --arrows">
+<div>
+<div class="all-head">
+<small>A SIMPLE PROCESS</small>
+<h2>3 Easy Steps to Get Started</h2>
+</div>
+<ul class="all-steps all-steps--arrows">
+<li>
+<span class="all-step-n all-step-n--line">1</span>
+<h3>Talk or Tell Us Online</h3>
+<p>Speak with a licensed advisor or fill out our quick form.</p>
+</li>
+<li>
+<span class="all-step-n all-step-n--line">2</span>
+<h3>Explore Your Options</h3>
+<p>We'll help you compare plans and find the right fit.</p>
+</li>
+<li>
+<span class="all-step-n all-step-n--line">3</span>
+<h3>Move Forward with Confidence</h3>
+<p>Get the coverage you need with support every step of the way.</p>
+</li>
+</ul>
+</div>
+</section>
+
+<!-- .all-steps --icon -->
+<section data-label="all-steps --icon">
+<div>
+<div class="all-head">
+<small>A SIMPLE PROCESS. REAL SUPPORT.</small>
+<h2>Get Started in 3 Easy Steps.</h2>
+</div>
+<ul class="all-steps all-steps--arrows">
+<li>
+<span class="all-step-n all-step-n--icon"><svg aria-hidden="true"><use href="#i-doc"/></svg></span>
+<h3>1. Share Your Information</h3>
+<p>Tell us a little about your needs and preferences.</p>
+</li>
+<li>
+<span class="all-step-n all-step-n--icon"><svg aria-hidden="true"><use href="#i-user"/></svg></span>
+<h3>2. Get Expert Guidance</h3>
+<p>A licensed advisor will review your options and answer your questions.</p>
+</li>
+<li>
+<span class="all-step-n all-step-n--icon"><svg aria-hidden="true"><use href="#i-check"/></svg></span>
+<h3>3. Choose with Confidence</h3>
+<p>Find the right plan and enroll with support — at no cost to you.</p>
+</li>
+</ul>
+</div>
+</section>
+
+<!-- .all-split -->
+<section id="all-split" data-label="all-split">
+<div>
+<div class="all-split">
+<figure class="all-split-fig" style="--img:url(img/hero-1.jpeg)">
+<figcaption>A STRONGER<br>Tomorrow<br>starts with<br>great people.</figcaption>
+</figure>
+<div class="all-split-body">
+<small>A SUPPORTIVE, PEOPLE-FIRST CULTURE</small>
+<h2>Do Work That Matters</h2>
+<p>At All Insurance Advisors, we believe in people — our clients and our team. We foster a supportive, collaborative environment where your work makes a real impact and your contributions are valued.</p>
+<a href="#">Learn More About Our Culture</a>
+</div>
+</div>
+</div>
+</section>
+
+<!-- .all-split --flip --icons -->
+<section data-label="all-split --flip --icons">
+<div>
+<div class="all-split all-split--flip">
+<figure class="all-split-fig" style="--img:url(img/hero-6.jpeg)">
+<figcaption>REAL PEOPLE.<br>REAL SUPPORT.<br>A HEALTHIER<br>TOMORROW.</figcaption>
+</figure>
+<div class="all-split-body">
+<small>EXPERIENCE YOU CAN TRUST</small>
+<h2>More Than Insurance. A Partner in Your Health.</h2>
+<p>Our licensed advisors are here to listen, provide clear guidance, and help you make confident decisions about your health coverage — now and for what's ahead.</p>
+<ul class="all-features">
+<li><svg aria-hidden="true"><use href="#i-award"/></svg><div><b>Licensed</b><span>Advisors</span></div></li>
+<li><svg aria-hidden="true"><use href="#i-doc"/></svg><div><b>Clear,</b><span>Guidance</span></div></li>
+<li><svg aria-hidden="true"><use href="#i-user"/></svg><div><b>Ongoing</b><span>Support</span></div></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+<!-- .all-split --bleed -->
+<section data-label="all-split --bleed">
+<div>
+<div class="all-split all-split--bleed">
+<figure class="all-split-fig" style="--img:url(img/hero-4.jpeg)">
+<figcaption>GUIDANCE THAT<br>GOES THE<br>EXTRA MILE.</figcaption>
+</figure>
+<div class="all-split-body">
+<small>WHY CHOOSE US</small>
+<h2>Coverage That Works as Hard as You Do.</h2>
+<p>From first consultation to claim, we stay in your corner. Personalized plans, honest advice, and a team that answers when you call — that's the standard we hold ourselves to.</p>
+<a href="#">See How We Help</a>
+</div>
+</div>
+</div>
+</section>
+
+<!-- .all-team -->
+<section id="all-team" data-label="all-team">
+<div>
+<div class="all-head">
+<small>MEET OUR TEAM</small>
+<h2>Experienced Advisors. A Personal Approach.</h2>
+<p class="all-head-sub">Our licensed advisors are here to listen, answer your questions, and help you make the best decisions for your future.</p>
+</div>
+<ul class="all-team">
+<li style="--img:url(img/advisor-1.webp)">
+<figure class="all-team-fig" style="--img:url(img/advisor-1.webp)"></figure>
+<figcaption><b>Michael Reynolds</b><i>Licensed Insurance Advisor</i></figcaption>
+</li>
+<li style="--img:url(img/advisor-2.webp)">
+<figure class="all-team-fig" style="--img:url(img/advisor-2.webp)"></figure>
+<figcaption><b>Sarah Mitchell</b><i>Licensed Insurance Advisor</i></figcaption>
+</li>
+<li style="--img:url(img/advisor-3.webp)">
+<figure class="all-team-fig" style="--img:url(img/advisor-3.webp)"></figure>
+<figcaption><b>David Carter</b><i>Licensed Insurance Advisor</i></figcaption>
+</li>
+</ul>
+</div>
+</section>
+
+<!-- .all-media -->
+<section id="all-media" data-label="all-media">
+<div>
+<div class="all-head">
+<small>FEATURED GUIDES</small>
+<h2>Start with what matters to you.</h2>
+<p class="all-head-sub">Explore helpful guides on Medicare, health insurance, and life insurance — created to bring clarity to your options and confidence to your next step.</p>
+</div>
+<ul class="all-media">
+<li>
+<a class="all-media-fig" href="#" aria-hidden="true" tabindex="-1" style="--img:url(img/guide-1.webp)"></a>
+<small>MEDICARE</small>
+<h3>A Clearer Path to Medicare</h3>
+<p>Get straightforward information about your Medicare options, enrollment periods, and how to make the most of your coverage.</p>
+<a href="#">View Medicare Resources</a>
+</li>
+<li>
+<a class="all-media-fig" href="#" aria-hidden="true" tabindex="-1" style="--img:url(img/guide-2.webp)"></a>
+<small>HEALTH INSURANCE</small>
+<h3>Health Coverage Made Simple</h3>
+<p>Learn about individual and family health plans, how coverage works, and tips for finding the right fit for your needs.</p>
+<a href="#">View Health Resources</a>
+</li>
+<li>
+<a class="all-media-fig" href="#" aria-hidden="true" tabindex="-1" style="--img:url(img/guide-3.webp)"></a>
+<small>LIFE INSURANCE</small>
+<h3>Protection for What's Next</h3>
+<p>Discover how life insurance can help protect the people you love and give you peace of mind for the future.</p>
+<a href="#">View Life Resources</a>
+</li>
+</ul>
+</div>
+</section>
+
+<!-- .all-quote -->
+<section id="all-quote" data-label="all-quote">
+<div>
+<div class="all-head">
+<small>WHAT OUR CLIENTS SAY</small>
+<h2>Trusted by the People We Serve</h2>
+</div>
+<div class="all-quote">
+<figure class="all-quote-fig" style="--img:url(img/advisor-2.webp)"></figure>
+<blockquote>
+<p>"All Insurance Advisors made a complicated process so easy. They were patient, knowledgeable, and truly cared about finding the right plan for me."</p>
+<cite class="all-quote-cite">Margaret S.<i>Medicare Client</i></cite>
+</blockquote>
+</div>
+</div>
+</section>
+
+<!-- .all-lead -->
+<section id="all-lead" data-label="all-lead">
+<div>
+<div class="all-lead">
+<div>
+<h2>Get personalized Medicare help today.</h2>
+<p>A licensed advisor will be in touch.</p>
+</div>
+<form>
+<label>First Name<input type="text" placeholder="John" aria-label="First Name"></label>
+<label>Phone Number<input type="tel" placeholder="(123) 456-7890" aria-label="Phone Number"></label>
+<label>Email Address<input type="email" placeholder="john@example.com" aria-label="Email Address"></label>
+<button data-btn="" type="submit">Request Help</button>
+<span class="all-lead-note"><svg aria-hidden="true"><use href="#i-lock"/></svg>Your information is secure and never shared.</span>
+</form>
+</div>
+</div>
+</section>
+
+<!-- .all-list -->
+<section id="all-list" data-label="all-list">
+<div>
+<div class="all-head">
+<small>CURRENT OPPORTUNITIES</small>
+<h2>Open Roles</h2>
+<p class="all-head-sub">We're always looking for passionate, people-focused individuals to join our team. Explore our current openings and find the right fit for your next chapter.</p>
+</div>
+<ul class="all-list">
+<li>
+<div class="all-list-body">
+<h3>Licensed Insurance Advisor</h3>
+<p>Help individuals and families find the right Medicare, health, and life insurance solutions. Ideal for licensed professionals who are passionate about making a difference.</p>
+<div class="all-list-meta">
+<span><svg aria-hidden="true"><use href="#i-pin"/></svg>Fairfax, VA</span>
+<span><svg aria-hidden="true"><use href="#i-brief"/></svg>Full-time</span>
+</div>
+</div>
+<a href="#">View Details</a>
+</li>
+<li>
+<div class="all-list-body">
+<h3>Client Support Specialist</h3>
+<p>Provide exceptional support to our clients, help answer questions, and ensure a smooth, positive experience from start to finish.</p>
+<div class="all-list-meta">
+<span><svg aria-hidden="true"><use href="#i-pin"/></svg>Fairfax, VA</span>
+<span><svg aria-hidden="true"><use href="#i-brief"/></svg>Full-time</span>
+</div>
+</div>
+<a href="#">View Details</a>
+</li>
+<li>
+<div class="all-list-body">
+<h3>Marketing Coordinator</h3>
+<p>Support our growing team with marketing initiatives, content creation, and community outreach to help more people find the coverage they need.</p>
+<div class="all-list-meta">
+<span><svg aria-hidden="true"><use href="#i-pin"/></svg>Fairfax, VA</span>
+<span><svg aria-hidden="true"><use href="#i-brief"/></svg>Full-time</span>
+</div>
+</div>
+<a href="#">View Details</a>
+</li>
+</ul>
+</div>
+</section>
+
+<!-- .all-faq -->
+<section id="all-faq" data-label="all-faq">
+<div>
+<div class="all-head">
+<small>COMMON QUESTIONS</small>
+<h2>We're here to help.</h2>
+<p class="all-head-sub">Find quick answers to some of the questions we hear most often. Still have questions? Our team is just a call or chat away.</p>
+</div>
+<ul class="all-faq">
+<li><details>
+<summary>When can I enroll in Medicare?<svg aria-hidden="true"><use href="#i-chev"/></svg></summary>
+<p>Most people first become eligible for Medicare at age 65. Your Initial Enrollment Period is the 7-month window that starts three months before the month you turn 65, includes your birthday month, and ends three months after. You can also enroll during the Annual Enrollment Period (October 15 – December 7) or a Special Enrollment Period if you qualify.</p>
+</details></li>
+<li><details>
+<summary>How do I choose the right health insurance plan?<svg aria-hidden="true"><use href="#i-chev"/></svg></summary>
+<p>Start with your needs: the doctors and hospitals you use, the prescriptions you take, and the budget you're comfortable with. Compare plans on coverage type, network, premiums, deductibles, and out-of-pocket maximums. Our advisors can walk you through the options side by side so you can choose with confidence.</p>
+</details></li>
+<li><details>
+<summary>Do I really need life insurance?<svg aria-hidden="true"><use href="#i-chev"/></svg></summary>
+<p>If people depend on your income — a spouse, children, aging parents, or even a mortgage — life insurance protects them if something happens to you. The amount you need depends on your responsibilities, debts, and goals. A short conversation with an advisor can show you exactly what coverage makes sense.</p>
+</details></li>
+<li><details>
+<summary>Is there a cost to work with your advisors?<svg aria-hidden="true"><use href="#i-chev"/></svg></summary>
+<p>No. Our guidance is always at no cost to you. We're compensated by insurance carriers, and our job is to find the plan that fits your needs and budget — not to sell you more coverage than you need.</p>
+</details></li>
+<li><details>
+<summary>How can I speak with a licensed advisor?<svg aria-hidden="true"><use href="#i-chev"/></svg></summary>
+<p>Call us at 1 (800) 123-4567, start a chat, or fill out our quick form and we'll reach out. A licensed advisor will get back to you — usually within one business day.</p>
+</details></li>
+</ul>
+</div>
+</section>
+
+<!-- .all-faq --side -->
+<section data-label="all-faq --side">
+<div>
+<div class="all-faq all-faq--side">
+<div class="all-head">
+<small>FREQUENTLY ASKED QUESTIONS</small>
+<h2>Quick Answers for Your Medicare Questions.</h2>
+</div>
+<ul class="all-faq">
+<li><details>
+<summary>When can I enroll in Medicare?<svg aria-hidden="true"><use href="#i-chev"/></svg></summary>
+<p>Most people first become eligible at 65. Your Initial Enrollment Period runs from three months before your 65th birthday through three months after it.</p>
+</details></li>
+<li><details>
+<summary>What's the difference between Medicare Advantage and Medigap?<svg aria-hidden="true"><use href="#i-chev"/></svg></summary>
+<p>Medicare Advantage (Part C) replaces Original Medicare with an all-in-one plan that often adds drug and extra benefits. Medigap (Medicare Supplement) works alongside Original Medicare to help cover gaps like copays, coinsurance, and deductibles.</p>
+</details></li>
+<li><details>
+<summary>Do I need a separate plan for prescription drugs?<svg aria-hidden="true"><use href="#i-chev"/></svg></summary>
+<p>Original Medicare (Parts A and B) doesn't cover most prescription drugs. You'll want either a Part D plan or a Medicare Advantage plan that includes drug coverage.</p>
+</details></li>
+<li><details>
+<summary>Is there a cost to work with your advisors?<svg aria-hidden="true"><use href="#i-chev"/></svg></summary>
+<p>No — our advice is free, and there's never a cost to you for working with a licensed advisor.</p>
+</details></li>
+<li><details>
+<summary>Can you help me compare plans in my area?<svg aria-hidden="true"><use href="#i-chev"/></svg></summary>
+<p>Absolutely. We'll look at the plans available in your zip code, compare them against your needs, and help you pick the best fit.</p>
+</details></li>
+</ul>
+</div>
+</div>
+</section>
+
+<!-- .all-contact -->
+<section id="all-contact" data-label="all-contact">
+<div>
+<div class="all-contact">
+<div>
+<small>SEND US A MESSAGE</small>
+<h2>Get in Touch</h2>
+<p style="color:var(--muted)">Fill out the form below and a member of our team will get back to you as soon as possible.</p>
+<form>
+<div class="all-form-row">
+<input type="text" placeholder="First Name *" aria-label="First Name">
+<input type="text" placeholder="Last Name *" aria-label="Last Name">
+</div>
+<input type="email" placeholder="Email Address *" aria-label="Email Address">
+<input type="tel" placeholder="Phone Number" aria-label="Phone Number">
+<textarea placeholder="How can we help you? *" aria-label="Message"></textarea>
+<button data-btn="" type="submit">Send Message →</button>
+<p class="all-contact-hint">We typically respond within one business day.</p>
+</form>
+</div>
+<div class="all-contact-info">
+<small>CONTACT INFORMATION</small>
+<h2>We're Here for You</h2>
+<p>Prefer to reach out another way?<br/>Here's how to find us.</p>
+<ul>
+<li>
+<span class="all-contact-ic"><svg aria-hidden="true"><use href="#i-phone"/></svg></span>
+<div><b>Call Us</b><a href="tel:18001234567">1 (800) 123-4567</a><span>Mon – Fri: 8:00 AM – 8:00 PM ET<br>Sat: 9:00 AM – 5:00 PM ET</span></div>
+</li>
+<li>
+<span class="all-contact-ic"><svg aria-hidden="true"><use href="#i-mail"/></svg></span>
+<div><b>Email Us</b><a href="mailto:info@allinsuranceadvisors.com">info@allinsuranceadvisors.com</a><span>We'll respond within one business day.</span></div>
+</li>
+<li>
+<span class="all-contact-ic"><svg aria-hidden="true"><use href="#i-pin"/></svg></span>
+<div><b>Our Office</b><span>1234 Main Street<br>Fairfax, VA 22030</span></div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+<!-- .all-contact --map -->
+<section data-label="all-contact --map">
+<div>
+<div class="all-contact all-contact--map">
+<div class="all-contact-info">
+<small>VISIT US</small>
+<h2>Our Location</h2>
+<p>We're located in Fairfax, VA<br/> &amp; proudly serve clients nationwide.</p>
+<ul>
+<li>
+<span class="all-contact-ic"><svg aria-hidden="true"><use href="#i-pin"/></svg></span>
+<div><b>Office Address</b><span>1234 Main Street<br>Fairfax, VA 22030</span><a href="#" class="all-link">Get Directions →</a></div>
+</li>
+</ul>
+</div>
+<figure class="all-contact-map">
+<figcaption><b>All Insurance Advisors</b>1234 Main Street<br>Fairfax, VA 22030</figcaption>
+</figure>
+</div>
+</div>
+</section>
+
+<!-- .all-cta -->
+<section data-label="all-cta">
+<div class="all-cta">
+<small>Ready to get started?</small>
+<h2>Let's find the right coverage&nbsp;for&nbsp;you.</h2>
+<p>Speak with a licensed advisor, start a chat or fill out a quick form. <br/>It's easy and there's no obligation.</p>
+<p>
+<a data-btn="" href="tel:18001234567"><svg aria-hidden="true"><use href="#i-phone"/></svg>Talk to an Advisor</a>
+<a data-btn="ghost" href="#cta"><svg aria-hidden="true"><use href="#i-chat"/></svg>Start a Chat</a>
+</p>
+</div>
+</section>
+
+</main>
+
+<footer>
+<div>
+<div>
+<a data-brand="" href="#"><img src="img/logo.png" alt="All Insurance Advisors" /></a>
+<p>Helping individuals and families find the right Medicare, health and life insurance solutions with confidence.</p>
+<div id="social">
+<a href="#" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" fill="white" aria-label="Facebook" class="leaf-c-icon" role="img"><!--!Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M80 299.3l0 212.7 116 0 0-212.7 86.5 0 18-97.8-104.5 0 0-34.6c0-51.7 20.3-71.5 72.7-71.5 16.3 0 29.4 .4 37 1.2l0-88.7C291.4 4 256.4 0 236.2 0 129.3 0 80 50.5 80 159.4l0 42.1-66 0 0 97.8 66 0z"></path></svg></a>
+<a href="#" aria-label="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="white" aria-label="LinkedIn" class="leaf-c-icon" role="img"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc. --><path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"></path></svg></a>
+<a href="#" aria-label="YouTube"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill="white" aria-label="YouTube" class="leaf-c-icon" role="img"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc. --><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"></path></svg></a>
+</div>
+</div>
+<div>
+<h3>Quick Links</h3>
+<ul>
+<li><a href="#">Home</a></li>
+<li><a href="#all-cards">Medicare</a></li>
+<li><a href="#all-cards">Health Insurance</a></li>
+<li><a href="#all-cards">Life Insurance</a></li>
+<li><a href="#all-team">About Us</a></li>
+<li><a href="#all-media">Resources</a></li>
+<li><a href="#all-contact">Contact</a></li>
+<li><a href="#all-list">Careers</a></li>
+</ul>
+</div>
+<div>
+<h3>Contact Us</h3>
+<ul id="contact">
+<li><svg aria-hidden="true"><use href="#i-phone"/></svg><a href="tel:18001234567">1 (800) 123-4567</a></li>
+<li><svg aria-hidden="true"><use href="#i-mail"/></svg><a href="mailto:info@allinsuranceadvisors.com">info@allinsuranceadvisors.com</a></li>
+<li><svg aria-hidden="true"><use href="#i-pin"/></svg><span>1234 Main Street<br>Fairfax, VA 22030</span></li>
+</ul>
+</div>
+<div>
+<h3>Get Updates</h3>
+<p>Sign up for helpful tips and important updates.</p>
+<form>
+<input type="email" placeholder="Your email" aria-label="Your email" required>
+<button aria-label="Subscribe"><svg aria-hidden="true"><use href="#i-chev"/></svg></button>
+</form>
+</div>
+</div>
+<p>
+<span>© <b id="y">2026</b> All Insurance Advisors. All rights reserved.</span>
+<span><a href="#">Privacy Policy</a><a href="#">Terms of Use</a></span>
+</p>
+</footer>
+
+<script>
+const head = document.querySelector('header'), tog = head.querySelector('button');
+tog.onclick = () => tog.setAttribute('aria-expanded', head.toggleAttribute('data-open'));
+head.querySelectorAll('nav a').forEach(a => a.onclick = () => head.removeAttribute('data-open'));
+onscroll = () => head.toggleAttribute('data-stuck', scrollY > 8);
+document.getElementById('y').textContent = new Date().getFullYear();
+
+/* carriers carousel: pause on touch, resume after release */
+const ct = document.querySelector('.all-carriers-track');
+if (ct) {
+  let moved = false;
+  const onStart = (e) => { moved = false; if (e.touches || e.type === 'mousedown') ct.setAttribute('data-paused',''); };
+  const onMove = () => { if (ct.hasAttribute('data-paused')) moved = true; };
+  const onEnd = () => {
+    if (moved) { setTimeout(() => ct.removeAttribute('data-paused'), 2000); }
+    else { setTimeout(() => ct.removeAttribute('data-paused'), 800); }
+  };
+  ct.addEventListener('touchstart', onStart, { passive: true });
+  ct.addEventListener('touchmove', onMove, { passive: true });
+  ct.addEventListener('touchend', onEnd);
+  ct.addEventListener('mousedown', onStart);
+  ct.addEventListener('mouseup', onEnd);
+  ct.addEventListener('touchcancel', () => ct.removeAttribute('data-paused'));
+}
+</script>
+
+</body>
+</html>
