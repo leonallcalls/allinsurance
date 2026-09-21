@@ -26,7 +26,7 @@ p:has(>[data-btn]){display:flex;flex-wrap:wrap;gap:.9rem;margin:1.8rem 0 1rem}
 [data-btn] svg{width: 25px;height: 25px;margin: 5px 0 0 0;}
 section{position:relative;border-bottom:1px dashed var(--line);background: linear-gradient(190deg,var(--tint),transparent 90%)}
 section>div{max-width:var(--w);margin-inline:auto;padding:clamp(3rem,7vw,5rem) var(--pad)}
-section[data-label]::before{content:attr(data-label);position:absolute;top:0;left:50%;transform:translateX(-50%);padding:.4rem .5rem;font-size:.5rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);background:#fff;border:1px solid var(--line);border-top:0;border-radius:0 0 var(--r) var(--r);}
+body[data-components] section[data-label]::before{content:attr(data-label);position:absolute;top:0;left:50%;transform:translateX(-50%);padding:.4rem .5rem;font-size:.5rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);background:#fff;border:1px solid var(--line);border-top:0;border-radius:0 0 var(--r) var(--r);}
 [data-brand]{display:flex;align-items:center;gap:.65rem;color:var(--navy)}
 [data-brand] b{display:block;font-size:1.05rem;font-weight:800;letter-spacing:-.01em;line-height:1.1}
 [data-brand] i{font-size:.62rem;font-style:normal;letter-spacing:.3em;color:var(--muted)}
@@ -327,3 +327,5 @@ p:has(>[data-btn]){flex-direction:column;max-width:fit-content;margin-inline:aut
 }
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
 
+
+svg[aria-hidden] symbol,svg[aria-hidden]{fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
