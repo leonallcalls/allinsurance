@@ -67,7 +67,7 @@ header[data-open] button span::after{transform:rotate(-45deg)}
 /* .all-cards — icon feature grid */
 .all-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:2.5rem;margin-top:3.5rem}
 .all-cards li{text-align:center}
-.all-cards li>svg{width:74px;height:74px;padding:1.1rem;margin:0 auto 1.4rem;border:1px solid var(--line);border-radius:50%;background:#fff;color:var(--blue);box-shadow:0 4px 14px rgb(10 37 64/.06)}
+.all-cards li>svg{width:84px;height:84px;padding:1.1rem;margin:0 auto 1.4rem;border:1px solid var(--line);border-radius:50%;background:#fff;color:var(--blue);box-shadow:0 4px 14px rgb(10 37 64/.06)}
 .all-cards p{max-width:32ch;margin:0 auto .9rem;color:var(--muted);font-size:.95rem}
 .all-cards a{display:inline-flex;align-items:center;gap:.45rem;color:var(--blue);font-weight:600;font-size:.95rem}
 .all-cards a::after{content:"→"}
