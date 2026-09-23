@@ -49,6 +49,7 @@ header button span{position:relative;display:block;width:30px;height:2px;backgro
 header button span::before,header button span::after{content:"";position:absolute;left:0;width:30px;height:2px;background:var(--navy);transition:transform .25s}
 header button span::before{transform:translateY(-7px)}
 header button span::after{transform:translateY(7px)}
+header button span,header button span::before,header button span::after{transition:transform .2s ease,background .2s ease}
 header[data-open] button span{background:0}
 header[data-open] button span::before{transform:rotate(45deg)}
 header[data-open] button span::after{transform:rotate(-45deg)}
@@ -281,7 +282,11 @@ footer>p a:not(:last-child)::after{content:" | ";color:#5f7897}
 /* ---- responsive ---- */
 @media(max-width:900px){
 header nav{position:absolute;top:100%;left:0;right:0;display:none;padding:1.2rem var(--pad);background:#fff;border-bottom:1px solid var(--line)}
-header[data-open] nav{display:block}
+header nav{transform-origin:top center}
+header[data-open] nav{display:block;animation:menu-in .18s ease-out both}
+header[data-open] nav[data-closing]{animation:menu-out .14s ease-in both;pointer-events:none}
+@keyframes menu-in{from{opacity:0;transform:scaleY(.96)}to{opacity:1;transform:none}}
+@keyframes menu-out{from{opacity:1;transform:none}to{opacity:0;transform:scaleY(.96)}}
 header nav ul{flex-direction:column;gap:1rem;font-size:1rem}
 header [data-brand]{margin-right:auto}
 header button{display:block}

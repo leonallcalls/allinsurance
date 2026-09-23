@@ -1,6 +1,29 @@
 const head = document.querySelector('header'), tog = head.querySelector('button');
-tog.onclick = () => tog.setAttribute('aria-expanded', head.toggleAttribute('data-open'));
-head.querySelectorAll('nav a').forEach(a => a.onclick = () => head.removeAttribute('data-open'));
+const mnav = head.querySelector('nav');
+let closing = false;
+tog.onclick = () => {
+  const open = head.toggleAttribute('data-open');
+  tog.setAttribute('aria-expanded', String(open));
+  if (!open) {
+    mnav.setAttribute('data-closing', '');
+    closing = true;
+    mnav.addEventListener('animationend', () => {
+      mnav.removeAttribute('data-closing');
+      if (!head.hasAttribute('data-open')) head.removeAttribute('data-open');
+      closing = false;
+    }, { once: true });
+  }
+};
+head.querySelectorAll('nav a').forEach(a => a.onclick = () => {
+  if (closing) return;
+  mnav.setAttribute('data-closing', '');
+  closing = true;
+  mnav.addEventListener('animationend', () => {
+    mnav.removeAttribute('data-closing');
+    head.removeAttribute('data-open');
+    closing = false;
+  }, { once: true });
+});
 onscroll = () => head.toggleAttribute('data-stuck', scrollY > 8);
 document.getElementById('y').textContent = new Date().getFullYear();
 
