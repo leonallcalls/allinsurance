@@ -321,7 +321,7 @@ header [data-btn=ghost]{display:none}
 p:has(>[data-btn]){flex-direction:column;max-width:fit-content;margin-inline:auto}
 [data-btn]{justify-content:center;white-space:nowrap}
 .all-hero .all-hero-actions{flex-direction:row;align-items:center}
-.all-hero .all-hero-actions [data-btn]{width:min(100%,16rem)}
+.all-hero .all-hero-actions [data-btn]{width:auto}
 .all-form-row{grid-template-columns:1fr}
 .all-list>li{flex-direction:column;gap:.8rem}
 }
