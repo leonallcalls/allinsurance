@@ -35,12 +35,12 @@ header [data-brand] img{height:46px}
 footer [data-brand] img{height:52px;filter:brightness(0) invert(1)}
 header{position:sticky;top:0;z-index:9;background:#fff;border-bottom:1px solid var(--line);background: rgba(255, 255, 255, 0.5);box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);backdrop-filter: blur(5px);-webkit-backdrop-filter: blur(5px);border: 1px solid rgba(255, 255, 255, 0.3);}
 header[data-stuck]{box-shadow:0 6px 22px rgb(10 37 64/.09)}
-header>div{max-width:var(--w);margin-inline:auto;padding:.75rem var(--pad);display:flex;align-items:center;gap:clamp(.8rem,2.5vw,2rem)}
+header>div{max-width:var(--w);margin-inline:auto;padding:.75rem var(--pad);display:flex;align-items:center;gap:clamp(.8rem,2.5vw,1.4rem)}
 header nav{margin-inline:auto}
 header nav ul{display:flex;flex-wrap:nowrap;white-space:nowrap;gap:clamp(.7rem,1.7vw,1.5rem);font-size:.9rem}
-@media(min-width:1155px){header nav li:nth-child(7){display:none}}
-@media(min-width:1065px) and (max-width:1154.98px){header nav li:nth-child(7),header nav li:nth-child(6){display:none}}
-@media(min-width:900px) and (max-width:1064.98px){header nav li:nth-child(7),header nav li:nth-child(6),header nav li:nth-child(5){display:none}}
+@media(max-width:1159.98px){header nav li:nth-child(7){display:none}}
+@media(max-width:1043.98px){header nav li:nth-child(6){display:none}}
+@media(max-width:959.98px){header nav li:nth-child(5){display:none}}
 header nav a:hover{color:var(--blue)}
 header [aria-current]{color:var(--blue);box-shadow:0 2px 0 var(--blue)}
 header [data-btn]{padding:.55rem 1.2rem;font-size:.88rem}
