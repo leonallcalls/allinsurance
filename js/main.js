@@ -21,3 +21,23 @@ if (ct) {
   ct.addEventListener('mouseup', onEnd);
   ct.addEventListener('touchcancel', () => ct.removeAttribute('data-paused'));
 }
+
+/* Lenis smooth scroll (self-hosted, vendor/lenis.min.js) */
+if (typeof Lenis !== 'undefined') {
+  const lenis = new Lenis({ lerp: 0.1, smoothWheel: true, syncTouch: true });
+  lenis.on('scroll', () => {
+    const head = document.querySelector('header');
+    if (head) head.toggleAttribute('data-stuck', lenis.scroll > 8);
+  });
+  lenis.on('scroll', (e) => document.dispatchEvent(new CustomEvent('lenis:scroll', { detail: e })));
+  const raf = (time) => { lenis.raf(time); requestAnimationFrame(raf); };
+  requestAnimationFrame(raf);
+  // smooth in-page anchor links
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('a[href^="#"]');
+    if (a && a.hash.length > 1) {
+      const t = document.querySelector(a.hash);
+      if (t) { e.preventDefault(); lenis.scrollTo(t, { offset: -80 }); }
+    }
+  });
+}
