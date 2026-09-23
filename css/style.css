@@ -38,9 +38,9 @@ header[data-stuck]{box-shadow:0 6px 22px rgb(10 37 64/.09)}
 header>div{max-width:var(--w);margin-inline:auto;padding:.75rem var(--pad);display:flex;align-items:center;gap:clamp(.8rem,2.5vw,1.4rem)}
 header nav{margin-inline:auto}
 header nav ul{display:flex;flex-wrap:nowrap;white-space:nowrap;gap:clamp(.7rem,1.7vw,1.5rem);font-size:.9rem}
-@media(max-width:1159.98px){header nav li:nth-child(7){display:none}}
-@media(max-width:1043.98px){header nav li:nth-child(6){display:none}}
-@media(max-width:959.98px){header nav li:nth-child(5){display:none}}
+@media(min-width:900px) and (max-width:1159.98px){header nav li:nth-child(7){display:none}}
+@media(min-width:900px) and (max-width:1043.98px){header nav li:nth-child(6){display:none}}
+@media(min-width:900px) and (max-width:959.98px){header nav li:nth-child(5){display:none}}
 header nav a:hover{color:var(--blue)}
 header [aria-current]{color:var(--blue);box-shadow:0 2px 0 var(--blue)}
 header [data-btn]{padding:.55rem 1.2rem;font-size:.88rem}
