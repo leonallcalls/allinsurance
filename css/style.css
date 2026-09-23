@@ -226,7 +226,7 @@ section[data-label=all-contact\ --map] .all-contact-info{width: fit-content;padd
 /* .all-hero — top hero (headline + CTAs + image) */
 #all-hero{background-image:url(../img/hero-6.jpeg);background-size:cover;background-position:25%;background-repeat:no-repeat;min-height:600px}
 .all-hero>div{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(1.5rem,4vw,3rem);align-items:center}
-.all-hero h1{font-size:clamp(2.3rem,6vw,4rem);line-height:1.04;letter-spacing:-.025em;font-weight:800;color:var(--navy);margin:1rem 0 1.3rem;max-width:10ch}
+.all-hero h1{font-size:clamp(2.3rem,6vw,4rem);line-height:1.04;letter-spacing:-.025em;font-weight:800;color:var(--navy);margin:1rem 0 1.3rem;}
 .all-hero .all-hero-lead{max-width:40ch;color:#1b1b1b}
 .all-hero .all-hero-actions{display:flex;flex-wrap:wrap;gap:.9rem;margin:1.8rem 0 1rem}
 .all-hero .all-hero-call{color:#fff;font-size:.95rem}
