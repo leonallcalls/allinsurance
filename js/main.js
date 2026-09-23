@@ -41,3 +41,15 @@ if (typeof Lenis !== 'undefined') {
     }
   });
 }
+
+/* Mobile hero background-position: honor data-mobile-position set inline (≤900px) */
+if ('matchMedia' in window) {
+  const mq = matchMedia('(max-width:900px)');
+  const applyHeroPos = () => {
+    document.querySelectorAll('#all-hero[data-mobile-position]').forEach(el => {
+      el.style.backgroundPosition = mq.matches ? el.dataset.mobilePosition : '';
+    });
+  };
+  mq.addEventListener('change', applyHeroPos);
+  applyHeroPos();
+}
