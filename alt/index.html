@@ -1,0 +1,5693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>All Insurance Advisors — Insurance, with a human point of view.</title>
+
+  <meta
+    name="description"
+    content="Medicare, health and life insurance guidance from real advisors. Clear answers, thoughtful options and a human conversation."
+  />
+
+  <meta name="theme-color" content="#071B2F" />
+
+  <!--
+    TYPE SYSTEM
+    ----------------------------------------------------------
+    Instrument Serif = editorial / emotional
+    DM Sans        = interface / body
+    IBM Plex Mono  = metadata / factual information
+
+    For production, self-host these fonts rather than depending
+    on a third-party CDN.
+  -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+
+    /* ==========================================================
+       01 — BRAND SYSTEM
+    ========================================================== */
+
+    :root {
+
+      /* --------------------------------------------------------
+         CORE PALETTE
+      -------------------------------------------------------- */
+
+      --blue-950: #071B2F;
+      --blue-900: #0C2945;
+      --blue-800: #123B60;
+      --blue-600: #286A9F;
+      --blue-100: #DDEAF3;
+
+      --paper: #F5F3ED;
+      --paper-warm: #ECE9E0;
+      --white: #FFFDF9;
+
+      --coral: #D96F5D;
+      --coral-soft: #E9B0A5;
+
+      --ink: #10202D;
+      --muted: #61707C;
+      --line: rgba(16, 32, 45, .16);
+
+      /* --------------------------------------------------------
+         TYPE
+      -------------------------------------------------------- */
+
+      --serif: "Instrument Serif", Georgia, serif;
+      --sans: "DM Sans", Helvetica, Arial, sans-serif;
+      --mono: "IBM Plex Mono", monospace;
+
+      /* --------------------------------------------------------
+         SPACING
+      -------------------------------------------------------- */
+
+      --space-1: 6px;
+      --space-2: 10px;
+      --space-3: 16px;
+      --space-4: 24px;
+      --space-5: 32px;
+      --space-6: 48px;
+      --space-7: 64px;
+      --space-8: 96px;
+      --space-9: 128px;
+      --space-10: 180px;
+
+      --gutter: clamp(20px, 4vw, 72px);
+      --max-width: 1440px;
+
+      /* --------------------------------------------------------
+         GRID
+      -------------------------------------------------------- */
+
+      --columns: 12;
+      --grid-gap: clamp(14px, 1.8vw, 30px);
+
+      /* --------------------------------------------------------
+         MOTION
+      -------------------------------------------------------- */
+
+      --ease: cubic-bezier(.2, .75, .2, 1);
+      --ease-slow: cubic-bezier(.16, 1, .3, 1);
+
+      /* --------------------------------------------------------
+         SHAPE
+      -------------------------------------------------------- */
+
+      --radius-sm: 3px;
+      --radius-md: 12px;
+      --radius-pill: 999px;
+
+      --shadow:
+        0 25px 80px rgba(7, 27, 47, .12);
+
+    }
+
+
+    /* ==========================================================
+       02 — RESET
+    ========================================================== */
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    img {
+      width: 100%;
+      display: block;
+    }
+
+    button,
+    input,
+    textarea,
+    select {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    ::selection {
+      color: var(--white);
+      background: var(--blue-800);
+    }
+
+
+    /* ==========================================================
+       03 — GLOBAL GRID / UTILITIES
+    ========================================================== */
+
+    .container {
+      width: min(
+        var(--max-width),
+        calc(100% - var(--gutter) * 2)
+      );
+
+      margin-inline: auto;
+    }
+
+    .editorial-grid {
+      display: grid;
+      grid-template-columns: repeat(
+        var(--columns),
+        minmax(0, 1fr)
+      );
+      gap: var(--grid-gap);
+    }
+
+    .mono {
+      font-family: var(--mono);
+    }
+
+    .serif {
+      font-family: var(--serif);
+      font-weight: 400;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+
+      color: var(--blue-800);
+    }
+
+    .eyebrow::before {
+      content: "";
+
+      width: 26px;
+      height: 1px;
+
+      background: currentColor;
+    }
+
+    .section {
+      padding-block: var(--space-10);
+    }
+
+    .rule {
+      height: 1px;
+      background: var(--line);
+    }
+
+    .display {
+      font-family: var(--serif);
+      font-weight: 400;
+
+      font-size:
+        clamp(4.2rem, 10vw, 11rem);
+
+      line-height: .82;
+      letter-spacing: -.065em;
+    }
+
+
+    /* ==========================================================
+       04 — BUTTON LANGUAGE
+    ========================================================== */
+
+    /*
+      Button language intentionally avoids:
+      "Submit"
+      "Learn More"
+      "Get Started"
+
+      Instead:
+      Talk to an advisor
+      Explore coverage
+      Read the guide
+      See your options
+    */
+
+    .button {
+      min-height: 50px;
+
+      padding:
+        0 22px;
+
+      border:
+        1px solid var(--blue-950);
+
+      border-radius:
+        var(--radius-pill);
+
+      background:
+        var(--blue-950);
+
+      color:
+        var(--white);
+
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+
+      font-size: 16px;
+      font-weight: 700;
+
+      transition:
+        transform .4s var(--ease),
+        background .3s ease,
+        color .3s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-3px);
+      background: var(--blue-800);
+    }
+
+    .button::after {
+      content: "↗";
+      transition: transform .3s var(--ease);
+    }
+
+    .button:hover::after {
+      transform: translate(3px, -3px);
+    }
+
+    .button.outline {
+      background: #ffffffcc;
+      color: var(--blue-950);
+    }
+
+    .button.outline:hover {
+      background: var(--paper);
+      color: var(--blue-950);
+    }
+
+    .button.coral {
+      border-color: var(--coral);
+      background: var(--coral);
+      color: var(--white);
+    }
+
+    .button.light {
+      background: var(--paper);
+      border-color: var(--paper);
+      color: var(--blue-950);
+    }
+
+
+    /* ==========================================================
+       05 — HEADER
+    ========================================================== */
+
+    .header {
+      position: relative;
+      z-index: 100;
+
+      background:
+        rgba(245,243,237,.94);
+
+      border-bottom:
+        1px solid var(--line);
+
+      backdrop-filter:
+        blur(14px);
+    }
+
+    .nav {
+      min-height: 78px;
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      justify-content:
+        space-between;
+
+      gap: 30px;
+    }
+
+    .logo {
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      gap: 12px;
+
+      font-size: 12px;
+      font-weight: 700;
+
+      letter-spacing:
+        -.02em;
+    }
+
+    .logo-mark {
+      width: 30px;
+      height: 30px;
+
+      border:
+        1px solid var(--blue-950);
+
+      border-radius:
+        50%;
+
+      position:
+        relative;
+    }
+
+    .logo-mark::before {
+      content: "";
+
+      position:
+        absolute;
+
+      width: 8px;
+      height: 8px;
+
+      top: 50%;
+      left: 50%;
+
+      transform:
+        translate(-50%, -50%);
+
+      background:
+        var(--coral);
+
+      border-radius:
+        50%;
+    }
+
+    .nav-links {
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      gap: clamp(20px, 3vw, 42px);
+
+      font-size: 14px;
+    }
+
+    .nav-links a {
+      position: relative;
+      color: var(--muted);
+    }
+
+    .nav-links a::after {
+      content: "";
+
+      position: absolute;
+
+      left: 0;
+      bottom: -8px;
+
+      width: 100%;
+      height: 1px;
+
+      background:
+        var(--blue-950);
+
+      transform:
+        scaleX(0);
+
+      transform-origin:
+        right;
+
+      transition:
+        transform .4s var(--ease);
+    }
+
+    .nav-links a:hover {
+      color: var(--blue-950);
+    }
+
+    .nav-links a:hover::after {
+      transform:
+        scaleX(1);
+
+      transform-origin:
+        left;
+    }
+
+    .nav-phone {
+      font-family: var(--mono);
+      font-size: 14px;
+    }
+
+    .mobile-menu {
+      display: none;
+
+      border: 0;
+      background: transparent;
+
+      width: 42px;
+      height: 42px;
+    }
+
+
+    /* ==========================================================
+       06 — HERO
+    ========================================================== */
+
+    .hero {
+      min-height:
+        calc(100svh - 78px);
+
+        background-image: url(img/1.jpg);
+    background-size: cover;
+    background-position: 59%;
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      overflow:
+        hidden;
+
+      position:
+        relative;
+    }
+
+    .hero::before {
+      content: "";
+
+      position:
+        absolute;
+
+      width:
+        min(50vw, 760px);
+
+      height:
+        min(50vw, 760px);
+
+      right:
+        -15vw;
+
+      top:
+        -15vw;
+
+      border-radius:
+        50%;
+
+      background:
+        var(--blue-100);
+
+      z-index:
+        -1;
+    }
+
+    .hero-copy {
+      grid-column:
+        1 / span 7;
+
+      padding-block:
+        80px;
+    }
+
+    .hero-kicker {
+      margin-bottom:
+        32px;
+    }
+
+    .hero h1 {
+      margin: 0;
+
+      max-width:
+        900px;
+    }
+
+    .hero h1 em {
+      color:
+        var(--blue-600);
+    }
+
+    .hero-intro {
+      grid-column:
+        4 / span 5;
+
+      margin-top:
+        48px;
+
+      font-size:
+        clamp(18px, 1.8vw, 24px);
+
+      line-height:
+        1.38;
+
+      color:
+        var(--muted);
+    }
+
+    .text-highlight {
+      background: #ffffffcc;
+      box-decoration-break: clone;
+      -webkit-box-decoration-break: clone;
+      padding: 0.05em 0.15em;
+      line-height: 1.4;
+    }
+    .hero-actions {
+      grid-column:
+        4 / span 5;
+
+      margin-top:
+        28px;
+
+      display:
+        flex;
+
+      flex-wrap:
+        wrap;
+
+      gap:
+        10px;
+    }
+
+    .hero-meta {
+      grid-column:
+        1 / span 3;
+
+      align-self:
+        end;
+
+      margin-bottom:
+        20px;
+
+      font-family:
+        var(--mono);
+
+      font-size:
+        9px;
+
+      line-height:
+        1.6;
+
+      color:
+        var(--muted);
+
+      text-transform:
+        uppercase;
+    }
+
+    .hero-portrait {
+      grid-column:
+        9 / span 4;
+
+      position:
+        relative;
+
+      height:
+        min(70vh, 720px);
+
+      min-height:
+        540px;
+
+      overflow:
+        hidden;
+
+      align-self:
+        end;
+    }
+
+    .hero-portrait img {
+      height:
+        100%;
+
+      object-fit:
+        cover;
+
+      object-position:
+        center;
+
+      filter:
+        saturate(.78)
+        contrast(.98);
+
+      clip-path:
+        polygon(
+          13% 0,
+          100% 0,
+          100% 100%,
+          0 100%,
+          0 13%
+        );
+    }
+
+    .portrait-caption {
+      position:
+        absolute;
+
+      left:
+        20px;
+
+      bottom:
+        30px;
+
+      width:
+        150px;
+
+      padding:
+        16px;
+
+      background:
+        var(--coral);
+
+      color:
+        var(--white);
+
+      font-family:
+        var(--serif);
+
+      font-size:
+        21px;
+
+      line-height:
+        .95;
+
+      transform:
+        rotate(-4deg);
+    }
+
+    .hero-note {
+      margin-top:
+        22px;
+
+      font-family:
+        var(--mono);
+
+      font-size:
+        9px;
+
+      color:
+        var(--muted);
+    }
+
+
+    /* ==========================================================
+       07 — TRUST RIBBON
+    ========================================================== */
+
+    .trust-ribbon {
+      background:
+        var(--blue-950);
+
+      color:
+        var(--paper);
+
+      padding-block:
+        22px;
+
+      overflow:
+        hidden;
+    }
+
+    .trust-ribbon-inner {
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      justify-content:
+        space-between;
+
+      gap:
+        40px;
+    }
+
+    .trust-label {
+      font-family:
+        var(--mono);
+
+      font-size:
+        9px;
+
+      text-transform:
+        uppercase;
+
+      letter-spacing:
+        .14em;
+
+      color:
+        rgba(255,255,255,.5);
+    }
+
+    .trust-list {
+      display:
+        flex;
+
+      flex-wrap:
+        wrap;
+
+      justify-content:
+        flex-end;
+
+      gap:
+        28px;
+
+      font-size:
+        12px;
+    }
+
+
+    /* ==========================================================
+       08 — MANIFESTO
+    ========================================================== */
+
+    .manifesto {
+      padding-block:
+        var(--space-10);
+    }
+
+    .manifesto-label {
+      grid-column:
+        1 / span 3;
+    }
+
+    .manifesto-copy {
+      grid-column:
+        4 / span 8;
+    }
+
+    .manifesto-copy p {
+      margin:
+        0;
+
+      font-family:
+        var(--serif);
+
+      font-size:
+        clamp(3rem, 6vw, 7rem);
+
+      line-height:
+        .87;
+
+      letter-spacing:
+        -.05em;
+    }
+
+    .manifesto-copy p em {
+      color:
+        var(--blue-600);
+    }
+
+    .manifesto-sub {
+      grid-column:
+        7 / span 5;
+
+      margin-top:
+        45px;
+
+      color:
+        var(--muted);
+
+      font-size:
+        14px;
+
+      line-height:
+        1.7;
+    }
+
+
+    /* ==========================================================
+       09 — COVERAGE EDITORIAL NAVIGATION
+    ========================================================== */
+
+    .coverage {
+      background:
+        var(--paper-warm);
+    }
+
+    .coverage-heading {
+      grid-column:
+        1 / span 6;
+    }
+
+    .coverage-heading h2 {
+      margin:
+        20px 0 0;
+
+      font-family:
+        var(--serif);
+
+      font-size:
+        clamp(4rem, 8vw, 9rem);
+
+      line-height:
+        .82;
+
+      letter-spacing:
+        -.06em;
+    }
+
+    .coverage-intro {
+      grid-column:
+        9 / span 4;
+
+      align-self:
+        end;
+
+      color:
+        var(--muted);
+
+      font-size:
+        14px;
+
+      line-height:
+        1.7;
+    }
+
+    .coverage-list {
+      grid-column:
+        1 / -1;
+
+      margin-top:
+        85px;
+
+      border-top:
+        1px solid var(--line);
+    }
+
+    .coverage-item {
+      display:
+        grid;
+
+      grid-template-columns:
+        1fr 2fr 1fr 30px;
+
+      gap:
+        30px;
+
+      align-items:
+        center;
+
+      padding-block:
+        30px;
+
+      border-bottom:
+        1px solid var(--line);
+
+      transition:
+        padding .45s var(--ease),
+        background .45s ease;
+    }
+
+    .coverage-item:hover {
+      padding-inline:
+        24px;
+
+      background:
+        rgba(255,255,255,.45);
+    }
+
+    .coverage-number {
+      font-family:
+        var(--mono);
+
+      font-size:
+        10px;
+
+      color:
+        var(--coral);
+    }
+
+    .coverage-name {
+      font-family:
+        var(--serif);
+
+      font-size:
+        clamp(2rem, 3vw, 3.3rem);
+
+      line-height:
+        .9;
+    }
+
+    .coverage-description {
+      max-width:
+        460px;
+
+      color:
+        var(--muted);
+
+      font-size:
+        13px;
+    }
+
+    .coverage-arrow {
+      font-size:
+        24px;
+
+      transition:
+        transform .35s var(--ease);
+    }
+
+    .coverage-item:hover .coverage-arrow {
+      transform:
+        translateX(7px);
+    }
+
+
+    /* ==========================================================
+       10 — EDITORIAL FEATURE
+    ========================================================== */
+
+    .feature {
+      padding-top:
+        0;
+    }
+
+    .feature-image {
+      grid-column:
+        1 / span 7;
+
+      min-height:
+        760px;
+
+      background:
+        url("https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1800&q=88")
+        center / cover;
+
+      filter:
+        saturate(.76);
+    }
+
+    .feature-copy {
+      grid-column:
+        8 / span 5;
+
+      background:
+        var(--blue-900);
+
+      color:
+        var(--paper);
+
+      padding:
+        clamp(45px, 6vw, 90px);
+
+      display:
+        flex;
+
+      flex-direction:
+        column;
+
+      justify-content:
+        space-between;
+    }
+
+    .feature-copy .eyebrow {
+      color:
+        var(--blue-100);
+    }
+
+    .feature-copy h2 {
+      margin:
+        100px 0 35px;
+
+      font-family:
+        var(--serif);
+
+      font-size:
+        clamp(3.6rem, 6vw, 7rem);
+
+      line-height:
+        .84;
+
+      letter-spacing:
+        -.05em;
+
+      font-weight: 100;
+    }
+
+    .feature-copy h2 em {
+      color:
+        var(--coral-soft);
+    }
+
+    .feature-copy p {
+      max-width:
+        480px;
+
+      color:
+        rgba(245,243,237,.7);
+
+      font-size:
+        15px;
+
+      line-height:
+        1.7;
+    }
+
+    .feature-signature {
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      gap:
+        13px;
+
+      margin-top:
+        55px;
+
+      font-family:
+        var(--mono);
+
+      font-size:
+        9px;
+
+      text-transform:
+        uppercase;
+
+      color:
+        rgba(245,243,237,.55);
+    }
+
+    .signature-mark {
+      width:
+        34px;
+
+      height:
+        34px;
+
+      border:
+        1px solid rgba(255,255,255,.35);
+
+      border-radius:
+        50%;
+
+      display:
+        grid;
+
+      place-items:
+        center;
+    }
+
+
+    /* ==========================================================
+       11 — "HOW WE HELP"
+    ========================================================== */
+
+    .process-label {
+      grid-column:
+        1 / span 3;
+    }
+
+    .process-content {
+      grid-column:
+        4 / span 9;
+    }
+
+    .process-title {
+      margin:
+        0 0 70px;
+
+      font-family:
+        var(--serif);
+
+      font-size:
+        clamp(3.5rem, 6vw, 7rem);
+
+      line-height:
+        .86;
+
+      letter-spacing:
+        -.055em;
+    }
+
+    .process-list {
+      border-top:
+        1px solid var(--line);
+    }
+
+    .process-item {
+      display:
+        grid;
+
+      grid-template-columns:
+        70px 1fr 1.3fr;
+
+      gap:
+        30px;
+
+      padding-block:
+        28px;
+
+      border-bottom:
+        1px solid var(--line);
+    }
+
+    .process-number {
+      font-family:
+        var(--mono);
+
+      font-size:
+        10px;
+
+      color:
+        var(--coral);
+    }
+
+    .process-item h3 {
+      margin:
+        0;
+
+      font-size:
+        18px;
+    }
+
+    .process-item p {
+      margin:
+        0;
+
+      color:
+        var(--muted);
+
+      font-size:
+        13px;
+    }
+
+
+    /* ==========================================================
+       12 — ADVISOR SYSTEM
+    ========================================================== */
+
+    .advisors {
+      background:
+        var(--blue-100);
+    }
+
+    .advisor-intro {
+      grid-column:
+        1 / span 6;
+    }
+
+    .advisor-intro h2 {
+      margin:
+        20px 0 0;
+
+      font-family:
+        var(--serif);
+
+      font-size:
+        clamp(4rem, 7vw, 8rem);
+
+      line-height:
+        .83;
+
+      letter-spacing:
+        -.06em;
+    }
+
+    .advisor-description {
+      grid-column:
+        9 / span 4;
+
+      align-self:
+        end;
+
+      color:
+        var(--muted);
+
+      font-size:
+        14px;
+
+      line-height:
+        1.7;
+    }
+
+    .advisor-grid {
+      grid-column:
+        1 / -1;
+
+      margin-top:
+        80px;
+
+      display:
+        grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap:
+        var(--grid-gap);
+    }
+
+    .advisor-card {
+      min-width:
+        0;
+    }
+
+    .advisor-photo-wrap {
+      overflow:
+        hidden;
+
+      aspect-ratio:
+        .82;
+
+      background:
+        var(--blue-800);
+    }
+
+    .advisor-photo {
+      height:
+        100%;
+
+      object-fit:
+        cover;
+
+      filter:
+        saturate(.76);
+
+      transition:
+        transform .8s var(--ease),
+        filter .5s ease;
+    }
+
+    .advisor-card:hover .advisor-photo {
+      transform:
+        scale(1.035);
+
+      filter:
+        saturate(.98);
+    }
+
+    .advisor-meta {
+      padding-top:
+        18px;
+
+      display:
+        flex;
+
+      justify-content:
+        space-between;
+
+      gap:
+        20px;
+    }
+
+    .advisor-name {
+      font-family:
+        var(--serif);
+
+      font-size:
+        29px;
+
+      line-height:
+        1;
+    }
+
+    .advisor-role {
+      font-family:
+        var(--mono);
+
+      font-size:
+        8px;
+
+      line-height:
+        1.5;
+
+      text-align:
+        right;
+
+      text-transform:
+        uppercase;
+
+      color:
+        var(--muted);
+    }
+
+    .advisor-bio {
+      margin-top:
+        13px;
+
+      max-width:
+        390px;
+
+      color:
+        var(--muted);
+
+      font-size:
+        12px;
+    }
+
+    .advisor-credentials {
+      margin-top:
+        15px;
+
+      display:
+        flex;
+
+      flex-wrap:
+        wrap;
+
+      gap:
+        6px;
+    }
+
+    .credential {
+      padding:
+        6px 8px;
+
+      border:
+        1px solid rgba(16,32,45,.18);
+
+      font-family:
+        var(--mono);
+
+      font-size:
+        8px;
+
+      color:
+        var(--muted);
+    }
+
+
+    /* ==========================================================
+       13 — QUOTE
+    ========================================================== */
+
+    .quote-section {
+      padding-block:
+        180px;
+    }
+
+    .quote {
+      grid-column:
+        2 / span 10;
+
+      margin:
+        0;
+
+      font-family:
+        var(--serif);
+
+      font-size:
+        clamp(4rem, 8vw, 10rem);
+
+      line-height:
+        .83;
+
+      letter-spacing:
+        -.06em;
+
+      text-align:
+        center;
+    }
+
+    .quote em {
+      color:
+        var(--blue-600);
+    }
+
+    .quote-attribution {
+      grid-column:
+        5 / span 4;
+
+      margin-top:
+        45px;
+
+      font-family:
+        var(--mono);
+
+      font-size:
+        9px;
+
+      line-height:
+        1.6;
+
+      text-align:
+        center;
+
+      text-transform:
+        uppercase;
+
+      color:
+        var(--muted);
+    }
+
+
+    /* ==========================================================
+       14 — RESOURCE / ARTICLE SYSTEM
+    ========================================================== */
+
+    .resources {
+      background:
+        var(--paper-warm);
+    }
+
+    .resource-heading {
+      grid-column:
+        1 / span 7;
+    }
+
+    .resource-heading h2 {
+      margin:
+        20px 0 0;
+
+      font-family:
+        var(--serif);
+
+      font-size:
+        clamp(4rem, 7vw, 8rem);
+
+      line-height:
+        .83;
+
+      letter-spacing:
+        -.06em;
+    }
+
+    .resource-description {
+      grid-column:
+        9 / span 4;
+
+      align-self:
+        end;
+
+      color:
+        var(--muted);
+
+      font-size:
+        14px;
+
+      line-height:
+        1.7;
+    }
+
+    .resource-grid {
+      grid-column:
+        1 / -1;
+
+      margin-top:
+        80px;
+
+      display:
+        grid;
+
+      grid-template-columns:
+        1.45fr .8fr .8fr;
+
+      gap:
+        var(--grid-gap);
+    }
+
+    .article {
+      border-top:
+        1px solid var(--ink);
+
+      padding-top:
+        18px;
+
+      display:
+        flex;
+
+      flex-direction:
+        column;
+
+      min-height:
+        340px;
+    }
+
+    .article-featured {
+      background:
+        var(--blue-950);
+
+      color:
+        var(--paper);
+
+      padding:
+        28px;
+
+      border-top:
+        0;
+    }
+
+    .article-meta {
+      display:
+        flex;
+
+      justify-content:
+        space-between;
+
+      gap:
+        20px;
+
+      font-family:
+        var(--mono);
+
+      font-size:
+        8px;
+
+      text-transform:
+        uppercase;
+
+      color:
+        var(--muted);
+    }
+
+    .article-featured .article-meta {
+      color:
+        rgba(245,243,237,.55);
+    }
+
+    .article h3 {
+      margin:
+        70px 0 20px;
+
+      font-family:
+        var(--serif);
+
+      font-size:
+        clamp(2.5rem, 4vw, 5rem);
+
+      line-height:
+        .88;
+
+      letter-spacing:
+        -.045em;
+
+      font-weight:100;
+    }
+
+    .article:not(.article-featured) h3 {
+      margin-top:
+        90px;
+
+      font-size:
+        2.7rem;
+    }
+
+    .article p {
+      margin:
+        0;
+
+      max-width:
+        520px;
+
+      color:
+        var(--muted);
+
+      font-size:
+        13px;
+    }
+
+    .article-featured p {
+      color:
+        rgba(245,243,237,.68);
+    }
+
+    .article-link {
+      margin-top:
+        auto;
+
+      padding-top:
+        30px;
+
+      font-family:
+        var(--mono);
+
+      font-size:
+        9px;
+
+      text-transform:
+        uppercase;
+    }
+
+
+    /* ==========================================================
+       15 — FAQ
+    ========================================================== */
+
+    .faq-title {
+      grid-column:
+        1 / span 4;
+    }
+
+    .faq-title h2 {
+      margin:
+        20px 0 0;
+
+      font-family:
+        var(--serif);
+
+      font-size:
+        clamp(4rem, 7vw, 8rem);
+
+      line-height:
+        .82;
+
+      letter-spacing:
+        -.06em;
+    }
+
+    .faq-list {
+      grid-column:
+        6 / span 7;
+
+      border-top:
+        1px solid var(--line);
+    }
+
+    .faq-item {
+      border-bottom:
+        1px solid var(--line);
+    }
+
+    .faq-question {
+      width:
+        100%;
+
+      border:
+        0;
+
+      background:
+        transparent;
+
+      padding-block:
+        25px;
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      justify-content:
+        space-between;
+
+      gap:
+        20px;
+
+      text-align:
+        left;
+
+      color:
+        var(--ink);
+
+      font-size:
+        14px;
+
+      font-weight:
+        600;
+    }
+
+    .faq-plus {
+      font-family:
+        var(--serif);
+
+      font-size:
+        26px;
+
+      transition:
+        transform .35s var(--ease);
+    }
+
+    .faq-answer {
+      max-height:
+        0;
+
+      overflow:
+        hidden;
+
+      transition:
+        max-height .55s var(--ease);
+    }
+
+    .faq-answer-inner {
+      max-width:
+        700px;
+
+      padding:
+        0 60px 28px 0;
+
+      color:
+        var(--muted);
+
+      font-size:
+        13px;
+    }
+
+    .faq-item.active .faq-plus {
+      transform:
+        rotate(45deg);
+    }
+
+
+    /* ==========================================================
+       16 — FINAL CTA
+    ========================================================== */
+
+    .cta {
+      background:
+        var(--coral);
+
+      color:
+        var(--white);
+
+      padding-block:
+        150px;
+
+      overflow:
+        hidden;
+
+      position:
+        relative;
+    }
+
+    .cta::after {
+      content:
+        "TALK";
+
+      position:
+        absolute;
+
+      right:
+        -4vw;
+
+      bottom:
+        -7vw;
+
+      font-family:
+        var(--serif);
+
+      font-size:
+        clamp(13rem, 28vw, 32rem);
+
+      line-height:
+        .65;
+
+      color:
+        rgba(255,255,255,.07);
+
+      pointer-events:
+        none;
+    }
+
+    .cta-title {
+      grid-column:
+        1 / span 8;
+
+      position:
+        relative;
+
+      z-index:
+        2;
+    }
+
+    .cta-title h2 {
+      margin:
+        20px 0 0;
+
+      font-family:
+        var(--serif);
+
+      font-size:
+        clamp(4.5rem, 9vw, 10rem);
+
+      line-height:
+        .8;
+
+      letter-spacing:
+        -.065em;
+    }
+
+    .cta-title em {
+      color:
+        var(--blue-950);
+    }
+
+    .cta-copy {
+      grid-column:
+        9 / span 4;
+
+      align-self:
+        end;
+
+      position:
+        relative;
+
+      z-index:
+        2;
+    }
+
+    .cta-copy p {
+      color:
+        rgba(255,255,255,.78);
+
+      font-size:
+        14px;
+
+      line-height:
+        1.7;
+    }
+
+    .cta-actions {
+      display:
+        flex;
+
+      flex-wrap:
+        wrap;
+
+      gap:
+        10px;
+
+      margin-top:
+        28px;
+    }
+
+
+    /* ==========================================================
+       17 — FORM SYSTEM
+    ========================================================== */
+
+    .modal {
+      position:
+        fixed;
+
+      inset:
+        0;
+
+      z-index:
+        1000;
+
+      display:
+        grid;
+
+      place-items:
+        center;
+
+      padding:
+        20px;
+
+      background:
+        rgba(7,27,47,.76);
+
+      backdrop-filter:
+        blur(10px);
+
+      opacity:
+        0;
+
+      visibility:
+        hidden;
+
+      transition:
+        opacity .35s ease,
+        visibility .35s ease;
+    }
+
+    .modal.active {
+      opacity:
+        1;
+
+      visibility:
+        visible;
+    }
+
+    .modal-panel {
+      width:
+        min(650px, 100%);
+
+      max-height:
+        92vh;
+
+      overflow:
+        auto;
+
+      background:
+        var(--paper);
+
+      padding:
+        clamp(30px, 6vw, 70px);
+
+      transform:
+        translateY(25px);
+
+      transition:
+        transform .55s var(--ease);
+    }
+
+    .modal.active .modal-panel {
+      transform:
+        translateY(0);
+    }
+
+    .modal-close {
+      position:
+        absolute;
+
+      top:
+        22px;
+
+      right:
+        25px;
+
+      border:
+        0;
+
+      background:
+        transparent;
+
+      font-family:
+        var(--serif);
+
+      font-size:
+        30px;
+
+      color:
+        var(--ink);
+    }
+
+    .modal h2 {
+      margin:
+        18px 0 14px;
+
+      font-family:
+        var(--serif);
+
+      font-size:
+        clamp(3rem, 6vw, 5.5rem);
+
+      line-height:
+        .83;
+
+      letter-spacing:
+        -.05em;
+    }
+
+    .modal h2 em {
+      color:
+        var(--blue-600);
+
+      font-style:
+        normal;
+    }
+
+    .modal-intro {
+      color:
+        var(--muted);
+
+      font-size:
+        13px;
+    }
+
+    .form {
+      margin-top:
+        35px;
+    }
+
+    .field {
+      margin-bottom:
+        20px;
+    }
+
+    .field label {
+      display:
+        block;
+
+      margin-bottom:
+        7px;
+
+      font-family:
+        var(--mono);
+
+      font-size:
+        9px;
+
+      text-transform:
+        uppercase;
+
+      letter-spacing:
+        .08em;
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width:
+        100%;
+
+      padding:
+        14px;
+
+      border:
+        1px solid var(--line);
+
+      border-radius:
+        var(--radius-sm);
+
+      background:
+        transparent;
+
+      color:
+        var(--ink);
+
+      outline:
+        none;
+    }
+
+    .field textarea {
+      min-height:
+        120px;
+
+      resize:
+        vertical;
+    }
+
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      border-color:
+        var(--blue-600);
+
+      box-shadow:
+        0 0 0 3px rgba(40,106,159,.1);
+    }
+
+    .form-disclosure {
+      margin-top:
+        15px;
+
+      color:
+        var(--muted);
+
+      font-size:
+        9px;
+
+      line-height:
+        1.55;
+    }
+
+    .success {
+      display:
+        none;
+    }
+
+    .success.active {
+      display:
+        block;
+    }
+
+    .success h3 {
+      font-family:
+        var(--serif);
+
+      font-size:
+        5rem;
+
+      line-height:
+        .8;
+    }
+
+
+    /* ==========================================================
+       18 — FOOTER / DISCLOSURES
+    ========================================================== */
+
+    .footer {
+      background:
+        var(--blue-950);
+
+      color:
+        var(--paper);
+
+      padding-top:
+        80px;
+
+      padding-bottom:
+        25px;
+    }
+
+    .footer-brand {
+      grid-column:
+        1 / span 4;
+    }
+
+    .footer-brand .logo {
+      color:
+        var(--paper);
+    }
+
+    .footer-brand .logo-mark {
+      border-color:
+        rgba(245,243,237,.7);
+    }
+
+    .footer-brand p {
+      max-width:
+        330px;
+
+      margin-top:
+        25px;
+
+      color:
+        rgba(245,243,237,.55);
+
+      font-size:
+        12px;
+
+      line-height:
+        1.7;
+    }
+
+    .footer-column {
+      grid-column:
+        span 2;
+    }
+
+    .footer-column h3 {
+      margin:
+        0 0 18px;
+
+      font-family:
+        var(--mono);
+
+      font-size:
+        8px;
+
+      text-transform:
+        uppercase;
+
+      letter-spacing:
+        .14em;
+
+      color:
+        rgba(245,243,237,.4);
+    }
+
+    .footer-column a,
+    .footer-column p {
+      display:
+        block;
+
+      margin:
+        0 0 9px;
+
+      color:
+        rgba(245,243,237,.78);
+
+      font-size:
+        12px;
+    }
+
+    .disclosure {
+      grid-column:
+        1 / -1;
+
+      margin-top:
+        70px;
+
+      padding-top:
+        25px;
+
+      border-top:
+        1px solid rgba(245,243,237,.14);
+
+      color:
+        rgba(245,243,237,.38);
+
+      font-size:
+        9px;
+
+      line-height:
+        1.65;
+    }
+
+    .footer-bottom {
+      grid-column:
+        1 / -1;
+
+      margin-top:
+        25px;
+
+      padding-top:
+        20px;
+
+      border-top:
+        1px solid rgba(245,243,237,.09);
+
+      display:
+        flex;
+
+      justify-content:
+        space-between;
+
+      gap:
+        20px;
+
+      color:
+        rgba(245,243,237,.3);
+
+      font-family:
+        var(--mono);
+
+      font-size:
+        8px;
+
+      text-transform:
+        uppercase;
+    }
+
+
+    /* ==========================================================
+       19 — MOBILE ACTION BAR
+    ========================================================== */
+
+    .mobile-actions {
+      display:
+        none;
+    }
+
+
+    /* ==========================================================
+       20 — MOTION
+    ========================================================== */
+
+    .reveal {
+      opacity:
+        0;
+
+      transform:
+        translateY(35px);
+
+      transition:
+        opacity .9s var(--ease-slow),
+        transform .9s var(--ease-slow);
+    }
+
+    .reveal.visible {
+      opacity:
+        1;
+
+      transform:
+        translateY(0);
+    }
+
+    .reveal:nth-child(2) {
+      transition-delay:
+        .08s;
+    }
+
+    .reveal:nth-child(3) {
+      transition-delay:
+        .16s;
+    }
+
+    .reveal:nth-child(4) {
+      transition-delay:
+        .24s;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      html {
+        scroll-behavior:
+          auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration:
+          .01ms !important;
+
+        transition-duration:
+          .01ms !important;
+      }
+
+      .reveal {
+        opacity:
+          1;
+
+        transform:
+          none;
+      }
+
+    }
+
+
+    /* ==========================================================
+       21 — TABLET
+    ========================================================== */
+
+    @media (max-width: 1000px) {
+
+      .nav-links,
+      .nav-phone {
+        display:
+          none;
+      }
+
+      .mobile-menu {
+        display:
+          block;
+      }
+
+      .hero-copy {
+        grid-column:
+          1 / span 8;
+      }
+
+      .hero-intro,
+      .hero-actions {
+        grid-column:
+          3 / span 6;
+      }
+
+      .hero-portrait {
+        grid-column:
+          9 / span 4;
+      }
+
+      .manifesto-copy {
+        grid-column:
+          3 / span 9;
+      }
+
+      .manifesto-sub {
+        grid-column:
+          6 / span 6;
+      }
+
+      .feature-image {
+        grid-column:
+          1 / span 6;
+      }
+
+      .feature-copy {
+        grid-column:
+          7 / span 6;
+      }
+
+      .resource-grid {
+        grid-template-columns:
+          1fr 1fr;
+      }
+
+      .article-featured {
+        grid-column:
+          1 / -1;
+      }
+
+    }
+
+
+    /* ==========================================================
+       22 — MOBILE
+    ========================================================== */
+
+    @media (max-width: 700px) {
+
+      body {
+        padding-bottom:
+          68px;
+      }
+
+      :root {
+        --gutter:
+          20px;
+      }
+
+      .section {
+        padding-block:
+          90px;
+      }
+
+      .hero {
+        min-height:
+          auto;
+
+        padding-top:
+          55px;
+      }
+
+      .hero-copy {
+        grid-column:
+          1 / -1;
+
+        padding-block:
+          0 50px;
+      }
+
+      .display {
+        font-size:
+          clamp(4rem, 18vw, 6.5rem);
+      }
+
+      .hero-intro,
+      .hero-actions {
+        grid-column:
+          1 / -1;
+      }
+
+      .hero-portrait {
+        grid-column:
+          1 / -1;
+
+        height:
+          520px;
+
+        min-height:
+          0;
+      }
+
+      .portrait-caption {
+        left:
+          8px;
+      }
+
+      .hero-meta {
+        display:
+          none;
+      }
+
+      .trust-ribbon-inner {
+        display:
+          block;
+      }
+
+      .trust-list {
+        justify-content:
+          flex-start;
+
+        margin-top:
+          15px;
+      }
+
+      .manifesto-label,
+      .manifesto-copy,
+      .manifesto-sub,
+      .coverage-heading,
+      .coverage-intro,
+      .process-label,
+      .process-content,
+      .advisor-intro,
+      .advisor-description,
+      .resource-heading,
+      .resource-description,
+      .faq-title,
+      .faq-list,
+      .cta-title,
+      .cta-copy,
+      .footer-brand,
+      .footer-column {
+        grid-column:
+          1 / -1;
+      }
+
+      .manifesto-sub {
+        margin-left:
+          0;
+      }
+
+      .coverage-list {
+        margin-top:
+          55px;
+      }
+
+      .coverage-item {
+        grid-template-columns:
+          35px 1fr 25px;
+
+        gap:
+          12px;
+      }
+
+      .coverage-description {
+        display:
+          none;
+      }
+
+      .feature-image {
+        grid-column:
+          1 / -1;
+
+        min-height:
+          460px;
+      }
+
+      .feature-copy {
+        grid-column:
+          1 / -1;
+
+        padding:
+          55px 25px 70px;
+      }
+
+      .process-item {
+        grid-template-columns:
+          40px 1fr;
+      }
+
+      .process-item p {
+        grid-column:
+          2;
+      }
+
+      .advisor-grid {
+        grid-column:
+          1 / -1;
+
+        grid-template-columns:
+          1fr;
+      }
+
+      .advisor-photo-wrap {
+        aspect-ratio:
+          .9;
+      }
+
+      .quote-section {
+        padding-block:
+          110px;
+      }
+
+      .quote {
+        grid-column:
+          1 / -1;
+
+        font-size:
+          clamp(3.5rem, 16vw, 6rem);
+      }
+
+      .quote-attribution {
+        grid-column:
+          2 / span 10;
+      }
+
+      .resource-grid {
+        grid-column:
+          1 / -1;
+
+        grid-template-columns:
+          1fr;
+      }
+
+      .article-featured {
+        grid-column:
+          1;
+      }
+
+      .article {
+        min-height:
+          300px;
+      }
+
+      .cta {
+        padding-block:
+          100px;
+      }
+
+      .footer-column {
+        margin-top:
+          25px;
+      }
+
+      .footer-bottom {
+        display:
+          block;
+      }
+
+      .footer-bottom span {
+        display:
+          block;
+
+        margin-bottom:
+          9px;
+      }
+
+      .mobile-actions {
+        position:
+          fixed;
+
+        left:
+          0;
+
+        right:
+          0;
+
+        bottom:
+          0;
+
+        z-index:
+          500;
+
+        display:
+          grid;
+
+        grid-template-columns:
+          1fr 1fr;
+
+        background:
+          var(--blue-950);
+
+        box-shadow:
+          0 -12px 40px rgba(7,27,47,.18);
+      }
+
+      .mobile-actions a,
+      .mobile-actions button {
+        min-height:
+          68px;
+
+        display:
+          grid;
+
+        place-items:
+          center;
+
+        border:
+          0;
+
+        border-right:
+          1px solid rgba(255,255,255,.12);
+
+        background:
+          transparent;
+
+        color:
+          var(--white);
+
+        font-family:
+          var(--mono);
+
+        font-size:
+          12px;
+
+        text-transform:
+          uppercase;
+
+        letter-spacing:
+          .08em;
+      }
+
+      .mobile-actions button {
+        background:
+          var(--coral);
+      }
+
+    }
+
+  
+/* ==========================================================
+   23 — PREMIUM / EMPATHY / MOBILE OVERHAUL
+   ========================================================== */
+
+:root {
+  --shadow-premium: 0 30px 100px rgba(7,27,47,.16);
+  --gutter-mobile: 18px;
+  --tap: 52px;
+}
+
+html {
+  overflow-x: clip;
+}
+
+body {
+  overflow-x: clip;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.button,
+.mobile-actions a,
+.mobile-actions button,
+.mobile-menu,
+.faq-question,
+.nav-links a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Stronger editorial image treatment */
+.hero-portrait {
+  border-radius: 0 0 0 34px;
+  /*box-shadow: var(--shadow-premium);*/
+  isolation: isolate;
+}
+
+.hero-portrait::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+/*  background:
+    linear-gradient(180deg, rgba(7,27,47,.02) 30%, rgba(7,27,47,.42) 100%),
+    linear-gradient(90deg, rgba(7,27,47,.10), transparent 38%);*/
+  /*mix-blend-mode: multiply;*/
+}
+
+.hero-portrait img {
+  transform: scale(1.045);
+  transition: transform 1.2s var(--ease-slow), filter .8s ease;
+  /*filter: saturate(.9) contrast(1.02);*/
+}
+
+.hero-portrait:hover img {
+  transform: scale(1.075);
+  /*filter: saturate(1) contrast(1.04);*/
+}
+
+.portrait-caption {
+  z-index: 3;
+  width: min(220px, 48%);
+  font-size: clamp(20px, 2.1vw, 30px);
+  padding: 20px;
+  box-shadow: 0 18px 45px rgba(7,27,47,.18);
+}
+
+/* Make the trust band feel like a deliberate brand statement */
+.trust-ribbon {
+  position: relative;
+}
+
+.trust-ribbon::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 28vw;
+  max-width: 360px;
+  height: 2px;
+  background: var(--coral);
+}
+
+/* More emotional quote treatment */
+.quote-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.quote-section::before {
+  content: "“";
+  position: absolute;
+  left: -1vw;
+  top: 2rem;
+  font-family: var(--serif);
+  font-size: min(40vw, 520px);
+  line-height: .5;
+  color: rgba(40,106,159,.07);
+  pointer-events: none;
+}
+
+/* Cards feel more tactile on touch devices */
+.advisor-photo-wrap,
+.article,
+.coverage-item {
+  box-shadow: 0 0 0 rgba(7,27,47,0);
+  transition: transform .45s var(--ease), box-shadow .45s var(--ease),
+              background .45s ease;
+}
+
+.advisor-card:hover .advisor-photo-wrap {
+  box-shadow: 0 24px 60px rgba(7,27,47,.13);
+}
+
+.article:hover {
+  transform: translateY(-4px);
+}
+
+/* Better keyboard focus */
+:focus-visible {
+  outline: 3px solid rgba(40,106,159,.45);
+  outline-offset: 4px;
+}
+
+/* ==========================================================
+   MOBILE-FIRST NAVIGATION
+   ========================================================== */
+
+@media (max-width: 700px) {
+  :root {
+    --gutter: var(--gutter-mobile);
+  }
+
+  body {
+    padding-bottom: calc(76px + env(safe-area-inset-bottom));
+  }
+
+  .header {
+    position: sticky;
+    top: 0;
+    background: rgba(245,243,237,.88);
+    box-shadow: 0 8px 30px rgba(7,27,47,.06);
+  }
+
+  .nav {
+    min-height: 68px;
+    gap: 12px;
+  }
+
+  .logo {
+    min-width: 0;
+    font-size: 10px;
+    line-height: 1.1;
+  }
+
+  .logo > span:last-child {
+    max-width: 200px;
+  }
+
+  .mobile-menu {
+    position: relative;
+    z-index: 1002;
+    display: grid;
+    place-items: center;
+    width: var(--tap);
+    height: var(--tap);
+    min-width: var(--tap);
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    background: rgba(255,253,249,.7);
+    color: var(--blue-950);
+    font-size: 0;
+  }
+
+  .mobile-menu::before,
+  .mobile-menu::after {
+    content: "";
+    position: absolute;
+    width: 18px;
+    height: 1.5px;
+    background: currentColor;
+    transition: transform .3s var(--ease);
+  }
+
+  .mobile-menu::before {
+    transform: translateY(-4px);
+  }
+
+  .mobile-menu::after {
+    transform: translateY(4px);
+  }
+
+  .mobile-menu[aria-expanded="true"]::before {
+    transform: rotate(45deg);
+  }
+
+  .mobile-menu[aria-expanded="true"]::after {
+    transform: rotate(-45deg);
+  }
+
+  .nav-links {
+    display: flex !important;
+    position: fixed !important;
+    inset: 68px 12px auto 12px;
+    z-index: 1001;
+    flex-direction: column;
+    align-items: stretch !important;
+    gap: 0;
+    padding: 10px !important;
+    background: rgba(255,253,249,.97) !important;
+    border: 1px solid var(--line) !important;
+    border-radius: 0 0 20px 20px;
+    box-shadow: 0 25px 80px rgba(7,27,47,.18) !important;
+    backdrop-filter: blur(20px);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-12px) scale(.98);
+    transform-origin: top right;
+    transition: opacity .28s ease, visibility .28s ease,
+                transform .35s var(--ease);
+  }
+
+  .nav-links.is-open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+  }
+
+  .nav-links a {
+    min-height: 54px;
+    display: flex;
+    align-items: center;
+    padding: 0 14px;
+    border-radius: 12px;
+    color: var(--ink);
+    font-size: 14px;
+  }
+
+  .nav-links a:hover {
+    background: var(--paper-warm);
+  }
+
+  .nav-links a::after {
+    display: none;
+  }
+
+  /* Hide desktop CTA from the compact mobile header */
+  .nav > div:last-child .button,
+  .nav-phone {
+    display: none;
+  }
+
+  /* Hero becomes a cinematic story rather than a compressed desktop grid */
+  .hero {
+    min-height: auto;
+    padding-top: 28px;
+  }
+
+  .hero-copy {
+    padding-block: 0 28px;
+  }
+
+  .hero-kicker {
+    margin-bottom: 22px;
+  }
+
+  .display {
+    font-size: clamp(4.1rem, 19vw, 7.5rem);
+    line-height: .78;
+    letter-spacing: -.075em;
+  }
+
+  .hero-intro {
+    margin-top: 28px;
+    font-size: 18px;
+    line-height: 1.42;
+  }
+
+  .hero-actions {
+    margin-top: 22px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 9px;
+  }
+
+  .hero-actions .button {
+    width: fit-content;
+    min-height: 56px;
+  }
+
+  .hero-portrait {
+    width: calc(100% + (var(--gutter-mobile) * 2));
+    margin-left: calc(var(--gutter-mobile) * -1);
+    height: min(82svh, 620px);
+    min-height: 470px;
+    border-radius: 0;
+    clip-path: none;
+  }
+
+  .hero-portrait img {
+    object-position: 58% center;
+    transform: scale(1.035);
+  }
+
+  .hero-portrait::after {
+    content: "";
+    position: absolute;
+    inset: auto 0 0;
+    height: 46%;
+    z-index: 2;
+    pointer-events: none;
+    background: linear-gradient(transparent, rgba(7,27,47,.62));
+  }
+
+  .portrait-caption {
+    bottom: 20px;
+    left: 20px;
+    width: min(245px, calc(100% - 36px));
+    transform: rotate(-2deg);
+    font-size: 24px;
+  }
+
+  .hero-meta {
+    display: none;
+  }
+
+  .trust-ribbon {
+    padding-block: 20px;
+  }
+
+  .trust-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 16px;
+    font-size: 11px;
+  }
+
+  /* Typography is intentionally large, but never causes horizontal overflow */
+  .manifesto-copy p,
+  .coverage-heading h2,
+  .advisor-intro h2,
+  .resource-heading h2,
+  .faq-title h2,
+  .cta-title h2 {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    font-weight: inherit;
+  }
+
+  .manifesto-copy p {
+    font-size: clamp(3.2rem, 15vw, 5.6rem);
+  }
+
+  .manifesto-sub {
+    margin-top: 28px;
+    font-size: 14px;
+  }
+
+  .coverage-list {
+    margin-top: 38px;
+  }
+
+  .coverage-item {
+    grid-template-columns: 28px minmax(0, 1fr) 22px;
+    gap: 10px;
+    min-height: 78px;
+    padding-block: 20px;
+  }
+
+  .coverage-item:hover {
+    padding-inline: 0;
+  }
+
+  .coverage-name {
+    font-size: clamp(1.8rem, 9vw, 2.8rem);
+  }
+
+  /* Full-bleed emotional feature image on mobile */
+  .feature-image {
+    min-height: 58svh;
+    height: 540px;
+    background-position: 54% center;
+  }
+
+  .feature-copy {
+    padding: 48px 24px 62px;
+  }
+
+  .feature-copy h2 {
+    margin: 65px 0 28px;
+    font-size: clamp(3.4rem, 15vw, 6rem);
+  }
+
+  .process-title {
+    margin-bottom: 42px;
+    font-size: clamp(3.3rem, 14vw, 5.5rem);
+  }
+
+  .process-item {
+    grid-template-columns: 34px minmax(0, 1fr);
+    gap: 12px;
+    padding-block: 23px;
+  }
+
+  .process-item h3 {
+    font-size: 17px;
+  }
+
+  .process-item p {
+    grid-column: 2;
+    margin-top: 3px;
+    font-size: 13px;
+  }
+
+  /* Advisors become a swipeable editorial rail */
+  .advisor-grid {
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(82vw, 82vw);
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    padding-bottom: 12px;
+    margin-right: calc(var(--gutter-mobile) * -1);
+  }
+
+  .advisor-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .advisor-card {
+    scroll-snap-align: start;
+  }
+
+  .advisor-photo-wrap {
+    aspect-ratio: .86;
+  }
+
+  .advisor-name {
+    font-size: 27px;
+  }
+
+  /* Quote gets a magazine-cover feel */
+  .quote-section {
+    padding-block: 95px;
+  }
+
+  .quote {
+    font-size: clamp(3.4rem, 15vw, 6.3rem);
+    line-height: .82;
+  }
+
+  .quote-attribution {
+    grid-column: 1 / -1;
+    margin-top: 28px;
+    font-size: 8px;
+  }
+
+  /* Articles stack as deliberate cards */
+  .resource-grid {
+    gap: 14px;
+    margin-top: 42px;
+  }
+
+  .article,
+  .article-featured {
+    min-height: 300px;
+    border-radius: 0;
+  }
+
+  .article-featured {
+    padding: 24px;
+  }
+
+  .article h3,
+  .article:not(.article-featured) h3 {
+    margin-top: 64px;
+    font-size: clamp(2.5rem, 11vw, 4.5rem);
+  }
+
+  .faq-question {
+    min-height: 68px;
+    padding-block: 20px;
+    font-size: 14px;
+  }
+
+  .faq-answer-inner {
+    padding: 0 0 25px;
+  }
+
+  .cta {
+    padding-block: 88px;
+  }
+
+  .cta-title h2 {
+    font-size: clamp(4rem, 17vw, 7rem);
+  }
+
+  .cta-copy {
+    margin-top: 35px;
+  }
+
+  .cta-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .cta-actions .button {
+    width: fit-content;
+    min-height: 56px;
+  }
+
+  /* Fixed action bar respects iPhone/Android safe areas */
+  .mobile-actions {
+    min-height: 76px;
+    padding-bottom: env(safe-area-inset-bottom);
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .mobile-actions a,
+  .mobile-actions button {
+    min-height: 76px;
+    font-size: 12px;
+  }
+}
+
+/* Small phones */
+@media (max-width: 390px) {
+  .display {
+    font-size: clamp(3.75rem, 19.5vw, 5.7rem);
+  }
+
+  .hero-portrait {
+    min-height: 430px;
+  }
+
+  .portrait-caption {
+    font-size: 21px;
+  }
+
+  .trust-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Don't spend battery or create motion discomfort */
+@media (prefers-reduced-motion: reduce) {
+  .hero-portrait img {
+    transform: none;
+  }
+
+  .nav-links {
+    transition: none;
+  }
+}
+
+/* demo only */
+
+  .image-switcher {
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+
+  pointer-events: none;
+}
+
+.image-switcher.open {
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.image-switcher-inner {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+
+  padding: 14px 20px;
+
+  background: rgba(20, 20, 20, 0.95);
+  color: #fff;
+
+  box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.image-switcher-title {
+  white-space: nowrap;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.image-switcher-title span {
+  color: #aaa;
+}
+
+.image-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.image-options button {
+  width: 32px;
+  height: 32px;
+
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: transparent;
+  color: #fff;
+
+  border-radius: 4px;
+
+  cursor: pointer;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.image-options button:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.image-options button.active {
+  background: #fff;
+  border-color: #fff;
+  color: #111;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<!-- Demo Image Switcher -->
+<div class="image-switcher" id="imageSwitcher">
+  <div class="image-switcher-inner">
+    <div class="image-switcher-title">
+      Hero Image
+      <span id="currentImage">5</span>/20
+    </div>
+
+    <div class="image-options" id="imageOptions">
+      <!-- Buttons generated by JS -->
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+  const hero = document.getElementById('hero');
+  const switcher = document.getElementById('imageSwitcher');
+  const options = document.getElementById('imageOptions');
+  const currentImage = document.getElementById('currentImage');
+
+  let current = 1;
+
+  // Make sure the hero exists
+  if (!hero) {
+    console.error('Image switcher: #hero not found');
+    return;
+  }
+
+  // Create buttons 1–20
+  for (let i = 1; i <= 20; i++) {
+
+    const button = document.createElement('button');
+
+    button.type = 'button';
+    button.textContent = i;
+    button.dataset.image = i;
+
+    button.addEventListener('click', function () {
+      setImage(i);
+    });
+
+    options.appendChild(button);
+  }
+
+  function setImage(number) {
+
+    current = number;
+
+    console.log('Switching hero to:', `img/${number}.jpg`);
+
+    hero.style.backgroundImage = `url("img/${number}.jpg")`;
+
+    currentImage.textContent = number;
+
+    document
+      .querySelectorAll('.image-options button')
+      .forEach(function (button) {
+
+        button.classList.toggle(
+          'active',
+          Number(button.dataset.image) === number
+        );
+
+      });
+  }
+
+  // Keyboard shortcut
+  document.addEventListener('keydown', function (event) {
+
+    if (
+      event.shiftKey &&
+      event.key.toLowerCase() === 'i' &&
+      (event.metaKey || event.ctrlKey)
+    ) {
+
+      event.preventDefault();
+
+      switcher.classList.toggle('open');
+    }
+
+    // Previous
+    if (
+      switcher.classList.contains('open') &&
+      event.key === 'ArrowLeft'
+    ) {
+
+      setImage(current === 1 ? 20 : current - 1);
+    }
+
+    // Next
+    if (
+      switcher.classList.contains('open') &&
+      event.key === 'ArrowRight'
+    ) {
+
+      setImage(current === 20 ? 1 : current + 1);
+    }
+
+  });
+
+  // Initial image
+  setImage(current);
+
+});
+</script>
+
+
+
+
+
+  <!-- ========================================================
+       HEADER
+  ========================================================= -->
+
+  <header class="header">
+
+    <div class="container">
+
+      <nav class="nav">
+
+        <a href="#" class="logo" aria-label="All Insurance Advisors home">
+
+          <!-- <span class="logo-mark" aria-hidden="true"></span> -->
+
+          <span>
+            <img src="img/logo.png" style="width:200px !important; filter: saturate(0.5);">
+          </span>
+
+        </a>
+
+
+        <div class="nav-links">
+
+          <a href="#coverage">
+            Coverage
+          </a>
+
+          <a href="#approach">
+            Our approach
+          </a>
+
+          <a href="#advisors">
+            Advisors
+          </a>
+
+          <a href="#resources">
+            Resources
+          </a>
+
+          <a href="#questions">
+            Questions
+          </a>
+
+        </div>
+
+
+        <div>
+
+          <span class="nav-phone">
+            (800) 123-4567
+          </span>
+
+          <button class="button js-open-contact">
+            Talk to an advisor
+          </button>
+
+          <button
+            class="mobile-menu"
+            aria-label="Open navigation"
+            aria-expanded="false"
+          >
+            ☰
+          </button>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+  </header>
+
+
+  <main>
+
+
+    <!-- ======================================================
+         HERO
+    ======================================================= -->
+
+    <section id="hero" class="hero" style="
+  background-image: url(img/1.jpg);
+  background-size: cover;
+  background-position: 59%;
+">
+
+
+      <div class="container">
+
+        <div class="editorial-grid">
+
+
+          <div class="hero-copy reveal">
+
+            <div class="eyebrow hero-kicker">
+              Insurance, from a human point of view.
+            </div>
+
+            <h1 class="display">
+
+              A clearer
+              <br>
+
+              way
+
+              <em>
+                forward.
+              </em>
+
+            </h1>
+
+          </div>
+
+
+        <div class="hero-intro reveal visible">
+<!--           <span class="text-highlight">
+            Insurance is complicated enough.
+          </span>
+
+          <span class="text-highlight">
+            Understanding it shouldn't be.
+          </span> -->
+
+          <span class="text-highlight">
+            We help individuals and families make sense of
+            Medicare, health and life insurance — with a real
+            advisor on the other side of the conversation.
+          </span>
+        </div>
+
+
+          <div class="hero-actions reveal">
+
+            <button class="button js-open-contact">
+              Talk to an advisor
+            </button>
+
+            <a
+              href="#coverage"
+              class="button outline"
+            >
+              Explore coverage
+            </a>
+
+          </div>
+
+
+          <div class="hero-meta reveal">
+
+            <strong>
+              OUR PROMISE
+            </strong>
+
+            <br>
+
+            Clear explanations.
+            Thoughtful options.
+            No unnecessary jargon.
+
+          </div>
+
+
+          <div class="hero-portrait reveal" style="background: none;">
+
+            <!--
+              ART DIRECTION:
+
+              Production photography should represent the actual
+              diversity of the American customer base.
+
+              Do NOT use AI-generated "perfect families."
+
+              Photograph:
+              - different ages
+              - races and ethnicities
+              - single people
+              - couples
+              - parents
+              - older Americans
+              - different body types
+              - different regions
+              - urban / suburban / rural environments
+
+              The image should feel documentary/editorial.
+            -->
+
+<!--             <img
+              src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1800&q=90"
+              fetchpriority="high"
+              alt="People having a genuine conversation"
+            /> -->
+
+            <div class="portrait-caption">
+              Good advice
+              starts with
+              listening.
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ======================================================
+         TRUST
+    ======================================================= -->
+
+    <section class="trust-ribbon">
+
+      <div class="container">
+
+        <div class="trust-ribbon-inner">
+
+          <div class="trust-label">
+            What we believe
+          </div>
+
+          <div class="trust-list">
+
+            <span>
+              Licensed advisors
+            </span>
+
+            <span>
+              Clear explanations
+            </span>
+
+            <span>
+              Real people
+            </span>
+
+            <span>
+              Your questions matter
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ======================================================
+         MANIFESTO
+    ======================================================= -->
+
+    <section class="manifesto">
+
+      <div class="container">
+
+        <div class="editorial-grid">
+
+          <div class="manifesto-label reveal">
+
+            <div class="eyebrow">
+              The philosophy
+            </div>
+
+          </div>
+
+
+          <div class="manifesto-copy reveal">
+
+            <p>
+
+              We don't believe people need
+
+              <em>
+                more insurance jargon.
+              </em>
+
+              They need better conversations.
+
+            </p>
+
+          </div>
+
+
+          <div class="manifesto-sub reveal">
+
+            A good advisor starts by understanding your
+            circumstances and priorities, then helps you
+            understand the choices available to you.
+
+            <br><br>
+
+            The objective isn't to make the decision for you.
+            It's to make the decision easier to understand.
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ======================================================
+         COVERAGE
+    ======================================================= -->
+
+    <section
+      class="section coverage"
+      id="coverage"
+    >
+
+      <div class="container">
+
+        <div class="editorial-grid">
+
+
+          <div class="coverage-heading reveal">
+
+            <div class="eyebrow">
+              Where to begin
+            </div>
+
+            <h2>
+              Find your
+              <br>
+              starting
+              <br>
+              point.
+            </h2>
+
+          </div>
+
+
+          <div class="coverage-intro reveal">
+
+            You don't have to know exactly what you need
+            before you talk to us.
+
+            That's part of the job.
+
+          </div>
+
+
+          <div class="coverage-list">
+
+
+            <a
+              class="coverage-item reveal"
+              href="#"
+            >
+
+              <div class="coverage-number">
+                01
+              </div>
+
+              <div class="coverage-name">
+                Medicare
+              </div>
+
+              <div class="coverage-description">
+                Understand Medicare Advantage,
+                Supplement and prescription drug
+                options in plain language.
+              </div>
+
+              <div class="coverage-arrow">
+                →
+              </div>
+
+            </a>
+
+
+            <a
+              class="coverage-item reveal"
+              href="#"
+            >
+
+              <div class="coverage-number">
+                02
+              </div>
+
+              <div class="coverage-name">
+                Health insurance
+              </div>
+
+              <div class="coverage-description">
+                Explore individual and family coverage,
+                networks, premiums and out-of-pocket costs.
+              </div>
+
+              <div class="coverage-arrow">
+                →
+              </div>
+
+            </a>
+
+
+            <a
+              class="coverage-item reveal"
+              href="#"
+            >
+
+              <div class="coverage-number">
+                03
+              </div>
+
+              <div class="coverage-name">
+                Life insurance
+              </div>
+
+              <div class="coverage-description">
+                Protect the people and plans that matter
+                with coverage designed around your circumstances.
+              </div>
+
+              <div class="coverage-arrow">
+                →
+              </div>
+
+            </a>
+
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ======================================================
+         APPROACH
+    ======================================================= -->
+
+    <section
+      class="feature"
+      id="approach"
+    >
+
+      <div class="container">
+
+        <div class="editorial-grid">
+
+
+          <div class="feature-image reveal"></div>
+
+
+          <div class="feature-copy reveal">
+
+            <div>
+
+              <div class="eyebrow">
+                Our approach
+              </div>
+
+              <h2>
+
+                Advice should
+                feel
+
+                <em>
+                  human.
+                </em>
+
+              </h2>
+
+              <p>
+                A good insurance conversation isn't a
+                sales pitch.
+
+                It's a chance to ask questions,
+                understand the trade-offs and
+                decide what makes sense for you.
+
+              </p>
+
+              <p>
+                We believe people deserve to know
+                what they're choosing — and why.
+              </p>
+
+            </div>
+
+
+            <div class="feature-signature">
+
+              <span class="signature-mark">
+                A
+              </span>
+
+              <span>
+                Start with a person.
+                Not a form.
+              </span>
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ======================================================
+         PROCESS
+    ======================================================= -->
+
+    <section class="section">
+
+      <div class="container">
+
+        <div class="editorial-grid">
+
+
+          <div class="process-label reveal">
+
+            <div class="eyebrow">
+              What happens next
+            </div>
+
+          </div>
+
+
+          <div class="process-content">
+
+            <h2 class="process-title reveal">
+              Simple by design.
+            </h2>
+
+
+            <div class="process-list">
+
+
+              <div class="process-item reveal">
+
+                <div class="process-number">
+                  01
+                </div>
+
+                <h3>
+                  Tell us what's on your mind.
+                </h3>
+
+                <p>
+                  You don't need to arrive with
+                  all the answers. Tell us what
+                  you're trying to figure out.
+                </p>
+
+              </div>
+
+
+              <div class="process-item reveal">
+
+                <div class="process-number">
+                  02
+                </div>
+
+                <h3>
+                  Have a real conversation.
+                </h3>
+
+                <p>
+                  An advisor learns about your
+                  situation and explains the
+                  relevant options.
+                </p>
+
+              </div>
+
+
+              <div class="process-item reveal">
+
+                <div class="process-number">
+                  03
+                </div>
+
+                <h3>
+                  Understand your choices.
+                </h3>
+
+                <p>
+                  We explain the important differences,
+                  costs and considerations so you can
+                  make your own informed decision.
+                </p>
+
+              </div>
+
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ======================================================
+         ADVISORS
+    ======================================================= -->
+
+    <section
+      class="section advisors"
+      id="advisors"
+    >
+
+      <div class="container">
+
+        <div class="editorial-grid">
+
+
+          <div class="advisor-intro reveal">
+
+            <div class="eyebrow">
+              The people behind the advice
+            </div>
+
+            <h2>
+              Meet the
+              <br>
+              people.
+            </h2>
+
+          </div>
+
+
+          <div class="advisor-description reveal">
+
+            Insurance is personal.
+
+            That's why your website should
+            show the people customers are
+            actually going to meet.
+
+            <br><br>
+
+            Replace these portraits with
+            professionally photographed advisors.
+
+          </div>
+
+
+          <div class="advisor-grid">
+
+
+            <!-- ADVISOR 01 -->
+
+            <article class="advisor-card reveal">
+
+              <div class="advisor-photo-wrap">
+
+                <img
+                  class="advisor-photo"
+                  loading="lazy"
+                  decoding="async"
+                  src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=1100&q=88"
+                  alt="Portrait of insurance advisor"
+                />
+
+              </div>
+
+
+              <div class="advisor-meta">
+
+                <div class="advisor-name">
+                  Advisor Name
+                </div>
+
+                <div class="advisor-role">
+                  Licensed Advisor<br>
+                  Medicare / Health
+                </div>
+
+              </div>
+
+
+              <div class="advisor-bio">
+                A short, human biography belongs here.
+                Talk about experience, specialty,
+                community and why this advisor does
+                the work.
+              </div>
+
+
+              <div class="advisor-credentials">
+
+                <span class="credential">
+                  Licensed
+                </span>
+
+                <span class="credential">
+                  [STATE]
+                </span>
+
+                <span class="credential">
+                  [X] YEARS
+                </span>
+
+              </div>
+
+            </article>
+
+
+            <!-- ADVISOR 02 -->
+
+            <article class="advisor-card reveal">
+
+              <div class="advisor-photo-wrap">
+
+                <img
+                  class="advisor-photo"
+                  loading="lazy"
+                  decoding="async"
+                  src="https://images.unsplash.com/photo-1573496799515-eebbb63814f2?auto=format&fit=crop&w=1100&q=88"
+                  alt="Portrait of insurance advisor"
+                />
+
+              </div>
+
+
+              <div class="advisor-meta">
+
+                <div class="advisor-name">
+                  Advisor Name
+                </div>
+
+                <div class="advisor-role">
+                  Licensed Advisor<br>
+                  Life / Health
+                </div>
+
+              </div>
+
+
+              <div class="advisor-bio">
+                Keep this conversational.
+                Customers should feel as though
+                they're meeting a person, not
+                reading a corporate résumé.
+              </div>
+
+
+              <div class="advisor-credentials">
+
+                <span class="credential">
+                  Licensed
+                </span>
+
+                <span class="credential">
+                  [STATE]
+                </span>
+
+                <span class="credential">
+                  [X] YEARS
+                </span>
+
+              </div>
+
+            </article>
+
+
+            <!-- ADVISOR 03 -->
+
+            <article class="advisor-card reveal">
+
+              <div class="advisor-photo-wrap">
+
+                <img
+                  class="advisor-photo"
+                  loading="lazy"
+                  decoding="async"
+                  src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=1100&q=88"
+                  alt="Portrait of insurance advisor"
+                />
+
+
+              </div>
+
+
+              <div class="advisor-meta">
+
+                <div class="advisor-name">
+                  Advisor Name
+                </div>
+
+                <div class="advisor-role">
+                  Licensed Advisor<br>
+                  Medicare / Health
+                </div>
+
+              </div>
+
+
+              <div class="advisor-bio">
+                Show expertise without turning
+                the biography into a list of
+                marketing adjectives.
+              </div>
+
+
+              <div class="advisor-credentials">
+
+                <span class="credential">
+                  Licensed
+                </span>
+
+                <span class="credential">
+                  [STATE]
+                </span>
+
+                <span class="credential">
+                  [X] YEARS
+                </span>
+
+              </div>
+
+            </article>
+
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ======================================================
+         QUOTE
+    ======================================================= -->
+
+    <section class="quote-section">
+
+      <div class="container">
+
+        <div class="editorial-grid">
+
+          <blockquote class="quote reveal">
+
+            “The goal isn't to sell you
+            <em>
+              more insurance.
+            </em>
+
+            It's to help you understand
+            what you actually need.”
+
+          </blockquote>
+
+
+          <div class="quote-attribution reveal">
+
+            A principle worth putting
+            behind the brand.
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ======================================================
+         RESOURCES
+    ======================================================= -->
+
+    <section
+      class="section resources"
+      id="resources"
+    >
+
+      <div class="container">
+
+        <div class="editorial-grid">
+
+
+          <div class="resource-heading reveal">
+
+            <div class="eyebrow">
+              Useful, not noisy
+            </div>
+
+            <h2>
+              Things worth
+              <br>
+              knowing.
+            </h2>
+
+          </div>
+
+
+          <div class="resource-description reveal">
+
+            Insurance education should answer
+            real questions.
+
+            <br><br>
+
+            Build this section around the questions
+            customers actually ask your advisors.
+
+          </div>
+
+
+          <div class="resource-grid">
+
+
+            <!-- FEATURED ARTICLE -->
+
+            <article class="article article-featured reveal">
+
+              <div class="article-meta">
+
+                <span>
+                  Guide
+                </span>
+
+                <span>
+                  07 MIN
+                </span>
+
+              </div>
+
+
+              <h3>
+                Medicare,
+                without the
+                maze.
+              </h3>
+
+
+              <p>
+                A plain-language introduction to
+                the pieces of Medicare and the
+                questions worth asking before
+                choosing coverage.
+              </p>
+
+
+              <div class="article-link">
+                Read the guide →
+              </div>
+
+            </article>
+
+
+            <!-- ARTICLE -->
+
+            <article class="article reveal">
+
+              <div class="article-meta">
+
+                <span>
+                  Health
+                </span>
+
+                <span>
+                  04 MIN
+                </span>
+
+              </div>
+
+
+              <h3>
+                What actually
+                affects the cost
+                of health insurance?
+              </h3>
+
+
+              <p>
+                Premiums are only part of the
+                picture. Here's what else to
+                understand.
+              </p>
+
+
+              <div class="article-link">
+                Read article →
+              </div>
+
+            </article>
+
+
+            <!-- ARTICLE -->
+
+            <article class="article reveal">
+
+              <div class="article-meta">
+
+                <span>
+                  Life
+                </span>
+
+                <span>
+                  05 MIN
+                </span>
+
+              </div>
+
+
+              <h3>
+                How much life
+                insurance is
+                enough?
+              </h3>
+
+
+              <p>
+                A practical framework for thinking
+                about protection without starting
+                with a sales pitch.
+              </p>
+
+
+              <div class="article-link">
+                Read article →
+              </div>
+
+            </article>
+
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ======================================================
+         FAQ
+    ======================================================= -->
+
+    <section
+      class="section"
+      id="questions"
+    >
+
+      <div class="container">
+
+        <div class="editorial-grid">
+
+
+          <div class="faq-title reveal">
+
+            <div class="eyebrow">
+              Before we talk
+            </div>
+
+            <h2>
+              Questions
+              <br>
+              people
+              <br>
+              actually ask.
+            </h2>
+
+          </div>
+
+
+          <div class="faq-list">
+
+
+            <div class="faq-item reveal">
+
+              <button class="faq-question">
+
+                <span>
+                  What happens when I contact an advisor?
+                </span>
+
+                <span class="faq-plus">
+                  +
+                </span>
+
+              </button>
+
+
+              <div class="faq-answer">
+
+                <div class="faq-answer-inner">
+
+                  You'll speak with an advisor who can
+                  learn more about your situation, answer
+                  questions and explain the options relevant
+                  to you.
+
+                  Replace this with your actual process
+                  before launch.
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <div class="faq-item reveal">
+
+              <button class="faq-question">
+
+                <span>
+                  Does speaking with an advisor cost anything?
+                </span>
+
+                <span class="faq-plus">
+                  +
+                </span>
+
+              </button>
+
+
+              <div class="faq-answer">
+
+                <div class="faq-answer-inner">
+
+                  Clearly explain how advisors are
+                  compensated and whether there is
+                  any cost to consumers.
+
+                  Transparency here is a major
+                  trust signal.
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <div class="faq-item reveal">
+
+              <button class="faq-question">
+
+                <span>
+                  Can I keep my current doctor?
+                </span>
+
+                <span class="faq-plus">
+                  +
+                </span>
+
+              </button>
+
+
+              <div class="faq-answer">
+
+                <div class="faq-answer-inner">
+
+                  This depends on the plan and network.
+                  Explain how your advisors help people
+                  evaluate provider networks without
+                  promising outcomes that depend on
+                  an insurer.
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <div class="faq-item reveal">
+
+              <button class="faq-question">
+
+                <span>
+                  How do I know which coverage is right for me?
+                </span>
+
+                <span class="faq-plus">
+                  +
+                </span>
+
+              </button>
+
+
+              <div class="faq-answer">
+
+                <div class="faq-answer-inner">
+
+                  That's where the advisor conversation
+                  comes in. The website should explain
+                  the relevant trade-offs rather than
+                  pretending there is one universal
+                  "best" option.
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <div class="faq-item reveal">
+
+              <button class="faq-question">
+
+                <span>
+                  What information should I have ready?
+                </span>
+
+                <span class="faq-plus">
+                  +
+                </span>
+
+              </button>
+
+
+              <div class="faq-answer">
+
+                <div class="faq-answer-inner">
+
+                  Tell visitors what they may need
+                  before a conversation — current
+                  coverage, medications, preferred
+                  doctors, household information or
+                  whatever is genuinely relevant.
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <div class="faq-item reveal">
+
+              <button class="faq-question">
+
+                <span>
+                  Do I have to make a decision during the call?
+                </span>
+
+                <span class="faq-plus">
+                  +
+                </span>
+
+              </button>
+
+
+              <div class="faq-answer">
+
+                <div class="faq-answer-inner">
+
+                  State your actual policy clearly.
+                  If visitors can have an informational
+                  conversation without enrolling,
+                  say so accurately.
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ======================================================
+         CTA
+    ======================================================= -->
+
+    <section class="cta">
+
+      <div class="container">
+
+        <div class="editorial-grid">
+
+
+          <div class="cta-title reveal">
+
+            <div
+              class="eyebrow"
+              style="color:var(--blue-950);"
+            >
+              A conversation is a good place to start.
+            </div>
+
+            <h2>
+              Let's make
+              <em>
+                insurance
+              </em>
+              easier to understand.
+            </h2>
+
+          </div>
+
+
+          <div class="cta-copy reveal">
+
+            <p>
+              Tell us what you're trying to figure out.
+              We'll connect you with an advisor who can
+              help you understand your options.
+            </p>
+
+
+            <div class="cta-actions">
+
+              <button class="button light js-open-contact">
+                Talk to an advisor
+              </button>
+
+              <a
+                class="button"
+                href="tel:+18001234567"
+                style="
+                  background:transparent;
+                  border-color:rgba(255,255,255,.6);
+                "
+              >
+                Call us
+              </a>
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+  </main>
+
+
+  <!-- ========================================================
+       FOOTER
+  ========================================================= -->
+
+  <footer class="footer">
+
+    <div class="container">
+
+      <div class="editorial-grid">
+
+
+        <div class="footer-brand">
+
+          <a
+            href="#"
+            class="logo"
+          >
+
+            <!-- <span class="logo-mark"></span> -->
+
+            <span>
+              <img src="img/logo.png" style="width:200px !important;     filter: contrast(0.5);">
+            </span>
+
+          </a>
+
+
+          <p>
+            Helping individuals and families
+            understand Medicare, health and
+            life insurance options.
+          </p>
+
+        </div>
+
+
+        <div class="footer-column">
+
+          <h3>
+            Coverage
+          </h3>
+
+          <a href="#coverage">
+            Medicare
+          </a>
+
+          <a href="#coverage">
+            Health insurance
+          </a>
+
+          <a href="#coverage">
+            Life insurance
+          </a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+          <h3>
+            Company
+          </h3>
+
+          <a href="#approach">
+            Our approach
+          </a>
+
+          <a href="#advisors">
+            Advisors
+          </a>
+
+          <a href="#resources">
+            Resources
+          </a>
+
+          <a href="#questions">
+            Questions
+          </a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+          <h3>
+            Contact
+          </h3>
+
+          <!--
+            REPLACE BEFORE LAUNCH
+          -->
+
+          <a href="tel:+18001234567">
+            (800) 123-4567
+          </a>
+
+          <a href="mailto:hello@example.com">
+            hello@example.com
+          </a>
+
+          <p>
+            1234 Main Street<br>
+            Fairfax, VA 22030
+          </p>
+
+        </div>
+
+
+        <!-- DISCLOSURE SYSTEM -->
+
+        <div class="disclosure">
+
+          <strong>
+            IMPORTANT INFORMATION
+          </strong>
+
+          <br><br>
+
+          This website is a marketing template and
+          contains placeholder information.
+
+          Replace all contact details, licensing information,
+          carrier information, product descriptions,
+          testimonials, disclosures, privacy language,
+          state availability, compensation statements
+          and regulatory notices with verified production
+          information before publishing.
+
+          <br>
+
+          Product availability, features, premiums,
+          benefits, networks and eligibility may vary
+          by state, plan and individual circumstances.
+
+          <br>
+
+          The final website should be reviewed by the
+          appropriate compliance and legal teams before
+          launch.
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+          <span>
+            © <span id="year"></span>
+            All Insurance Advisors
+          </span>
+
+          <span>
+            Privacy · Terms · Accessibility
+          </span>
+
+          <span>
+            Designed for real people.
+          </span>
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <!-- ========================================================
+       CONTACT MODAL
+  ========================================================= -->
+
+  <div
+    class="modal"
+    id="contactModal"
+    aria-hidden="true"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="contactTitle"
+  >
+
+    <div class="modal-panel">
+
+
+      <button
+        class="modal-close"
+        aria-label="Close"
+      >
+        ×
+      </button>
+
+
+      <div id="formView">
+
+
+        <div class="eyebrow">
+          Start a conversation
+        </div>
+
+
+        <h2 id="contactTitle">
+
+          Tell us what
+          you're trying
+          <em>
+            to solve.
+          </em>
+
+        </h2>
+
+
+        <p class="modal-intro">
+
+          A few details help us connect
+          you with the right advisor.
+
+        </p>
+
+
+        <form
+          class="form"
+          id="contactForm"
+        >
+
+
+          <div class="field">
+
+            <label for="name">
+              Your name
+            </label>
+
+            <input
+              id="name"
+              name="name"
+              type="text"
+              autocomplete="name"
+              required
+            >
+
+          </div>
+
+
+          <div class="field">
+
+            <label for="email">
+              Email
+            </label>
+
+            <input
+              id="email"
+              name="email"
+              type="email"
+              autocomplete="email"
+              required
+            >
+
+          </div>
+
+
+          <div class="field">
+
+            <label for="phone">
+              Phone
+            </label>
+
+            <input
+              id="phone"
+              name="phone"
+              type="tel"
+              autocomplete="tel"
+            >
+
+          </div>
+
+
+          <div class="field">
+
+            <label for="interest">
+              What are you looking for?
+            </label>
+
+            <select
+              id="interest"
+              name="interest"
+            >
+
+              <option value="">
+                Choose one
+              </option>
+
+              <option>
+                Medicare
+              </option>
+
+              <option>
+                Health insurance
+              </option>
+
+              <option>
+                Life insurance
+              </option>
+
+              <option>
+                I'm not sure yet
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <div class="field">
+
+            <label for="message">
+              Anything you'd like us to know?
+            </label>
+
+            <textarea
+              id="message"
+              name="message"
+              placeholder="Optional"
+            ></textarea>
+
+          </div>
+
+
+          <button
+            type="submit"
+            class="button"
+          >
+            Send my request
+          </button>
+
+
+          <div class="form-disclosure">
+
+            Replace this disclosure with the actual
+            privacy, consent, TCPA/communication,
+            data-use and lead-routing language required
+            for the production implementation.
+
+          </div>
+
+
+        </form>
+
+      </div>
+
+
+      <div
+        class="success"
+        id="formSuccess"
+      >
+
+        <div class="eyebrow">
+          Thank you
+        </div>
+
+        <h3>
+          We've got it.
+        </h3>
+
+        <p>
+          The demo form is not connected to a CRM.
+          Connect this interaction to your production
+          lead-management system before launch.
+        </p>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+
+  <!-- ========================================================
+       MOBILE ACTIONS
+  ========================================================= -->
+
+  <div class="mobile-actions" aria-label="Quick contact actions">
+
+    <a href="tel:+18001234567">
+      Call an advisor
+    </a>
+
+    <button class="js-open-contact">
+      Start a conversation
+    </button>
+
+  </div>
+
+
+  <!-- ========================================================
+       JAVASCRIPT
+  ========================================================= -->
+
+  <script>
+
+    /* ========================================================
+       YEAR
+    ======================================================== */
+
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+
+    /* ========================================================
+       CONTACT MODAL
+    ======================================================== */
+
+    const modal =
+      document.getElementById("contactModal");
+
+    const modalClose =
+      document.querySelector(".modal-close");
+
+    const openButtons =
+      document.querySelectorAll(".js-open-contact");
+
+    let previousFocus = null;
+
+
+    function openModal() {
+
+      previousFocus =
+        document.activeElement;
+
+      modal.classList.add("active");
+
+      modal.setAttribute(
+        "aria-hidden",
+        "false"
+      );
+
+      document.body.style.overflow =
+        "hidden";
+
+      setTimeout(() => {
+
+        document
+          .getElementById("name")
+          ?.focus();
+
+      }, 100);
+
+    }
+
+
+    function closeModal() {
+
+      modal.classList.remove("active");
+
+      modal.setAttribute(
+        "aria-hidden",
+        "true"
+      );
+
+      document.body.style.overflow =
+        "";
+
+      previousFocus?.focus();
+
+    }
+
+
+    openButtons.forEach(button => {
+
+      button.addEventListener(
+        "click",
+        openModal
+      );
+
+    });
+
+
+    modalClose.addEventListener(
+      "click",
+      closeModal
+    );
+
+
+    modal.addEventListener(
+      "click",
+      event => {
+
+        if (
+          event.target === modal
+        ) {
+          closeModal();
+        }
+
+      }
+    );
+
+
+    document.addEventListener(
+      "keydown",
+      event => {
+
+        if (
+          event.key === "Escape" &&
+          modal.classList.contains("active")
+        ) {
+
+          closeModal();
+
+        }
+
+      }
+    );
+
+
+    /* ========================================================
+       DEMO FORM
+    ======================================================== */
+
+    const form =
+      document.getElementById("contactForm");
+
+    const formView =
+      document.getElementById("formView");
+
+    const formSuccess =
+      document.getElementById("formSuccess");
+
+
+    form.addEventListener(
+      "submit",
+      event => {
+
+        event.preventDefault();
+
+        /*
+          PRODUCTION:
+
+          Connect here to your actual:
+
+          - CRM
+          - lead-routing platform
+          - marketing automation system
+          - secure server-side endpoint
+
+          Also capture:
+
+          - UTM source
+          - UTM medium
+          - UTM campaign
+          - landing page
+          - referrer
+          - consent
+          - timestamp
+        */
+
+        formView.style.display =
+          "none";
+
+        formSuccess.classList.add(
+          "active"
+        );
+
+      }
+    );
+
+
+    /* ========================================================
+       FAQ
+    ======================================================== */
+
+    document
+      .querySelectorAll(".faq-question")
+      .forEach(button => {
+
+        button.addEventListener(
+          "click",
+          () => {
+
+            const item =
+              button.closest(".faq-item");
+
+            const answer =
+              item.querySelector(
+                ".faq-answer"
+              );
+
+            const open =
+              item.classList.contains(
+                "active"
+              );
+
+
+            document
+              .querySelectorAll(
+                ".faq-item.active"
+              )
+              .forEach(other => {
+
+                if (
+                  other !== item
+                ) {
+
+                  other.classList.remove(
+                    "active"
+                  );
+
+                  other.querySelector(
+                    ".faq-answer"
+                  ).style.maxHeight =
+                    null;
+
+                }
+
+              });
+
+
+            if (open) {
+
+              item.classList.remove(
+                "active"
+              );
+
+              answer.style.maxHeight =
+                null;
+
+            } else {
+
+              item.classList.add(
+                "active"
+              );
+
+              answer.style.maxHeight =
+                answer.scrollHeight +
+                "px";
+
+            }
+
+          }
+        );
+
+      });
+
+
+    /* ========================================================
+       REVEAL MOTION
+    ======================================================== */
+
+    const revealElements =
+      document.querySelectorAll(
+        ".reveal"
+      );
+
+
+    const revealObserver =
+      new IntersectionObserver(
+        entries => {
+
+          entries.forEach(entry => {
+
+            if (
+              entry.isIntersecting
+            ) {
+
+              entry.target.classList.add(
+                "visible"
+              );
+
+              revealObserver.unobserve(
+                entry.target
+              );
+
+            }
+
+          });
+
+        },
+        {
+          threshold: .12,
+          rootMargin:
+            "0px 0px -45px 0px"
+        }
+      );
+
+
+    revealElements.forEach(
+      element => {
+
+        revealObserver.observe(
+          element
+        );
+
+      }
+    );
+
+
+    /* ========================================================
+       MOBILE NAV — CLASS BASED / RESIZE SAFE
+       ======================================================== */
+
+    const mobileMenu =
+      document.querySelector(".mobile-menu");
+
+    const navLinks =
+      document.querySelector(".nav-links");
+
+    if (mobileMenu && navLinks) {
+
+      navLinks.id = "primary-navigation";
+      mobileMenu.setAttribute("aria-controls", "primary-navigation");
+
+      const setNav = open => {
+        mobileMenu.setAttribute(
+          "aria-expanded",
+          String(open)
+        );
+
+        navLinks.classList.toggle(
+          "is-open",
+          open
+        );
+
+        document.body.classList.toggle(
+          "nav-open",
+          open
+        );
+      };
+
+      mobileMenu.addEventListener(
+        "click",
+        () => {
+          const open =
+            mobileMenu.getAttribute("aria-expanded") === "true";
+
+          setNav(!open);
+        }
+      );
+
+      navLinks
+        .querySelectorAll("a")
+        .forEach(link => {
+          link.addEventListener(
+            "click",
+            () => setNav(false)
+          );
+        });
+
+      document.addEventListener(
+        "click",
+        event => {
+          if (
+            window.innerWidth <= 700 &&
+            navLinks.classList.contains("is-open") &&
+            !navLinks.contains(event.target) &&
+            !mobileMenu.contains(event.target)
+          ) {
+            setNav(false);
+          }
+        }
+      );
+
+      window.addEventListener(
+        "resize",
+        () => {
+          if (window.innerWidth > 700) {
+            setNav(false);
+          }
+        },
+        { passive: true }
+      );
+
+      document.addEventListener(
+        "keydown",
+        event => {
+          if (event.key === "Escape") {
+            setNav(false);
+          }
+        }
+      );
+    }
+
+
+    /* ========================================================
+       IMAGE FALLBACK
+    ======================================================== */
+
+    document
+      .querySelectorAll("img")
+      .forEach(image => {
+
+        image.addEventListener(
+          "error",
+          () => {
+
+            image.removeAttribute(
+              "src"
+            );
+
+            image.style.background =
+              "linear-gradient(135deg,#0C2945,#286A9F)";
+
+          }
+        );
+
+      });
+
+
+    /* ========================================================
+       SMART PHONE NUMBER PLACEHOLDER
+    ======================================================== */
+
+    /*
+      Before production, replace every occurrence of:
+
+      (800) 123-4567
+
+      with the actual marketing/sales number.
+
+      Also update:
+
+      - mailto address
+      - physical address
+      - states served
+      - advisor licensing
+      - carrier information
+      - legal disclosures
+    */
+
+
+  </script>
+
+  <script src="https://unpkg.com/lenis@1.3.4/dist/lenis.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+
+      const lenis = new Lenis({
+        smoothWheel: true,
+        duration: 1.2,
+        anchors: true
+      });
+
+      function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+
+      requestAnimationFrame(raf);
+
+    });
+    </script>
+
+
+</body>
+</html>
