@@ -3,24 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>All Insurance Advisors — Insurance, with a human point of view.</title>
-
   <meta
     name="description"
     content="Medicare, health and life insurance guidance from real advisors. Clear answers, thoughtful options and a human conversation."
   />
-
   <meta name="theme-color" content="#071B2F" />
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
   <link
     href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap"
     rel="stylesheet"
   />
-
   <style>
 :root { --blue-950:#071B2F;--blue-900:#0C2945;--blue-800:#123B60;--blue-600:#286A9F;--blue-100:#DDEAF3;--paper:#F5F3ED;--paper-warm:#ECE9E0;--white:#FFFDF9;--coral:#D96F5D;--coral-soft:#E9B0A5;--ink:#10202D;--muted:#61707C;--line:rgba(16,32,45,.16);--serif:"Instrument Serif",Georgia,serif;--sans:"DM Sans",Helvetica,Arial,sans-serif;--mono:"IBM Plex Mono",monospace;--space-1:6px;--space-2:10px;--space-3:16px;--space-4:24px;--space-5:32px;--space-6:48px;--space-7:64px;--space-8:96px;--space-9:128px;--space-10:180px;--gutter:clamp(20px,4vw,72px);--max-width:1440px;--columns:12;--grid-gap:clamp(14px,1.8vw,30px);--ease:cubic-bezier(.2,.75,.2,1);--ease-slow:cubic-bezier(.16,1,.3,1);--radius-sm:3px;--radius-md:12px;--radius-pill:999px;--shadow:0 25px 80px rgba(7,27,47,.12); }
 *,*::before,*::after { box-sizing:border-box; }
@@ -232,140 +226,92 @@ img { max-width:100%;height:auto; }
 .image-options button:hover { background:rgba(255,255,255,0.15); }
 .image-options button.active { background:#fff;border-color:#fff;color:#111; }
 </style>
-
 </head>
-
 <body>
-
 <div class="image-switcher" id="imageSwitcher">
   <div class="image-switcher-inner">
     <div class="image-switcher-title">
       Hero Image
       <span id="currentImage">5</span>/20
     </div>
-
     <div class="image-options" id="imageOptions">
-
     </div>
   </div>
 </div>
-
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-
   const hero = document.getElementById('hero');
   const nextImage = hero.querySelector('.hero-next-image');
-
   let current = 1;
   let isAnimating = false;
-
   const totalImages = 10;
   const displayTime = 5000;
   const transitionTime = 1400;
-
   function showImage(number, automatic = false) {
-
     if (isAnimating) return;
-
     isAnimating = true;
-
     const newImage = `url("./img/${number}.jpg")`;
-
     nextImage.style.transition = 'none';
     nextImage.style.transform = 'translate3d(100%, 0, 0)';
     nextImage.style.backgroundImage = newImage;
-
     nextImage.offsetHeight;
-
     nextImage.style.transition = `
       transform ${transitionTime}ms cubic-bezier(0.16, 1, 0.3, 1)
     `;
-
     nextImage.style.transform = 'translate3d(0, 0, 0)';
-
     setTimeout(function () {
-
       hero.style.backgroundImage = newImage;
-
       nextImage.style.transition = 'none';
       nextImage.style.transform = 'translate3d(100%, 0, 0)';
-
       current = number;
       isAnimating = false;
-
     }, transitionTime);
-
   }
-
   function nextImageAutomatically() {
-
     const next = current >= totalImages
       ? 1
       : current + 1;
-
     showImage(next, true);
   }
-
   hero.style.backgroundImage = 'url("./img/1.jpg")';
   current = 1;
-
   setInterval(function () {
-
     nextImageAutomatically();
-
   }, displayTime + transitionTime);
-
 });
 </script>
-
   <header class="header">
-
     <div class="container">
-
       <nav class="nav">
-
         <a href="#" class="logo" aria-label="All Insurance Advisors home">
-
           <span>
             <img src="img/logo.png" style="width:200px !important; filter: saturate(0.5);">
           </span>
-
         </a>
-
         <div class="nav-links">
-
           <a href="#coverage">
             Coverage
           </a>
-
           <a href="#approach">
             Our approach
           </a>
-
           <a href="#advisors">
             Advisors
           </a>
-
           <a href="#resources">
             Resources
           </a>
-
           <a href="#questions">
             Questions
           </a>
-
         </div>
-
         <div>
-
           <span class="nav-phone">
             (800) 123-4567
           </span>
-
           <button class="button js-open-contact">
             Talk to an advisor
           </button>
-
           <button
             class="mobile-menu"
             aria-label="Open navigation"
@@ -373,103 +319,69 @@ document.addEventListener('DOMContentLoaded', function () {
           >
             ☰
           </button>
-
         </div>
-
       </nav>
-
     </div>
-
   </header>
-
   <main>
-
     <section id="hero" class="hero" style="
   background-image: url(img/1.jpg);
   background-size: cover;
   background-position: 59%;
 ">
  <div class="hero-next-image"></div>
-
       <div class="container">
-
         <div class="editorial-grid">
-
           <div class="hero-copy reveal">
-
             <div class="eyebrow hero-kicker">
               Insurance, from a human point of view.
             </div>
-
             <h1 class="display">
-
               A clearer
               <br>
-
               way
-
               <em>
                 forward.
               </em>
-
             </h1>
-
           </div>
-
         <div class="hero-intro reveal visible">
-
           <span class="text-highlight">
             Helping individuals &amp; families make sense of
             Medicare, Health &amp; Life Insurance — with a real
             advisor on the other side of the conversation.
           </span>
         </div>
-
           <div class="hero-actions reveal">
-
             <button class="button js-open-contact">
               Talk to an advisor
             </button>
-
             <a
               href="#coverage"
               class="button outline"
             >
               Explore coverage
             </a>
-
           </div>
-
           <div class="hero-meta reveal">
-
             <strong>
               OUR PROMISE
             </strong>
-
             <br>
-
             Clear explanations.
             Thoughtful options.
             No unnecessary jargon.
-
           </div>
-
           <div class="hero-portrait reveal" style="background: none;">
-
             <div class="portrait-caption">
               Good advice
               starts with
               listening.
             </div>
-
           </div>
-
         </div>
-
       </div>
-
     </section>
-
     <style>
 .all-carriers { text-align:center; }
 .all-carriers>small { margin-bottom:0 }
@@ -484,7 +396,6 @@ document.addEventListener('DOMContentLoaded', function () {
 [data-label=all-carriers] { }
 @keyframes all-carriers-slide { 0% { transform:translateX(0) }100% { transform:translateX(calc(-50% - var(--gap)/2)) } }
 </style>
-
     <section data-label="all-carriers">
     <div class="all-carriers">
     <div class="all-carriers-view">
@@ -511,14 +422,12 @@ document.addEventListener('DOMContentLoaded', function () {
     </div>
     </div>
     </section>
-
     <script>
 const head = document.querySelector('header'), tog = head.querySelector('button');
 tog.onclick = () => tog.setAttribute('aria-expanded', head.toggleAttribute('data-open'));
 head.querySelectorAll('nav a').forEach(a => a.onclick = () => head.removeAttribute('data-open'));
 onscroll = () => head.toggleAttribute('data-stuck', scrollY > 8);
 document.getElementById('y').textContent = new Date().getFullYear();
-
 const ct = document.querySelector('.all-carriers-track');
 if (ct) {
   let moved = false;
@@ -535,7 +444,6 @@ if (ct) {
   ct.addEventListener('mouseup', onEnd);
   ct.addEventListener('touchcancel', () => ct.removeAttribute('data-paused'));
 }
-
 if (typeof Lenis !== 'undefined') {
   const lenis = new Lenis({ lerp: 0.1, smoothWheel: true, syncTouch: true });
   lenis.on('scroll', () => {
@@ -545,7 +453,6 @@ if (typeof Lenis !== 'undefined') {
   lenis.on('scroll', (e) => document.dispatchEvent(new CustomEvent('lenis:scroll', { detail: e })));
   const raf = (time) => { lenis.raf(time); requestAnimationFrame(raf); };
   requestAnimationFrame(raf);
-
   document.addEventListener('click', (e) => {
     const a = e.target.closest('a[href^="#"]');
     if (a && a.hash.length > 1) {
@@ -554,7 +461,6 @@ if (typeof Lenis !== 'undefined') {
     }
   });
 }
-
 if ('matchMedia' in window) {
   const mq = matchMedia('(max-width:900px)');
   const applyHeroPos = () => {
@@ -565,109 +471,68 @@ if ('matchMedia' in window) {
   mq.addEventListener('change', applyHeroPos);
   applyHeroPos();
 }
-
     </script>
-
     <section class="trust-ribbon">
-
       <div class="container">
-
         <div class="trust-ribbon-inner">
-
           <div class="trust-label">
             What we believe
           </div>
-
           <div class="trust-list">
-
             <span>
               Licensed advisors
             </span>
-
             <span>
               Clear explanations
             </span>
-
             <span>
               Real people
             </span>
-
             <span>
               Your questions matter
             </span>
-
           </div>
-
         </div>
-
       </div>
-
     </section>
-
     <section class="manifesto">
-
       <div class="container">
-
         <div class="editorial-grid">
-
           <div class="manifesto-label reveal">
-
             <div class="eyebrow">
               The philosophy
             </div>
-
           </div>
-
           <div class="manifesto-copy reveal">
-
             <p>
-
               We don't believe people need
-
               <em>
                 more insurance jargon.
               </em>
-
               They need better conversations.
-
             </p>
-
           </div>
-
           <div class="manifesto-sub reveal">
-
             A good advisor starts by understanding your
             circumstances and priorities, then helps you
             understand the choices available to you.
-
             <br><br>
-
             The objective isn't to make the decision for you.
             It's to make the decision easier to understand.
-
           </div>
-
         </div>
-
       </div>
-
     </section>
-
     <section
       class="section coverage"
       id="coverage"
     >
-
       <div class="container">
-
         <div class="editorial-grid">
-
           <div class="coverage-heading reveal">
-
             <div class="eyebrow">
               Where to begin
             </div>
-
             <h2>
               Find your
               <br>
@@ -675,299 +540,201 @@ if ('matchMedia' in window) {
               <br>
               point.
             </h2>
-
           </div>
-
           <div class="coverage-intro reveal">
-
             You don't have to know exactly what you need
             before you talk to us.
-
             That's part of the job.
-
           </div>
-
           <div class="coverage-list">
-
             <a
               class="coverage-item reveal"
               href="#"
             >
-
               <div class="coverage-number">
                 01
               </div>
-
               <div class="coverage-name">
                 Medicare
               </div>
-
               <div class="coverage-description">
                 Understand Medicare Advantage,
                 Supplement and prescription drug
                 options in plain language.
               </div>
-
               <div class="coverage-arrow">
                 →
               </div>
-
             </a>
-
             <a
               class="coverage-item reveal"
               href="#"
             >
-
               <div class="coverage-number">
                 02
               </div>
-
               <div class="coverage-name">
                 Health insurance
               </div>
-
               <div class="coverage-description">
                 Explore individual and family coverage,
                 networks, premiums and out-of-pocket costs.
               </div>
-
               <div class="coverage-arrow">
                 →
               </div>
-
             </a>
-
             <a
               class="coverage-item reveal"
               href="#"
             >
-
               <div class="coverage-number">
                 03
               </div>
-
               <div class="coverage-name">
                 Life insurance
               </div>
-
               <div class="coverage-description">
                 Protect the people and plans that matter
                 with coverage designed around your circumstances.
               </div>
-
               <div class="coverage-arrow">
                 →
               </div>
-
             </a>
-
           </div>
-
         </div>
-
       </div>
-
     </section>
-
     <section
       class="feature"
       id="approach"
     >
-
       <div class="container">
-
         <div class="editorial-grid">
-
           <div class="feature-image reveal"></div>
-
           <div class="feature-copy reveal">
-
             <div>
-
               <div class="eyebrow">
                 Our approach
               </div>
-
               <h2>
-
                 Advice should
                 feel
-
                 <em>
                   human.
                 </em>
-
               </h2>
-
               <p>
                 A good insurance conversation isn't a
                 sales pitch.
-
                 It's a chance to ask questions,
                 understand the trade-offs and
                 decide what makes sense for you.
-
               </p>
-
               <p>
                 We believe people deserve to know
                 what they're choosing — and why.
               </p>
-
             </div>
-
             <div class="feature-signature">
-
               <span class="signature-mark">
                 A
               </span>
-
               <span>
                 Start with a person.
                 Not a form.
               </span>
-
             </div>
-
           </div>
-
         </div>
-
       </div>
-
     </section>
-
     <section class="section">
-
       <div class="container">
-
         <div class="editorial-grid">
-
           <div class="process-label reveal">
-
             <div class="eyebrow">
               What happens next
             </div>
-
           </div>
-
           <div class="process-content">
-
             <h2 class="process-title reveal">
               Simple by design.
             </h2>
-
             <div class="process-list">
-
               <div class="process-item reveal">
-
                 <div class="process-number">
                   01
                 </div>
-
                 <h3>
                   Tell us what's on your mind.
                 </h3>
-
                 <p>
                   You don't need to arrive with
                   all the answers. Tell us what
                   you're trying to figure out.
                 </p>
-
               </div>
-
               <div class="process-item reveal">
-
                 <div class="process-number">
                   02
                 </div>
-
                 <h3>
                   Have a real conversation.
                 </h3>
-
                 <p>
                   An advisor learns about your
                   situation and explains the
                   relevant options.
                 </p>
-
               </div>
-
               <div class="process-item reveal">
-
                 <div class="process-number">
                   03
                 </div>
-
                 <h3>
                   Understand your choices.
                 </h3>
-
                 <p>
                   We explain the important differences,
                   costs and considerations so you can
                   make your own informed decision.
                 </p>
-
               </div>
-
             </div>
-
           </div>
-
         </div>
-
       </div>
-
     </section>
-
     <section
       class="section advisors"
       id="advisors"
     >
-
       <div class="container">
-
         <div class="editorial-grid">
-
           <div class="advisor-intro reveal">
-
             <div class="eyebrow">
               The people behind the advice
             </div>
-
             <h2>
               Meet the
               <br>
               people.
             </h2>
-
           </div>
-
           <div class="advisor-description reveal">
-
             Insurance is personal.
-
             That's why your website should
             show the people customers are
             actually going to meet.
-
             <br><br>
-
             Replace these portraits with
             professionally photographed advisors.
-
           </div>
-
           <div class="advisor-grid">
-
             <article class="advisor-card reveal">
-
               <div class="advisor-photo-wrap">
-
                 <img
                   class="advisor-photo"
                   loading="lazy"
@@ -975,51 +742,36 @@ if ('matchMedia' in window) {
                   src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=1100&q=88"
                   alt="Portrait of insurance advisor"
                 />
-
               </div>
-
               <div class="advisor-meta">
-
                 <div class="advisor-name">
                   Clint Johannes
                 </div>
-
                 <div class="advisor-role">
                   Licensed Advisor<br>
                   Medicare / Health
                 </div>
-
               </div>
-
               <div class="advisor-bio">
                 A short, human biography belongs here.
                 Talk about experience, specialty,
                 community and why this advisor does
                 the work.
               </div>
-
               <div class="advisor-credentials">
-
                 <span class="credential">
                   Licensed
                 </span>
-
                 <span class="credential">
                   [NY]
                 </span>
-
                 <span class="credential">
                   [12] YEARS
                 </span>
-
               </div>
-
             </article>
-
             <article class="advisor-card reveal">
-
               <div class="advisor-photo-wrap">
-
                 <img
                   class="advisor-photo"
                   loading="lazy"
@@ -1027,51 +779,36 @@ if ('matchMedia' in window) {
                   src="https://images.unsplash.com/photo-1573496799515-eebbb63814f2?auto=format&fit=crop&w=1100&q=88"
                   alt="Portrait of insurance advisor"
                 />
-
               </div>
-
               <div class="advisor-meta">
-
                 <div class="advisor-name">
                   Hanna Bradbury
                 </div>
-
                 <div class="advisor-role">
                   Licensed Advisor<br>
                   Life / Health
                 </div>
-
               </div>
-
               <div class="advisor-bio">
                 Keep this conversational.
                 Customers should feel as though
                 they're meeting a person, not
                 reading a corporate résumé.
               </div>
-
               <div class="advisor-credentials">
-
                 <span class="credential">
                   Licensed
                 </span>
-
                 <span class="credential">
                   [NY]
                 </span>
-
                 <span class="credential">
                   [6] YEARS
                 </span>
-
               </div>
-
             </article>
-
             <article class="advisor-card reveal">
-
               <div class="advisor-photo-wrap">
-
                 <img
                   class="advisor-photo"
                   loading="lazy"
@@ -1079,242 +816,163 @@ if ('matchMedia' in window) {
                   src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=1100&q=88"
                   alt="Portrait of insurance advisor"
                 />
-
               </div>
-
               <div class="advisor-meta">
-
                 <div class="advisor-name">
                   Paul Brenham
                 </div>
-
                 <div class="advisor-role">
                   Licensed Advisor<br>
                   Medicare / Health
                 </div>
-
               </div>
-
               <div class="advisor-bio">
                 Show expertise without turning
                 the biography into a list of
                 marketing adjectives.
               </div>
-
               <div class="advisor-credentials">
-
                 <span class="credential">
                   Licensed
                 </span>
-
                 <span class="credential">
                   [All]
                 </span>
-
                 <span class="credential">
                   [22] YEARS
                 </span>
-
               </div>
-
             </article>
-
           </div>
-
         </div>
-
       </div>
-
     </section>
-
     <section class="quote-section">
-
       <div class="container">
-
         <div class="editorial-grid">
-
           <blockquote class="quote reveal">
-
             “The goal isn't to sell you
             <em>
               more insurance.
             </em>
-
             It's to help you understand
             what you actually need.”
-
           </blockquote>
-
           <div class="quote-attribution reveal">
-
             A principle worth putting
             behind the brand.
-
           </div>
-
         </div>
-
       </div>
-
     </section>
-
     <section
       class="section resources"
       id="resources"
     >
-
       <div class="container">
-
         <div class="editorial-grid">
-
           <div class="resource-heading reveal">
-
             <div class="eyebrow">
               Useful, not noisy
             </div>
-
             <h2>
               Things worth
               <br>
               knowing.
             </h2>
-
           </div>
-
           <div class="resource-description reveal">
-
             Insurance education should answer
             real questions.
-
             <br><br>
-
             Build this section around the questions
             customers actually ask your advisors.
-
           </div>
-
           <div class="resource-grid">
-
             <article class="article article-featured reveal">
-
               <div class="article-meta">
-
                 <span>
                   Guide
                 </span>
-
                 <span>
                   07 MIN
                 </span>
-
               </div>
-
               <h3>
                 Medicare,
                 without the
                 maze.
               </h3>
-
               <p>
                 A plain-language introduction to
                 the pieces of Medicare and the
                 questions worth asking before
                 choosing coverage.
               </p>
-
               <div class="article-link">
                 Read the guide →
               </div>
-
             </article>
-
             <article class="article reveal">
-
               <div class="article-meta">
-
                 <span>
                   Health
                 </span>
-
                 <span>
                   04 MIN
                 </span>
-
               </div>
-
               <h3>
                 What actually
                 affects the cost
                 of health insurance?
               </h3>
-
               <p>
                 Premiums are only part of the
                 picture. Here's what else to
                 understand.
               </p>
-
               <div class="article-link">
                 Read article →
               </div>
-
             </article>
-
             <article class="article reveal">
-
               <div class="article-meta">
-
                 <span>
                   Life
                 </span>
-
                 <span>
                   05 MIN
                 </span>
-
               </div>
-
               <h3>
                 How much life
                 insurance is
                 enough?
               </h3>
-
               <p>
                 A practical framework for thinking
                 about protection without starting
                 with a sales pitch.
               </p>
-
               <div class="article-link">
                 Read article →
               </div>
-
             </article>
-
           </div>
-
         </div>
-
       </div>
-
     </section>
-
     <section
       class="section"
       id="questions"
     >
-
       <div class="container">
-
         <div class="editorial-grid">
-
           <div class="faq-title reveal">
-
             <div class="eyebrow">
               Before we talk
             </div>
-
             <h2>
               Questions
               <br>
@@ -1322,216 +980,136 @@ if ('matchMedia' in window) {
               <br>
               actually ask.
             </h2>
-
           </div>
-
           <div class="faq-list">
-
             <div class="faq-item reveal">
-
               <button class="faq-question">
-
                 <span>
                   What happens when I contact an advisor?
                 </span>
-
                 <span class="faq-plus">
                   +
                 </span>
-
               </button>
-
               <div class="faq-answer">
-
                 <div class="faq-answer-inner">
-
                   You'll speak with an advisor who can
                   learn more about your situation, answer
                   questions and explain the options relevant
                   to you.
-
                   Replace this with your actual process
                   before launch.
-
                 </div>
-
               </div>
-
             </div>
-
             <div class="faq-item reveal">
-
               <button class="faq-question">
-
                 <span>
                   Does speaking with an advisor cost anything?
                 </span>
-
                 <span class="faq-plus">
                   +
                 </span>
-
               </button>
-
               <div class="faq-answer">
-
                 <div class="faq-answer-inner">
-
                   Clearly explain how advisors are
                   compensated and whether there is
                   any cost to consumers.
-
                   Transparency here is a major
                   trust signal.
-
                 </div>
-
               </div>
-
             </div>
-
             <div class="faq-item reveal">
-
               <button class="faq-question">
-
                 <span>
                   Can I keep my current doctor?
                 </span>
-
                 <span class="faq-plus">
                   +
                 </span>
-
               </button>
-
               <div class="faq-answer">
-
                 <div class="faq-answer-inner">
-
                   This depends on the plan and network.
                   Explain how your advisors help people
                   evaluate provider networks without
                   promising outcomes that depend on
                   an insurer.
-
                 </div>
-
               </div>
-
             </div>
-
             <div class="faq-item reveal">
-
               <button class="faq-question">
-
                 <span>
                   How do I know which coverage is right for me?
                 </span>
-
                 <span class="faq-plus">
                   +
                 </span>
-
               </button>
-
               <div class="faq-answer">
-
                 <div class="faq-answer-inner">
-
                   That's where the advisor conversation
                   comes in. The website should explain
                   the relevant trade-offs rather than
                   pretending there is one universal
                   "best" option.
-
                 </div>
-
               </div>
-
             </div>
-
             <div class="faq-item reveal">
-
               <button class="faq-question">
-
                 <span>
                   What information should I have ready?
                 </span>
-
                 <span class="faq-plus">
                   +
                 </span>
-
               </button>
-
               <div class="faq-answer">
-
                 <div class="faq-answer-inner">
-
                   Tell visitors what they may need
                   before a conversation — current
                   coverage, medications, preferred
                   doctors, household information or
                   whatever is genuinely relevant.
-
                 </div>
-
               </div>
-
             </div>
-
             <div class="faq-item reveal">
-
               <button class="faq-question">
-
                 <span>
                   Do I have to make a decision during the call?
                 </span>
-
                 <span class="faq-plus">
                   +
                 </span>
-
               </button>
-
               <div class="faq-answer">
-
                 <div class="faq-answer-inner">
-
                   State your actual policy clearly.
                   If visitors can have an informational
                   conversation without enrolling,
                   say so accurately.
-
                 </div>
-
               </div>
-
             </div>
-
           </div>
-
         </div>
-
       </div>
-
     </section>
-
     <section class="cta">
-
       <div class="container">
-
         <div class="editorial-grid">
-
           <div class="cta-title reveal">
-
             <div
               class="eyebrow"
               style="color:var(--blue-950);"
             >
               A conversation is a good place to start.
             </div>
-
             <h2>
               Let's make
               <em>
@@ -1539,23 +1117,17 @@ if ('matchMedia' in window) {
               </em>
               easier to understand.
             </h2>
-
           </div>
-
           <div class="cta-copy reveal">
-
             <p>
               Tell us what you're trying to figure out.
               We'll connect you with an advisor who can
               help you understand your options.
             </p>
-
             <div class="cta-actions">
-
               <button class="button light js-open-contact">
                 Talk to an advisor
               </button>
-
               <a
                 class="button"
                 href="tel:+18001234567"
@@ -1566,166 +1138,113 @@ if ('matchMedia' in window) {
               >
                 Call us
               </a>
-
             </div>
-
           </div>
-
         </div>
-
       </div>
-
     </section>
-
   </main>
-
   <footer class="footer">
-
     <div class="container">
-
       <div class="editorial-grid">
-
         <div class="footer-brand">
-
           <a
             href="#"
             class="logo"
           >
-
             <span>
               <img src="img/logo.png" style="width:200px !important;     filter: contrast(0.5);">
             </span>
-
           </a>
-
           <p>
             Helping individuals and families
             understand Medicare, health and
             life insurance options.
           </p>
-
         </div>
-
         <div class="footer-column">
-
           <h3>
             Coverage
           </h3>
-
           <a href="#coverage">
             Medicare
           </a>
-
           <a href="#coverage">
             Health insurance
           </a>
-
           <a href="#coverage">
             Life insurance
           </a>
-
         </div>
-
         <div class="footer-column">
-
           <h3>
             Company
           </h3>
-
           <a href="#approach">
             Our approach
           </a>
-
           <a href="#advisors">
             Advisors
           </a>
-
           <a href="#resources">
             Resources
           </a>
-
           <a href="#questions">
             Questions
           </a>
-
         </div>
-
         <div class="footer-column">
-
           <h3>
             Contact
           </h3>
-
           <a href="tel:+18001234567">
             (800) 123-4567
           </a>
-
           <a href="mailto:hello@example.com">
             hello@example.com
           </a>
-
           <p>
             1234 Main Street<br>
             Fairfax, VA 22030
           </p>
-
         </div>
-
         <div class="disclosure">
-
           <strong>
             IMPORTANT INFORMATION
           </strong>
-
           <br><br>
-
           This website is a marketing template and
           contains placeholder information.
-
           Replace all contact details, licensing information,
           carrier information, product descriptions,
           testimonials, disclosures, privacy language,
           state availability, compensation statements
           and regulatory notices with verified production
           information before publishing.
-
           <br>
-
           Product availability, features, premiums,
           benefits, networks and eligibility may vary
           by state, plan and individual circumstances.
-
           <br>
-
           The final website should be reviewed by the
           appropriate compliance and legal teams before
           launch.
-
         </div>
-
         <div class="footer-bottom">
-
           <span>
             © <span id="year"></span>
             All Insurance Advisors
           </span>
-
           <span>
             Privacy · Terms · Accessibility
           </span>
-
           <span>
             Designed for real people.
           </span>
-
         </div>
-
       </div>
-
     </div>
-
   </footer>
-
   <div
     class="modal"
     id="contactModal"
@@ -1734,50 +1253,36 @@ if ('matchMedia' in window) {
     aria-modal="true"
     aria-labelledby="contactTitle"
   >
-
     <div class="modal-panel">
-
       <button
         class="modal-close"
         aria-label="Close"
       >
         ×
       </button>
-
       <div id="formView">
-
         <div class="eyebrow">
           Start a conversation
         </div>
-
         <h2 id="contactTitle">
-
           Tell us what
           you're trying
           <em>
             to solve.
           </em>
-
         </h2>
-
         <p class="modal-intro">
-
           A few details help us connect
           you with the right advisor.
-
         </p>
-
         <form
           class="form"
           id="contactForm"
         >
-
           <div class="field">
-
             <label for="name">
               Your name
             </label>
-
             <input
               id="name"
               name="name"
@@ -1785,15 +1290,11 @@ if ('matchMedia' in window) {
               autocomplete="name"
               required
             >
-
           </div>
-
           <div class="field">
-
             <label for="email">
               Email
             </label>
-
             <input
               id="email"
               name="email"
@@ -1801,352 +1302,246 @@ if ('matchMedia' in window) {
               autocomplete="email"
               required
             >
-
           </div>
-
           <div class="field">
-
             <label for="phone">
               Phone
             </label>
-
             <input
               id="phone"
               name="phone"
               type="tel"
               autocomplete="tel"
             >
-
           </div>
-
           <div class="field">
-
             <label for="interest">
               What are you looking for?
             </label>
-
             <select
               id="interest"
               name="interest"
             >
-
               <option value="">
                 Choose one
               </option>
-
               <option>
                 Medicare
               </option>
-
               <option>
                 Health insurance
               </option>
-
               <option>
                 Life insurance
               </option>
-
               <option>
                 I'm not sure yet
               </option>
-
             </select>
-
           </div>
-
           <div class="field">
-
             <label for="message">
               Anything you'd like us to know?
             </label>
-
             <textarea
               id="message"
               name="message"
               placeholder="Optional"
             ></textarea>
-
           </div>
-
           <button
             type="submit"
             class="button"
           >
             Send my request
           </button>
-
           <div class="form-disclosure">
-
             Replace this disclosure with the actual
             privacy, consent, TCPA/communication,
             data-use and lead-routing language required
             for the production implementation.
-
           </div>
-
         </form>
-
       </div>
-
       <div
         class="success"
         id="formSuccess"
       >
-
         <div class="eyebrow">
           Thank you
         </div>
-
         <h3>
           We've got it.
         </h3>
-
         <p>
           The demo form is not connected to a CRM.
           Connect this interaction to your production
           lead-management system before launch.
         </p>
-
       </div>
-
     </div>
-
   </div>
-
   <div class="mobile-actions" aria-label="Quick contact actions">
-
     <a href="tel:+18001234567">
       Call an advisor
     </a>
-
     <button class="js-open-contact">
       Start a conversation
     </button>
-
   </div>
-
   <script>
-
     document.getElementById("year").textContent =
       new Date().getFullYear();
-
     const modal =
       document.getElementById("contactModal");
-
     const modalClose =
       document.querySelector(".modal-close");
-
     const openButtons =
       document.querySelectorAll(".js-open-contact");
-
     let previousFocus = null;
-
     function openModal() {
-
       previousFocus =
         document.activeElement;
-
       modal.classList.add("active");
-
       modal.setAttribute(
         "aria-hidden",
         "false"
       );
-
       document.body.style.overflow =
         "hidden";
-
       setTimeout(() => {
-
         document
           .getElementById("name")
           ?.focus();
-
       }, 100);
-
     }
-
     function closeModal() {
-
       modal.classList.remove("active");
-
       modal.setAttribute(
         "aria-hidden",
         "true"
       );
-
       document.body.style.overflow =
         "";
-
       previousFocus?.focus();
-
     }
-
     openButtons.forEach(button => {
-
       button.addEventListener(
         "click",
         openModal
       );
-
     });
-
     modalClose.addEventListener(
       "click",
       closeModal
     );
-
     modal.addEventListener(
       "click",
       event => {
-
         if (
           event.target === modal
         ) {
           closeModal();
         }
-
       }
     );
-
     document.addEventListener(
       "keydown",
       event => {
-
         if (
           event.key === "Escape" &&
           modal.classList.contains("active")
         ) {
-
           closeModal();
-
         }
-
       }
     );
-
     const form =
       document.getElementById("contactForm");
-
     const formView =
       document.getElementById("formView");
-
     const formSuccess =
       document.getElementById("formSuccess");
-
     form.addEventListener(
       "submit",
       event => {
-
         event.preventDefault();
-
         formView.style.display =
           "none";
-
         formSuccess.classList.add(
           "active"
         );
-
       }
     );
-
     document
       .querySelectorAll(".faq-question")
       .forEach(button => {
-
         button.addEventListener(
           "click",
           () => {
-
             const item =
               button.closest(".faq-item");
-
             const answer =
               item.querySelector(
                 ".faq-answer"
               );
-
             const open =
               item.classList.contains(
                 "active"
               );
-
             document
               .querySelectorAll(
                 ".faq-item.active"
               )
               .forEach(other => {
-
                 if (
                   other !== item
                 ) {
-
                   other.classList.remove(
                     "active"
                   );
-
                   other.querySelector(
                     ".faq-answer"
                   ).style.maxHeight =
                     null;
-
                 }
-
               });
-
             if (open) {
-
               item.classList.remove(
                 "active"
               );
-
               answer.style.maxHeight =
                 null;
-
             } else {
-
               item.classList.add(
                 "active"
               );
-
               answer.style.maxHeight =
                 answer.scrollHeight +
                 "px";
-
             }
-
           }
         );
-
       });
-
     const revealElements =
       document.querySelectorAll(
         ".reveal"
       );
-
     const revealObserver =
       new IntersectionObserver(
         entries => {
-
           entries.forEach(entry => {
-
             if (
               entry.isIntersecting
             ) {
-
               entry.target.classList.add(
                 "visible"
               );
-
               revealObserver.unobserve(
                 entry.target
               );
-
             }
-
           });
-
         },
         {
           threshold: .12,
@@ -2154,55 +1549,42 @@ if ('matchMedia' in window) {
             "0px 0px -45px 0px"
         }
       );
-
     revealElements.forEach(
       element => {
-
         revealObserver.observe(
           element
         );
-
       }
     );
-
     const mobileMenu =
       document.querySelector(".mobile-menu");
-
     const navLinks =
       document.querySelector(".nav-links");
-
     if (mobileMenu && navLinks) {
-
       navLinks.id = "primary-navigation";
       mobileMenu.setAttribute("aria-controls", "primary-navigation");
-
       const setNav = open => {
         mobileMenu.setAttribute(
           "aria-expanded",
           String(open)
         );
-
         navLinks.classList.toggle(
           "is-open",
           open
         );
-
         document.body.classList.toggle(
           "nav-open",
           open
         );
       };
-
       mobileMenu.addEventListener(
         "click",
         () => {
           const open =
             mobileMenu.getAttribute("aria-expanded") === "true";
-
           setNav(!open);
         }
       );
-
       navLinks
         .querySelectorAll("a")
         .forEach(link => {
@@ -2211,7 +1593,6 @@ if ('matchMedia' in window) {
             () => setNav(false)
           );
         });
-
       document.addEventListener(
         "click",
         event => {
@@ -2225,7 +1606,6 @@ if ('matchMedia' in window) {
           }
         }
       );
-
       window.addEventListener(
         "resize",
         () => {
@@ -2235,7 +1615,6 @@ if ('matchMedia' in window) {
         },
         { passive: true }
       );
-
       document.addEventListener(
         "keydown",
         event => {
@@ -2245,48 +1624,35 @@ if ('matchMedia' in window) {
         }
       );
     }
-
     document
       .querySelectorAll("img")
       .forEach(image => {
-
         image.addEventListener(
           "error",
           () => {
-
             image.removeAttribute(
               "src"
             );
-
             image.style.background =
               "linear-gradient(135deg,#0C2945,#286A9F)";
-
           }
         );
-
       });
-
   </script>
-
   <script src="https://unpkg.com/lenis@1.3.4/dist/lenis.min.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
-
       const lenis = new Lenis({
         smoothWheel: true,
         duration: 1.2,
         anchors: true
       });
-
       function raf(time) {
         lenis.raf(time);
         requestAnimationFrame(raf);
       }
-
       requestAnimationFrame(raf);
-
     });
     </script>
-
 </body>
 </html>
