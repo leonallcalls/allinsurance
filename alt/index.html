@@ -271,34 +271,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const newImage = `url("./img/${number}.jpg")`;
 
-    /*
-     * Put the new image just outside
-     * the right-hand side of the hero.
-     */
     nextImage.style.transition = 'none';
     nextImage.style.transform = 'translate3d(100%, 0, 0)';
     nextImage.style.backgroundImage = newImage;
 
-    /*
-     * Force the browser to register the
-     * starting position before animating.
-     */
     nextImage.offsetHeight;
 
-    /*
-     * Now slide it across the screen.
-     */
     nextImage.style.transition = `
       transform ${transitionTime}ms cubic-bezier(0.16, 1, 0.3, 1)
     `;
 
     nextImage.style.transform = 'translate3d(0, 0, 0)';
 
-    /*
-     * Once the animation has finished,
-     * make the new image the actual hero
-     * background and reset the overlay.
-     */
     setTimeout(function () {
 
       hero.style.backgroundImage = newImage;
@@ -313,9 +297,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
   }
 
-  /*
-   * Automatically cycle through 1 → 20.
-   */
   function nextImageAutomatically() {
 
     const next = current >= totalImages
@@ -325,15 +306,9 @@ document.addEventListener('DOMContentLoaded', function () {
     showImage(next, true);
   }
 
-  /*
-   * Start with image 1.
-   */
   hero.style.backgroundImage = 'url("./img/1.jpg")';
   current = 1;
 
-  /*
-   * Wait 3 seconds, then start cycling.
-   */
   setInterval(function () {
 
     nextImageAutomatically();
@@ -544,7 +519,6 @@ head.querySelectorAll('nav a').forEach(a => a.onclick = () => head.removeAttribu
 onscroll = () => head.toggleAttribute('data-stuck', scrollY > 8);
 document.getElementById('y').textContent = new Date().getFullYear();
 
-/* carriers carousel: pause on touch, resume after release */
 const ct = document.querySelector('.all-carriers-track');
 if (ct) {
   let moved = false;
@@ -562,7 +536,6 @@ if (ct) {
   ct.addEventListener('touchcancel', () => ct.removeAttribute('data-paused'));
 }
 
-/* Lenis smooth scroll (self-hosted, vendor/lenis.min.js) */
 if (typeof Lenis !== 'undefined') {
   const lenis = new Lenis({ lerp: 0.1, smoothWheel: true, syncTouch: true });
   lenis.on('scroll', () => {
@@ -572,7 +545,7 @@ if (typeof Lenis !== 'undefined') {
   lenis.on('scroll', (e) => document.dispatchEvent(new CustomEvent('lenis:scroll', { detail: e })));
   const raf = (time) => { lenis.raf(time); requestAnimationFrame(raf); };
   requestAnimationFrame(raf);
-  // smooth in-page anchor links
+
   document.addEventListener('click', (e) => {
     const a = e.target.closest('a[href^="#"]');
     if (a && a.hash.length > 1) {
@@ -582,7 +555,6 @@ if (typeof Lenis !== 'undefined') {
   });
 }
 
-/* Mobile hero background-position: honor data-mobile-position set inline (≤900px) */
 if ('matchMedia' in window) {
   const mq = matchMedia('(max-width:900px)');
   const applyHeroPos = () => {
@@ -1955,16 +1927,8 @@ if ('matchMedia' in window) {
 
   <script>
 
-    /* ========================================================
-       YEAR
-    ======================================================== */
-
     document.getElementById("year").textContent =
       new Date().getFullYear();
-
-    /* ========================================================
-       CONTACT MODAL
-    ======================================================== */
 
     const modal =
       document.getElementById("contactModal");
@@ -2061,10 +2025,6 @@ if ('matchMedia' in window) {
       }
     );
 
-    /* ========================================================
-       DEMO FORM
-    ======================================================== */
-
     const form =
       document.getElementById("contactForm");
 
@@ -2080,27 +2040,6 @@ if ('matchMedia' in window) {
 
         event.preventDefault();
 
-        /*
-          PRODUCTION:
-
-          Connect here to your actual:
-
-          - CRM
-          - lead-routing platform
-          - marketing automation system
-          - secure server-side endpoint
-
-          Also capture:
-
-          - UTM source
-          - UTM medium
-          - UTM campaign
-          - landing page
-          - referrer
-          - consent
-          - timestamp
-        */
-
         formView.style.display =
           "none";
 
@@ -2110,10 +2049,6 @@ if ('matchMedia' in window) {
 
       }
     );
-
-    /* ========================================================
-       FAQ
-    ======================================================== */
 
     document
       .querySelectorAll(".faq-question")
@@ -2185,10 +2120,6 @@ if ('matchMedia' in window) {
 
       });
 
-    /* ========================================================
-       REVEAL MOTION
-    ======================================================== */
-
     const revealElements =
       document.querySelectorAll(
         ".reveal"
@@ -2233,10 +2164,6 @@ if ('matchMedia' in window) {
 
       }
     );
-
-    /* ========================================================
-       MOBILE NAV — CLASS BASED / RESIZE SAFE
-       ======================================================== */
 
     const mobileMenu =
       document.querySelector(".mobile-menu");
@@ -2319,10 +2246,6 @@ if ('matchMedia' in window) {
       );
     }
 
-    /* ========================================================
-       IMAGE FALLBACK
-    ======================================================== */
-
     document
       .querySelectorAll("img")
       .forEach(image => {
@@ -2342,27 +2265,6 @@ if ('matchMedia' in window) {
         );
 
       });
-
-    /* ========================================================
-       SMART PHONE NUMBER PLACEHOLDER
-    ======================================================== */
-
-    /*
-      Before production, replace every occurrence of:
-
-      (800) 123-4567
-
-      with the actual marketing/sales number.
-
-      Also update:
-
-      - mailto address
-      - physical address
-      - states served
-      - advisor licensing
-      - carrier information
-      - legal disclosures
-    */
 
   </script>
 
