@@ -61,7 +61,8 @@ a { color:inherit;text-decoration:none; }
 .hero h1 { margin:0;max-width:900px; }
 .hero h1 em { color:var(--blue-600); }
 .hero-intro { font-size:clamp(18px,1.8vw,24px);line-height:1.38;color:#000;position:absolute;bottom:400px;left:20px;max-width:555px; }
-.text-highlight { background:#ffffffcc;box-decoration-break:clone;-webkit-box-decoration-break:clone;padding:0.05em 0.15em;line-height:1.6; }
+.text-highlight { background:#ffffffcc;box-decoration-break:clone;-webkit-box-decoration-break:clone;padding:0.05em 0.15em; display:inline-block;border-radius: 0 13px;padding: 10px;
+@media (max-width:700px) { line-height: 20px; } }
 .hero-actions { display:flex;flex-wrap:wrap;gap:10px;position:absolute;bottom:260px;left:20px;width:100vw; }
 .hero-meta { grid-column:1 / span 3;align-self:end;margin-bottom:20px;font-family:var(--mono);font-size:9px;line-height:1.6;color:var(--muted);text-transform:uppercase; }
 .hero-portrait { grid-column:9 / span 4;position:relative;height:min(70vh,720px);min-height:540px;overflow:hidden;align-self:end; }
